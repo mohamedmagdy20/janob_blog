@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Mail\ChangePassword;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
@@ -31,6 +32,7 @@ class UserController extends Controller
 
     public function verify()
     {
+        $email = Auth::user()->email;
         $code = rand(10000,99999);
         Mail::to($email)->send(new ChangePassword(Auth::user()->email, $code));
         DB::transaction();
