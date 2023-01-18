@@ -49,10 +49,18 @@ class UserController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required|email',
-            'img'=>'required|image'
+            'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
         $user = User::find(Auth::user()->id);
-        if($user->update($request->all()))
+        $imgPath = public_path().'/profile/'.$user->img;
+        unlink($user->img);
+        if($request->hasFile('img'))
+        {
+            $imageName = time().'.'.$request->img->extension();  
+            $request->img->move(public_path('profile'), $imageName);
+            $user->update(array_merge($request->all(),['img'=>$imageName]));
+        }
+        elseif($user->update($request->all()))
         {
             return redirect()->back()->with('success','Admin Updated');
         }else{
@@ -61,6 +69,10 @@ class UserController extends Controller
 
     }
 
+    public function changePasswordView()
+    {
+        return view('user.change_password');
+    }
     public function checkVerfication(Request $request)
     {
         $request->validate([
@@ -71,7 +83,7 @@ class UserController extends Controller
 
         if(Auth::user()->v_code == $input)
         {
-            return view('user.change_password');
+            return redirect()->route('change.password.view');
         }else{
             return redirect()->back()->with('error','Invaild Code');
         }
