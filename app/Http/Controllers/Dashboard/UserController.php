@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Mail\ChangePassword;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
@@ -15,9 +18,9 @@ class UserController extends Controller
     }
 
     public function index()
-    {        
+    {
         $user = User::find(Auth::user()->id);
-        return view('user.index',compact('user'));
+        return view('user.profile',compact('user'));
     }
 
     public function edit()
@@ -26,10 +29,12 @@ class UserController extends Controller
     }
 
 
+
     public function verify()
     {
+        $email = Auth::user()->email;
         $code = rand(10000,99999);
-        Mail::to($email)->send(new ChangePassword(Auth::user()->email, $code));    
+        Mail::to($email)->send(new ChangePassword(Auth::user()->email, $code));
         DB::transaction();
         try{
             $user->update([
@@ -92,7 +97,7 @@ class UserController extends Controller
     public function resend()
     {
         $code = rand(10000,99999);
-        Mail::to($email)->send(new ChangePassword(Auth::user()->email, $code));    
+        Mail::to($email)->send(new ChangePassword(Auth::user()->email, $code));
         DB::transaction();
         try{
             $user->update([
@@ -121,5 +126,5 @@ class UserController extends Controller
             redirect()->back()->with('success','Password Changed');
         }
     }
-    
+
 }

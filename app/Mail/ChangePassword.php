@@ -19,7 +19,7 @@ class ChangePassword extends Mailable
      *
      * @return void
      */
-    public function __construct($email)
+    public function __construct($email,$code)
     {
         //
         $this->email = $email;
@@ -31,5 +31,5 @@ class ChangePassword extends Mailable
         return $this->subject('Thank you for subscribing to our newsletter')
         ->markdown('emails.subscribers',compact('email','code'));
     }
-   
+
 }
