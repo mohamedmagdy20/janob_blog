@@ -10,7 +10,7 @@
                     <div class="col-auto">
                         <label for="inputPassword6" class="col-form-label">كلمه المرور</label>
                     </div>
-                    <div class="col-auto">
+                    x <div class="col-auto">
                         <input type="text" id="password" class="form-control" name="password"
                             aria-describedby="passwordHelpInline">
                     </div>

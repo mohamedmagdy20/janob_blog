@@ -2,7 +2,7 @@
 @section('content')
     <section>
         <center>
-            <form action="" method="" style="padding:30px 0">
+            <form action="" method="post" style="padding:30px 0">
 
                 <div class="col-auto">
                     <label for="inputPassword6" class="col-form-label">كود التفعيل</label>
