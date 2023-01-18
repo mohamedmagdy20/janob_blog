@@ -29,7 +29,10 @@ class ChangePassword extends Mailable
     public function build()
     {
         return $this->subject('Thank you for subscribing to our newsletter')
-        ->markdown('emails.subscribers',compact('email','code'));
+        ->markdown('email.changepassword',[
+            'email'=>$this->email,
+            'code'=>$this->code
+        ]);
     }
 
 }
