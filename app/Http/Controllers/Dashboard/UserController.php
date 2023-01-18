@@ -15,14 +15,9 @@ class UserController extends Controller
     }
 
     public function index()
-<<<<<<< HEAD
     {
-        return view('user.profile');
-=======
-    {        
         $user = User::find(Auth::user()->id);
-        return view('user.index',compact('user'));
->>>>>>> eeceec7ac1e2297f92f053a94736c578d63c2627
+        return view('user.profile',compact('user'));
     }
 
     public function edit()
@@ -99,9 +94,6 @@ class UserController extends Controller
             return redirect()->back()->with('error','Error Occure');
         }
         return redirect()->back()->with('success','Code Resend .. Check Your Email');
-<<<<<<< HEAD
-
-=======
     }
 
     public function changePassword(Request $request)
@@ -117,7 +109,6 @@ class UserController extends Controller
             ]);
             redirect()->back()->with('success','Password Changed');
         }
->>>>>>> eeceec7ac1e2297f92f053a94736c578d63c2627
     }
 
 }
