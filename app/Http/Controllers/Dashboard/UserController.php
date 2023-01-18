@@ -14,8 +14,8 @@ class UserController extends Controller
     }
 
     public function index()
-    {        
-        return view('user.index');
+    {
+        return view('user.profile');
     }
 
     public function edit()
@@ -24,10 +24,11 @@ class UserController extends Controller
     }
 
 
+
     public function verify()
     {
         $code = rand(10000,99999);
-        Mail::to($email)->send(new ChangePassword(Auth::user()->email, $code));    
+        Mail::to($email)->send(new ChangePassword(Auth::user()->email, $code));
         DB::transaction();
         try{
             $user->update([
@@ -78,7 +79,7 @@ class UserController extends Controller
     public function resend()
     {
         $code = rand(10000,99999);
-        Mail::to($email)->send(new ChangePassword(Auth::user()->email, $code));    
+        Mail::to($email)->send(new ChangePassword(Auth::user()->email, $code));
         DB::transaction();
         try{
             $user->update([
@@ -91,7 +92,7 @@ class UserController extends Controller
             return redirect()->back()->with('error','Error Occure');
         }
         return redirect()->back()->with('success','Code Resend .. Check Your Email');
-           
+
     }
-    
+
 }
