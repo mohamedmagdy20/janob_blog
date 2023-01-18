@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">المحتوى</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="المحتوى">
+                        <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="المحتوى"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">النوع</label>
