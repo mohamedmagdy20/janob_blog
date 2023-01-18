@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\UserController;
+use App\Http\Controllers\Dashboard\BlogController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,9 +31,16 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::get('edit',[UserController::class,'edit'])->name('users.edit');
         Route::get('verify',[UserController::class,'verify'])->name('users.verify');
         Route::get('check',[UserController::class,'checkVerfication'])->name('user.check');
+        Route::get('change_password_view',[UserController::class,'changePasswordView'])->name('change.password.view');
         Route::post('update',[UserController::class,'update'])->name('users.update');
         Route::post('resend',[UserController::class,'resend'])->name('users.resend');
         Route::get('change_password',[UserController::class,'changePassword'])->name('users.change.password');
     });
+
+    Route::group(['prefix'=>'blogs'],function(){
+        Route::get('index',[BlogController::class,'index'])->name('blogs.index');
+        Route::get('show/{id}',[BlogController::class,'show'])->name('blog.show');
+        Route::get('edit/{id}',[BlogController::class,'edit'])->name('blog.edit');
+      });
 });
 Auth::routes();
