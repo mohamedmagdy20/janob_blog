@@ -30,7 +30,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::get('profile',[UserController::class,'index'])->name('users.profile');
         Route::get('edit',[UserController::class,'edit'])->name('users.edit');
         Route::get('verify',[UserController::class,'verify'])->name('users.verify');
-        Route::get('check',[UserController::class,'checkVerfication'])->name('user.check');
+        Route::post('check',[UserController::class,'checkVerfication'])->name('user.check');
         Route::get('change_password_view',[UserController::class,'changePasswordView'])->name('change.password.view');
         Route::post('update',[UserController::class,'update'])->name('users.update');
         Route::post('resend',[UserController::class,'resend'])->name('users.resend');
