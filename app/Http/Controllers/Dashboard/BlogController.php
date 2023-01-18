@@ -232,7 +232,6 @@ class BlogController extends Controller
                 return redirect()->back()->with('error','error Occure');            
             }
         }
-
     }
 
 }

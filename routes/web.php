@@ -41,6 +41,8 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::get('index',[BlogController::class,'index'])->name('blogs.index');
         Route::get('show/{id}',[BlogController::class,'show'])->name('blog.show');
         Route::get('edit/{id}',[BlogController::class,'edit'])->name('blog.edit');
+        Route::post('update/{id}',[BlogController::class,'update'])->name('blog.update');
+        Route::post('delete/{id}',[BlogController::class,'delete'])->name('blog.delete');
       });
 });
 Auth::routes();

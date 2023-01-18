@@ -29,7 +29,6 @@ class UserController extends Controller
     }
 
 
-
     public function verify()
     {
         $user =  User::find(Auth::user()->id);
