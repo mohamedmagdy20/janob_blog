@@ -11,6 +11,8 @@
         crossorigin="anonymous" />
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
 
     @stack('third_party_stylesheets')
@@ -74,9 +76,8 @@
         <!-- Main Footer -->
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.0.5
             </div>
-            <strong>Copyright &copy; 2014-2022 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+            <strong>Copyright &copy; 2023 <a href="https://adminlte.io">Jannob.News</a>.</strong> All rights
             reserved.
         </footer>
     </div>

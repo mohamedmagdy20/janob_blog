@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

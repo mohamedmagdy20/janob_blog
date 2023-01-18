@@ -1,0 +1,18 @@
+.card img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    margin: 3px auto;
+    transition: 0.6s;
+}
+
+.card img:hover {
+    box-shadow: 1px 1px 10px #ccc;
+    cursor: pointer;
+}
+
+.card {
+    text-align: center;
+    padding-top: 10px;
+}
