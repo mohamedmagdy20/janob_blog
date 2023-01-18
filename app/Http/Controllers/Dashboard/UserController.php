@@ -32,18 +32,21 @@ class UserController extends Controller
 
     public function verify()
     {
+        $user =  User::find(Auth::user()->id);
         $email = Auth::user()->email;
+        
         $code = rand(10000,99999);
+        // return $code;
         Mail::to($email)->send(new ChangePassword(Auth::user()->email, $code));
-        DB::transaction();
+        // DB::transaction();
         try{
             $user->update([
                 'v_code'=>$code
             ]);
-            DB::commit();
+            // DB::commit();
         }catch(Exception $e)
         {
-            DB::rollback();
+            // DB::rollback();
             return redirect()->back()->with('error','Error Occure');
         }
         return view('user.verfication');
