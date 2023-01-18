@@ -9,6 +9,6 @@ class WebsiteController extends Controller
     //
     public function index()
     {
-        return view('front.layout.app');
+        return view('front.sections.main');
     }
 }

@@ -1,0 +1,1344 @@
+@font-face {
+    font-family: "Alquds";
+    src: url("../fonts/ArbFONTS-4_F5.ttf");
+}
+
+* {
+    direction: rtl;
+    font-family: "Alquds";
+}
+
+body {
+    background-color: #efeded;
+    position: relative;
+}
+
+.upBtn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+    border: none;
+    height: 45px;
+    width: 45px;
+    background-color: #fff;
+    box-shadow: 0px 0px 20px -10px rgba(0, 0, 0, 0.6);
+}
+
+body header {
+    margin-bottom: 20px;
+}
+
+body header .navbar {
+    background-color: #eb2c2c !important;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    body header .navbar .nav-link {
+        padding: 0 !important;
+    }
+}
+
+body header .navbar .dropdown .dropdown-menu {
+    -webkit-transform: translate(180px, 0px);
+    transform: translate(180px, 0px);
+    width: 220px;
+}
+
+body header .navbar .dropdown .dropdown-menu .joinCard {
+    background-color: #fff;
+    width: 100%;
+    padding: 15px 20px;
+}
+
+body header .navbar .dropdown .dropdown-menu .joinCard .joinImg {
+    width: 40%;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+@media (max-width: 768px) {
+    body header .navbar .dropdown .dropdown-menu .joinCard .joinImg {
+        width: 30%;
+    }
+}
+
+body header .navbar .dropdown .dropdown-menu .joinCard .joinLink {
+    width: 100%;
+    display: block;
+    background-color: #29aae3;
+    color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 10px;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+
+body header .navbar .dropdown .dropdown-menu .joinCard .joinLink img {
+    width: 8px;
+}
+
+body header .navbar .dropdown .dropdown-menu .dropdown-item {
+    text-align: right;
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+}
+
+.container-width {
+    margin-right: 136px;
+
+}
+
+body header .navbar .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+body header .navbar .navbar-brand {
+    padding: 0;
+}
+
+body header .navbar .navbar-brand .logo {
+    height: 40px;
+
+}
+
+body header .navbar .nav-link {
+    margin-right: 20px;
+}
+
+body header .navbar .nav-link::after {
+    display: none;
+}
+
+body header .navbar .nav-link .navLinkImg {
+    width: 20px;
+    height: 20px;
+}
+
+body main .homepage {
+    padding-bottom: 30px;
+}
+
+body main .homepage .modal-dialog .modal-content {
+    background-color: #3432ff;
+}
+
+body main .homepage .modal-dialog .modal-content .modal-header {
+    border-bottom: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+body main .homepage .modal-dialog .modal-content .modal-header img {
+    width: 150px;
+}
+
+body main .homepage .modal-dialog .modal-content .modalImg {
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 30%;
+}
+
+body main .homepage .modal-dialog .modal-content .modalTitle {
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+body main .homepage .modal-dialog .modal-content .modalDes {
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+    padding: 20px 5%;
+}
+
+body main .homepage .modal-dialog .modal-content .send {
+    background-color: #fff;
+    border-radius: 20px;
+    color: #3432ff;
+    font-weight: bold;
+    border: none;
+    padding: 8px 60px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0 auto 20px;
+}
+
+@media (max-width: 768px) {
+    body main .homepage .modal-dialog .modal-content .send {
+        margin: 20px auto 0;
+    }
+}
+
+body main .homepage .modal-dialog .modal-content .send img {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 15px;
+}
+
+body main .homepage .adImage {
+    width: 70%;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+}
+
+body main .homepage .joinCard {
+    background-color: #fff;
+    width: 100%;
+    padding: 15px 20px;
+}
+
+body main .homepage .joinCard .joinImg {
+    width: 40%;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+@media (max-width: 768px) {
+    body main .homepage .joinCard .joinImg {
+        width: 30%;
+    }
+}
+
+body main .homepage .joinCard .joinLink {
+    width: 100%;
+    display: block;
+    background-color: #29aae3;
+    color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 10px;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+
+body main .homepage .joinCard .joinLink img {
+    width: 8px;
+}
+
+body main .homepage .hashtagCon {
+    background-color: #fff;
+    padding: 10px 10px 20px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+body main .homepage .hashtagCon .title {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+body main .homepage .hashtagCon .hashtagName {
+    color: #3432ff;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+body main .homepage .hashtagCon .reporNum {
+    color: #8e8e8e;
+    font-size: 14px;
+    margin-top: 2px;
+    margin-right: 5px;
+}
+
+body main .homepage .ghazal {
+    background-color: #fff;
+    height: auto;
+    padding: 20px 20px 40px;
+    margin-bottom: 0px;
+}
+
+.icons-navbar {
+    margin-left: 157px;
+
+}
+
+body main .homepage .newsHomePage {
+    background-color: #fff;
+    height: auto;
+    padding: 20px 20px 40px;
+    margin-bottom: 15px;
+}
+
+body main .homepage .newsHomePage .profieInfo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+body main .homepage .newsHomePage .profieInfo .imgCon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #eee;
+    margin-left: 20px;
+}
+
+body main .homepage .newsHomePage .profieInfo .imgCon img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+body main .homepage .newsHomePage .profieInfo .infos {
+    max-width: 80%;
+}
+
+body main .homepage .newsHomePage .profieInfo .infos .date {
+    color: #8d8d97;
+    font-size: 14px;
+}
+
+body main .homepage .newsHomePage .profieInfo .infos .name {
+    /* color: #ff1e1e; */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+body main .homepage .newsHomePage .profieInfo .infos .name.black {
+    color: #000;
+    margin-top: 10px;
+}
+
+body main .homepage .newsHomePage .profieInfo .infos .name.blue {
+    color: #3432ff;
+}
+
+body main .homepage .newsHomePage .profieInfo .infos .name .offecial {
+    color: #888;
+    display: inline-block;
+    font-weight: initial;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+body main .homepage .newsHomePage .profieInfo .infos .name .offecial img {
+    width: 12px;
+}
+
+body main .homepage .newsHomePage .profieInfo .infos .commentText {
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+body main .homepage .newsHomePage .bigNewsImg {
+    width: 100%;
+    height: 300px;
+    -o-object-fit: contain;
+    object-fit: contain;
+    margin-top: 10px;
+}
+
+body main .homepage .newsHomePage .newsImage {
+    width: 100%;
+    height: 150px;
+    -o-object-fit: contain;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    body main .homepage .newsHomePage .newsImage {
+        margin-bottom: 15px;
+    }
+}
+
+body main .homepage .newsHomePage .newsTitle {
+    color: #ff1e1e;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+body main .homepage .newsHomePage .newsdes a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+}
+
+body main .homepage .newsHomePage .question {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+body main .homepage .newsHomePage .hashTag {
+    color: #29aae3;
+    font-size: 14px;
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    body main .homepage .newsHomePage .hashTag {
+        font-size: 12px;
+    }
+}
+
+body main .homepage .newsHomePage .media {
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    body main .homepage .newsHomePage .media {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+}
+
+body main .homepage .newsHomePage .media .mediaLink {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+    body main .homepage .newsHomePage .media .mediaLink {
+        margin: 0 10px;
+    }
+}
+
+body main .homepage .newsHomePage .media .mediaLink img {
+    width: 150%;
+    height: 150%;
+}
+
+body main .homepage .newsHomePage .comment {
+    background-color: #ff1e1e;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 5px 50px;
+    margin-right: auto;
+    margin-top: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    body main .homepage .newsHomePage .comment {
+        margin: 20px auto 0;
+    }
+}
+
+body main .homepage .newsHomePage .comment img {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 15px;
+}
+
+body main .homepage .newsHomePage .clean {
+    background-color: #3432ff;
+    color: #fff;
+    padding: 5px 40px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-right: -20px;
+}
+
+body main .homepage .newsHomePage .progressLabel {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+body main .homepage .newsHomePage .progressLabel .progressTitle {
+    font-weight: bold;
+}
+
+body main .homepage .newsHomePage .progressLabel .persent {
+    color: #8d8d97;
+    font-weight: bold;
+}
+
+body main .homepage .newsHomePage .progress {
+    margin-bottom: 20px;
+    height: 0.4rem;
+}
+
+body main .homepage .newsHomePage .progress .progress-bar {
+    background-color: #ff1e1e !important;
+}
+
+body main .homepage .greyBorder {
+    background-color: #ccc;
+    width: 100%;
+    height: 1px;
+    margin-top: 20px;
+}
+
+body main .homepage .homeTitle {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+body main .homepage .smAd {
+    width: 100%;
+    height: 150px;
+    -o-object-fit: contain;
+    object-fit: contain;
+    margin-bottom: 15px;
+    display: block !important;
+}
+
+body main .homepage .smAd.cover {
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: auto;
+}
+
+body main .homepage .smAd.short {
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: 100px;
+}
+
+body main .homepage .linksnumber {
+    height: 100px;
+    width: 100%;
+    background: -webkit-gradient(linear,
+            left top,
+            left bottom,
+            from(#000),
+            to(transparent)),
+        url(../images/image.html);
+    background: linear-gradient(top, #000, transparent), url(../images/image.html);
+    padding: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 15px;
+}
+
+body main .homepage .linksnumber .logo {
+    margin-left: 10px;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+body main .homepage .linksnumber .numberText {
+    color: #fff;
+}
+
+body main .homepage .linksnumber .numberText .number {
+    font-size: 14px;
+}
+
+body main .homepage .weatherCon {
+    background-color: #fff;
+    padding: 10px 10px 20px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+body main .homepage .weatherCon.big {
+    padding: 30px;
+    margin-bottom: 25px;
+    margin-top: 0px;
+}
+
+body main .homepage .weatherCon.big .weather {
+    border-bottom: 1px solid #eee;
+}
+
+body main .homepage .weatherCon.big .weather:last-child {
+    border: none;
+}
+
+body main .homepage .weatherCon .title {
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+body main .homepage .weatherCon .des {
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+body main .homepage .weatherCon .weather {
+    padding: 20px 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+
+body main .homepage .weatherCon .weather img {
+    width: 40px;
+}
+
+body main .homepage .weatherCon .weather div {
+    font-weight: bold;
+}
+
+body main .homepage .adwithText {
+    background-color: #29aae3;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+body main .homepage .adwithText img {
+    width: 100%;
+    height: auto;
+}
+
+body main .homepage .adwithText .title {
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+body main .homepage .adwithText .des {
+    color: #fff;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+body main .homepage .calendarCard {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+body main .homepage .calendarCard .cardTitle {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #888;
+}
+
+body main .homepage .calendarCard .calendar {
+    padding: 10px;
+}
+
+body main .homepage .calendarCard .customrow {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+
+body main .homepage .calendarCard .col {
+    text-align: center;
+    padding: 0;
+    font-size: 14px;
+}
+
+body main .homepage .calendarCard .col.active {
+    background-color: #fbb82a;
+    color: #fff;
+    border-radius: 3px;
+}
+
+body main .homepage .yearBtns .yearBtn {
+    border: 1px solid #29aae3;
+    border-radius: 22px;
+    background-color: #fff;
+    padding: 5px 25px;
+    display: inline-block;
+    margin-left: 15px;
+}
+
+body main .homepage .addComment .formCon {
+    position: relative;
+}
+
+body main .homepage .addComment .formCon .inputComment {
+    border: 1px solid rgba(176, 190, 190, 0.5);
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+body main .homepage .addComment .formCon .inputComment:focus {
+    outline: none;
+}
+
+body main .homepage .addComment .formCon .inputComment::-webkit-input-placeholder {
+    color: rgba(176, 190, 190, 0.8);
+}
+
+body main .homepage .addComment .formCon .inputComment:-ms-input-placeholder {
+    color: rgba(176, 190, 190, 0.8);
+}
+
+body main .homepage .addComment .formCon .inputComment::-ms-input-placeholder {
+    color: rgba(176, 190, 190, 0.8);
+}
+
+body main .homepage .addComment .formCon .inputComment::placeholder {
+    color: rgba(176, 190, 190, 0.8);
+}
+
+body main .homepage .addComment .formCon button {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background-color: #3432ff;
+    border-radius: 5px;
+    width: 35px;
+    height: 35px;
+    border: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+body main .homepage .addComment .formCon button img {
+    width: 50%;
+}
+
+body main .policy {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+body main .policy .title {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+body main .policy .collapsCard {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+body main .policy .collapsCard button {
+    background-color: transparent;
+    border: none;
+    color: #29aae3;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    font-size: 18px;
+    width: 100%;
+    text-align: right;
+    position: relative;
+}
+
+body main .policy .collapsCard button svg {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    color: #29aae3;
+}
+
+body main .policy .collapsCard button.collapsed {
+    color: #000;
+}
+
+body main .policy .collapsCard button.collapsed svg {
+    -webkit-transform: rotate(180deg) translateY(50%);
+    transform: rotate(180deg) translateY(50%);
+    color: #ccc;
+}
+
+body main .policy .collapsCard button:focus {
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: none;
+}
+
+body main .policy .collapsCard .collapseText {
+    font-size: 14px;
+    padding: 20px 10px 10px;
+}
+
+body main .contact {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+body main .contact .title {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+body main .contact .contactInfo {
+    background-color: #fff;
+    margin-top: 40px;
+    padding: 30px 20px;
+}
+
+body main .contact .contactInfo .infoTitle {
+    text-align: center;
+    border-bottom: 1px solid #888;
+    padding-bottom: 20px;
+    font-size: 18px;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+    body main .contact .contactInfo .contactCard {
+        margin-bottom: 30px;
+    }
+}
+
+body main .contact .contactInfo .contactCard img {
+    margin: 0 auto 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+body main .contact .contactInfo .contactCard div {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+body main .contact .contactForm {
+    background-color: #fff;
+    margin-top: 40px;
+    padding: 30px 20px;
+}
+
+body main .contact .contactForm .infoTitle {
+    text-align: center;
+    border-bottom: 1px solid #888;
+    padding-bottom: 20px;
+    font-size: 18px;
+    margin-bottom: 50px;
+}
+
+body main .contact .contactForm .formItem {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+body main .contact .contactForm .formItem input,
+body main .contact .contactForm .formItem textarea {
+    width: 100%;
+    padding: 15px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: none;
+}
+
+body main .contact .contactForm .formItem input::-webkit-input-placeholder,
+body main .contact .contactForm .formItem textarea::-webkit-input-placeholder {
+    color: #aaa;
+}
+
+body main .contact .contactForm .formItem input:-ms-input-placeholder,
+body main .contact .contactForm .formItem textarea:-ms-input-placeholder {
+    color: #aaa;
+}
+
+body main .contact .contactForm .formItem input::-ms-input-placeholder,
+body main .contact .contactForm .formItem textarea::-ms-input-placeholder {
+    color: #aaa;
+}
+
+body main .contact .contactForm .formItem input::placeholder,
+body main .contact .contactForm .formItem textarea::placeholder {
+    color: #aaa;
+}
+
+body main .contact .contactForm .formItem label {
+    color: #3432ff;
+    position: absolute;
+    top: 0;
+    right: 30px;
+    font-size: 12px;
+    background-color: #fff;
+    padding: 0 10px;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+body main .contact .contactForm .send {
+    background-color: #3432ff;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 8px 60px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0 auto 20px;
+}
+
+@media (max-width: 768px) {
+    body main .contact .contactForm .send {
+        margin: 20px auto 0;
+    }
+}
+
+body main .contact .contactForm .send img {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 15px;
+}
+
+body main .addNews {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+body main .addNews .title {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+body main .addNews .addNewsForm {
+    background-color: #fff;
+    padding: 20px;
+}
+
+body main .addNews .addNewsForm .profieInfo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+body main .addNews .addNewsForm .profieInfo .imgCon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #eee;
+    margin-left: 20px;
+}
+
+body main .addNews .addNewsForm .profieInfo .imgCon img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+body main .addNews .addNewsForm .profieInfo .infos {
+    max-width: 80%;
+}
+
+body main .addNews .addNewsForm .profieInfo .infos .date {
+    color: #8d8d97;
+    font-size: 14px;
+}
+
+body main .addNews .addNewsForm .profieInfo .infos .name {
+    color: #ff1e1e;
+    font-size: 20px;
+}
+
+body main .addNews .addNewsForm .profieInfo .infos .name.black {
+    color: #000;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+body main .addNews .addNewsForm .send {
+    background-color: #3432ff;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 8px 60px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0 auto 20px;
+}
+
+@media (max-width: 768px) {
+    body main .addNews .addNewsForm .send {
+        margin: 20px auto 0;
+    }
+}
+
+body main .addNews .addNewsForm .send img {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 15px;
+}
+
+body main .addNews .addNewsForm .formItem {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+body main .addNews .addNewsForm .formItem input,
+body main .addNews .addNewsForm .formItem textarea {
+    width: 100%;
+    padding: 15px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: none;
+}
+
+body main .addNews .addNewsForm .formItem input::-webkit-input-placeholder,
+body main .addNews .addNewsForm .formItem textarea::-webkit-input-placeholder {
+    color: #aaa;
+}
+
+body main .addNews .addNewsForm .formItem input:-ms-input-placeholder,
+body main .addNews .addNewsForm .formItem textarea:-ms-input-placeholder {
+    color: #aaa;
+}
+
+body main .addNews .addNewsForm .formItem input::-ms-input-placeholder,
+body main .addNews .addNewsForm .formItem textarea::-ms-input-placeholder {
+    color: #aaa;
+}
+
+body main .addNews .addNewsForm .formItem input::placeholder,
+body main .addNews .addNewsForm .formItem textarea::placeholder {
+    color: #aaa;
+}
+
+body main .addNews .addNewsForm .formItem input:focus,
+body main .addNews .addNewsForm .formItem textarea:focus {
+    outline: none;
+}
+
+body main .addNews .addNewsForm .btnsCon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+body main .addNews .addNewsForm .btnsCon input {
+    display: none;
+}
+
+body main .addNews .addNewsForm .btnsCon .uplalodBtn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+body main .directory {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+body main .directory .directoryheader {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+body main .directory .directoryheader .title {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+body main .directory .directoryheader .addBtn {
+    background-color: #3432ff;
+    color: #fff;
+    border-radius: 30px;
+    border: none;
+    padding: 0px 30px;
+    height: 40px;
+}
+
+body main .directory .directoryCard .row {
+    background: white;
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    margin: 0 0px;
+    box-shadow: 1px 1px 6px #bbb;
+    border-radius: 10px;
+    align-items: center;
+}
+
+body main .directory .directoryCard {
+    margin-bottom: 20px;
+}
+
+body main .directory .directoryCard .cardImg {
+    width: 100%;
+    height: 240px;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    body main .directory .directoryCard .cardImg {
+        height: 200px;
+        -o-object-fit: contain;
+        object-fit: contain;
+    }
+}
+
+body main .directory .directoryCard .cardTitle {
+    font-size: 22px;
+    color: #3432ff;
+}
+
+@media (max-width: 768px) {
+    body main .directory .directoryCard .cardTitle {
+        margin-top: 20px;
+    }
+}
+
+body main .directory .directoryCard .cardDes {
+    font-size: 14px;
+    margin-top: 7px;
+}
+
+body main .directory .directoryCard .contactLink {
+    display: block;
+    /* margin-top: 10px; */
+    /* color: #000; */
+    text-decoration: none;
+    margin-top: 9px;
+    word-wrap: break-word;
+    color: #29aae3 !important;
+}
+
+body main .directory .directoryCard .contactLink img {
+    margin-left: 10px;
+}
+
+body main .directory .modal-dialog .modal-header {
+    border-bottom: none;
+    width: 100%;
+    display: block;
+}
+
+body main .directory .modal-dialog .modal-header .dialogTitle {
+    color: #3432ff;
+    text-align: center;
+    display: block;
+    font-size: 22px;
+}
+
+body main .directory .modal-dialog .dialogForm label {
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+
+body main .directory .modal-dialog .dialogForm input,
+body main .directory .modal-dialog .dialogForm textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 3px solid #eee;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    resize: none;
+}
+
+body main .directory .modal-dialog .dialogForm input::-webkit-input-placeholder,
+body main .directory .modal-dialog .dialogForm textarea::-webkit-input-placeholder {
+    color: #ccc;
+}
+
+body main .directory .modal-dialog .dialogForm input:-ms-input-placeholder,
+body main .directory .modal-dialog .dialogForm textarea:-ms-input-placeholder {
+    color: #ccc;
+}
+
+body main .directory .modal-dialog .dialogForm input::-ms-input-placeholder,
+body main .directory .modal-dialog .dialogForm textarea::-ms-input-placeholder {
+    color: #ccc;
+}
+
+body main .directory .modal-dialog .dialogForm input::placeholder,
+body main .directory .modal-dialog .dialogForm textarea::placeholder {
+    color: #ccc;
+}
+
+body main .directory .modal-dialog .submitBtn {
+    background-color: #3432ff;
+    color: #fff;
+    border-radius: 30px;
+    border: none;
+    padding: 5px 30px;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+body main .homepage .newsHomePage .media .mediaLink i {
+    font-size: 21px;
+    transition: all 0.3s;
+    /* background: red; */
+    padding: 7px;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    color: white;
+    box-shadow: 1px 1px 4px #bbb;
+    margin-bottom: 9px;
+}
+
+.fa-envelope {
+    background: grey;
+}
+
+.fa-whatsapp {
+    background: #45d355;
+}
+
+.fa-twitter {
+    background: #4fabf1;
+}
+
+.fa-facebook-f {
+    background: #45609d;
+    padding-right: 12px !important;
+}
+
+.active {
+    box-shadow: 1px 1px 4px #c7c7c7;
+    /* width: 30px;
+  height: 30px; */
+    padding: 4px;
+    border-radius: 9px;
+}
+
+@media (max-width: 768px) {
+    body main .homepage .row .col-md-3 {
+        order: 1;
+    }
+
+    body main .homepage .row .col-md-6 {
+        order: 0;
+    }
+}
+
+.nav-moblie {
+    display: block;
+}
+
+.nav {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    body header .navbar .nav-link .navLinkImg {
+        width: 20px;
+        height: 42px;
+    }
+
+    .nav {
+        display: block;
+    }
+
+    .nav-moblie {
+        display: none;
+    }
+}
+
+/*# sourceMappingURL=style.css.map */
