@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="card">
-    <div class="card-header">
-    <h3 class="card-title">المقالات</h3>
-    <a href="" class="btn btn-primary">إضافة مقال <i class="fa fa-plus"></i></a>
+
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">المقالات</h3>
+            <div class="text-center">
+                <a href="" class="btn btn-primary">إضافة مقال <i class="fa fa-plus"></i></a>
+            </div>
         </div>
         <div class="card-body">
             <table class="table table-striped">
