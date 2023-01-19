@@ -1,31 +1,42 @@
 @extends('layouts.app')
 @section('content')
-    <section>
-        <center>
-            <form action="" method="" class="my-4">
-                <input type="file" name="" id="Change_image">
+    <style>
+        label {
+            float: right;
+            clear: both
+        }
+    </style>
+    <div class="container" style="margin-top:0;padding-top:30px;direction:rtl">
+        <div class="card card-primary" style="padding-top:0">
+            <div class="card-header">
+                <h3 class="card-title" style="float:right;clear:both">تعديل كلمه المرور</h3>
+            </div>
 
-                <div class="row g-3 align-items-center">
 
-                    <div class="col-auto">
-                        <label for="inputPassword6" class="col-form-label">كلمه المرور</label>
-                    </div>
-                    x <div class="col-auto">
-                        <input type="text" id="password" class="form-control" name="password"
-                            aria-describedby="passwordHelpInline">
+            <form action="{{route('users.change.password')}}" method="POST">
+                @csrf
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">كلمه المرور</label>
+                        <input type="password" class="form-control" name="password" id="exampleInputEmail1" placeholder="*****">
+                        @error('password')
+                        <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
 
-                    <div class="col-auto">
-                        <label for="inputPassword6" class="col-form-label">تأكيد كلمه المرور</label>
-                    </div>
-                    <div class="col-auto">
-                        <input type="text" id="confirm_password" name="confirm_password" class="form-control"
-                            aria-describedby="passwordHelpInline">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">اعاده كلمه المرورر</label>
+                        <input type="password" class="form-control" name="confirm_password" id="exampleInputEmail1" placeholder="*****">
+                        @error('confirm_password')
+                        <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary my-4">حفظ التغيرات</button>
 
+                <center class="card-footer">
+                    <button type="submit" class="btn btn-primary">حفظ </button>
+                </center>
             </form>
-        </center>
-    </section>
+        </div>
+    </div>
 @endsection
