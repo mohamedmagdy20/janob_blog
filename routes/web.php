@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\BlogController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\Dashboard\AdController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,5 +41,13 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::post('update/{id}',[BlogController::class,'update'])->name('blog.update');
         Route::post('delete/{id}',[BlogController::class,'delete'])->name('blog.delete');
       });
+
+    Route::group(['prefix'=>'Ads'],function(){
+        Route::get('index',[AdController::class,'index'])->name('Ad.index');
+        Route::get('create',[AdController::class,'create'])->name('Ad.create');
+        Route::get('edit',[AdController::class,'edit'])->name('Ad.edit');
+        Route::get('show',[AdController::class,'show'])->name('Ad.show');
+      });
+
 });
 Auth::routes();
