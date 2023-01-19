@@ -36,9 +36,11 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
     Route::group(['prefix'=>'blogs'],function(){
         Route::get('index',[BlogController::class,'index'])->name('blogs.index');
         Route::get('show/{id}',[BlogController::class,'show'])->name('blog.show');
+        Route::get('create',[BlogController::class,'create'])->name('blog.create');
         Route::get('edit/{id}',[BlogController::class,'edit'])->name('blog.edit');
         Route::post('update/{id}',[BlogController::class,'update'])->name('blog.update');
-        Route::post('delete/{id}',[BlogController::class,'delete'])->name('blog.delete');
+        Route::get('delete/{id}',[BlogController::class,'delete'])->name('blog.delete');
+        Route::post('create',[BlogController::class,'store'])->name('blog.store');
       });
 });
 Auth::routes();
