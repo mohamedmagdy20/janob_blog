@@ -4,8 +4,10 @@ namespace App\Http\Controllers\dashboard;
 use App\Models\Blog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 class BlogController extends Controller
 {
+
     //
     public function index(){
         $blogs = Blog::paginate(10);
@@ -40,14 +42,14 @@ class BlogController extends Controller
         if($request->file('img') && $request->file('file'))
         {
             //upload image //
-            $imageName = time().'.'.$request->img->extension();  
+            $imageName = time().'.'.$request->img->extension();
             $request->img->move(public_path('blog-img'), $imageName);
 
-            //upload file 
-            $fileName = time().'.'.$request->file->extension();  
+            //upload file
+            $fileName = time().'.'.$request->file->extension();
             $request->file->move(public_path('blog-file'), $fileName);
-            
-            //create 
+
+            //create
             if(Blog::create(array_merge($request->all(),[
                 'img'=>$imageName,
                 'file'=>$fileName
@@ -62,9 +64,9 @@ class BlogController extends Controller
         elseif($request->file('img'))
         {
               //upload image //
-              $imageName = time().'.'.$request->img->extension();  
+              $imageName = time().'.'.$request->img->extension();
               $request->img->move(public_path('blog-img'), $imageName);
-              //create 
+              //create
               if(Blog::create(array_merge($request->all(),[
                 'img'=>$imageName
               ])))
@@ -72,15 +74,15 @@ class BlogController extends Controller
                   return redirect()->back()->with('success','Blog Added');
               }else{
                   return redirect()->back()->with('error','error Occure');
-            
+
               }
         }elseif($request->file('file'))
         {
-              //upload file 
-              $fileName = time().'.'.$request->file->extension();  
+              //upload file
+              $fileName = time().'.'.$request->file->extension();
               $request->file->move(public_path('blog-file'), $fileName);
-              
-              //create 
+
+              //create
               if(Blog::create(array_merge($request->all(),[
                 'file'=>$fileName
               ]) ))
@@ -88,7 +90,7 @@ class BlogController extends Controller
                   return redirect()->back()->with('success','Blog Added');
               }else{
                   return redirect()->back()->with('error','error Occure');
-  
+
               }
         }
         else{
@@ -107,11 +109,11 @@ class BlogController extends Controller
         $blog = Blog::find($id);
         if($blog->img != null && $blog->file != null)
         {
-            //delete img from public path 
+            //delete img from public path
             $imgPath = public_path().'/blog-img/'.$blog->img;
             unlink($imgPath);
 
-            //delete file from public path 
+            //delete file from public path
             $filePath = public_path().'/blog-file/'.$blog->file;
             unlink($filePath);
 
@@ -123,7 +125,7 @@ class BlogController extends Controller
             }
         }elseif($blog->img != null)
         {
-              //delete img from public path 
+              //delete img from public path
               $imgPath = public_path().'/blog-img/'.$blog->img;
               unlink($imgPath);
               if($blog->delete())
@@ -133,7 +135,7 @@ class BlogController extends Controller
                   return redirect()->back()->with('error','error Occure');
               }
         }elseif($blog->file != null){
-            //delete file from public path 
+            //delete file from public path
             $filePath = public_path().'/blog-file/'.$blog->file;
             unlink($filePath);
 
@@ -165,22 +167,22 @@ class BlogController extends Controller
         ]);
         if($request->file('img') && $request->file('file'))
         {
-            //delete img from public path 
+            //delete img from public path
             $imgPath = public_path().'/blog-img/'.$blog->img;
             unlink( $imgPath);
 
-            //delete file from public path 
+            //delete file from public path
             $filePath = public_path().'/blog-file/'.$blog->img;
             unlink($filePath);
 
             //upload image //
-            $imageName = time().'.'.$request->img->extension();  
+            $imageName = time().'.'.$request->img->extension();
             $request->img->move(public_path('blog-img'), $imageName);
-        
-            //upload file 
-            $fileName = time().'.'.$request->file->extension();  
+
+            //upload file
+            $fileName = time().'.'.$request->file->extension();
             $request->file->move(public_path('blog-file'), $fileName);
-            //create 
+            //create
             if($blog->update(array_merge($request->all(),[
                 'img'=>$imageName,
                 'file'=>$fileName
@@ -189,17 +191,17 @@ class BlogController extends Controller
                 return redirect()->back()->with('success','Blog Updated');
             }else{
                 return redirect()->back()->with('error','error Occure');
-            
+
             }
         }
         elseif($request->file('img'))
         {
-            //delete img from public path 
+            //delete img from public path
             $imgPath = public_path().'/blog-img/'.$blog->img;
             unlink($imgPath);
-            
+
             //upload image //
-            $imageName = time().'.'.$request->img->extension();  
+            $imageName = time().'.'.$request->img->extension();
             $request->img->move(public_path('blog-img'), $imageName);
 
             if($blog->update(array_merge($request->all(),[
@@ -209,19 +211,19 @@ class BlogController extends Controller
                 return redirect()->back()->with('success','Blog Updated');
             }else{
                 return redirect()->back()->with('error','error Occure');
-            
+
             }
         }
         elseif($request->file('file'))
         {
-            //delete file from public path 
+            //delete file from public path
             $filePath = public_path().'/blog-file/'.$blog->img;
             unlink($$filePath);
 
-             //upload file 
-             $fileName = time().'.'.$request->file->extension();  
+             //upload file
+             $fileName = time().'.'.$request->file->extension();
              $request->file->move(public_path('blog-file'), $fileName);
-            
+
 
             if($blog->update(array_merge($request->all(),[
                 'file'=>$fileName,
@@ -229,7 +231,7 @@ class BlogController extends Controller
             {
                 return redirect()->back()->with('success','Blog Updated');
             }else{
-                return redirect()->back()->with('error','error Occure');            
+                return redirect()->back()->with('error','error Occure');
             }
         }
     }

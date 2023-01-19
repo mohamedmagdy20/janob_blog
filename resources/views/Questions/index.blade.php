@@ -2,13 +2,9 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">المقالات</h3>
+            <h3 class="card-title">الاسئله المطروحه</h3>
             <div class="text-center">
-<<<<<<< HEAD
-                <a href="{{ route('bolg.create') }}" class="btn btn-primary">إضافة مقال <i class="fa fa-plus"></i></a>
-=======
-                <a href="{{route('blog.create')}}" class="btn btn-primary">إضافة مقال <i class="fa fa-plus"></i></a>
->>>>>>> 948cbe6b426111e6a0ac453caa655ef649e08247
+                <a href="{{ route('poll.create') }}" class="btn btn-primary">إضافة سؤال <i class="fa fa-plus"></i></a>
             </div>
         </div>
         <div class="card-body">
@@ -24,27 +20,27 @@
                 </thead>
                 <tbody>
                 </tbody>
-                @foreach ($blogs as $index => $blog)
+                {{-- @foreach ($Question as $index => $Question)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ $blog->title }}</td>
-                        <td>{{ $blog->type }}</td>
-                        <td>{{ $blog->likes }}</td>
+                        <td>{{ $Question->title }}</td>
+                        <td>{{ $Question->type }}</td>
+                        <td>{{ $Question->likes }}</td>
                         <td>
-                            <a href="{{ route('blog.show', $blog->id) }}" class="btn btn-warning"><i
+                            <a href="{{ route('blog.show', $Question->id) }}" class="btn btn-warning"><i
                                     class="fa fa-eye text-white"></i></a>
-                            <a href="{{ route('blog.delete', $blog->id) }}" class="btn btn-danger"  title="Delete" id="delete"><i
+                            <a href="{{ route('blog.delete', $Question->id) }}" class="btn btn-danger"><i
                                     class="fa fa-trash"></i></a>
-                            <a href="{{ route('blog.edit', $blog->id) }}" class="btn btn-primary"><i
+                            <a href="{{ route('blog.edit', $Question->id) }}" class="btn btn-primary"><i
                                     class="fa fa-pen"></i></a>
                         </td>
                     </tr>
-                @endforeach
+                @endforeach --}}
             </table>
         </div>
 
         <div class="card-footer clearfix">
-            {{ $blogs->links() }}
+            {{-- {{ $Question->links() }} --}}
         </div>
     </div>
 @endsection
