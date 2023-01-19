@@ -103,20 +103,42 @@
                                     bottom: 16%;
                                     left: 22px;
                                 }
+
+                                .numberoflike {
+                                    position: absolute;
+                                    bottom: 16%;
+                                    left: 60px;
+                                    cursor: pointer;
+                                }
                             </style>
+
+
                             <div class="row">
-                                <div class="col-md-9"></div>
                                 <div class="col-md-3">
                                     <div class="numberofcomment">
                                         <i class="fa-solid fa-comment-dots"></i>
                                         0
                                     </div>
                                 </div>
+                                <div class="col-md-3">
+                                    <div class="numberoflike">
+                                        <i class="fa-regular fa-heart" onclick="changeLikeIcon()"></i>
+                                        <p style="display: inline" class="likenumbers">0</p>
+                                    </div>
+                                </div>
                             </div>
+
+                            <script>
+                                let like = document.querySelector('.fa-heart'),
+                                    likes = document.querySelector('.likes');
+
+                                function changeLikeIcon() {
+                                    like.classList.toggle('fa-solid');
+                                }
+                            </script>
                             <style>
                                 .addcomment {
                                     position: relative;
-
                                 }
 
                                 .addcomment button {
@@ -125,7 +147,10 @@
                                     top: 58%;
                                     border: none;
                                     border-bottom-left-radius: 5px;
+                                }
 
+                                .fa-heart {
+                                    color: red;
                                 }
                             </style>
                             <center>
