@@ -87,6 +87,7 @@
             reserved.
         </footer>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>

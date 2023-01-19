@@ -1,4 +1,4 @@
-.card img {
+.card .img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -7,7 +7,7 @@
     transition: 0.6s;
 }
 
-.card img:hover {
+.card .img:hover {
     box-shadow: 1px 1px 10px #ccc;
     cursor: pointer;
 }

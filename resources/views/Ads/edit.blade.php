@@ -13,43 +13,57 @@
             </div>
 
 
-            <form>
+            <form action="{{route('ad.update',$ads->id)}}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">عنوان الإعلان</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="عنوان الإعلان">
+                        <input type="text" class="form-control" value="{{$ads->title}}" name="title" id="exampleInputEmail1" placeholder="عنوان الإعلان">
+                        @error('title')
+                        <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">المحتوى</label>
-                        <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="المحتوى"></textarea>
+                        <textarea type="body" class="form-control"  name="body" id="exampleInputPassword1" placeholder="المحتوى">{{$ads->body}}</textarea>
+                        @error('body')
+                        <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
-                    {{-- <div class="form-group">
-                        <label for="exampleInputPassword1">النوع</label>
-                        <select name="" id="" class="form-control">
-                            <option value="رياضه">رياضه</option>
-                            <option value="رياضه">حوادث</option>
-                            <option value="رياضه">دينى</option>
-                        </select>
-                    </div> --}}
-
                     <div class="form-group row">
                         <div class="col-md-6">
                             <label for="exampleInputEmail1">من</label>
-                            <input type="date" class="form-control" id="exampleInputEmail1" placeholder="عنوان الاعلان">
+                            <input type="date" class="form-control" value="{{$ads->date_from}}" name="date_from" id="exampleInputEmail1" placeholder="عنوان الاعلان">
+                            @error('date_from')
+                            <span class="text-danger"> {{ $message }} </span>
+                            @enderror
                         </div>
                         <div class="col-md-6">
                             <label for="exampleInputEmail1">الى</label>
-                            <input type="date" class="form-control" id="exampleInputEmail1" placeholder="عنوان الاعلان">
+                            <input type="date" class="form-control" value="{{$ads->date_to}}" name="date_to" id="exampleInputEmail1" placeholder="عنوان الاعلان">
+                            @error('date_to')
+                            <span class="text-danger"> {{ $message }} </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputFile">الصوره</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                <label class="custom-file-label" for="exampleInputFile">اختار الصوره</label>
+                                <input type="file" name="img" value="{{$ads->img}}" class="custom-file-input" id="img">
+                                <label class="custom-file-label" for="img">اختار الصوره</label>
+                                @error('img')
+                                <span class="text-danger"> {{ $message }} </span>
+                                @enderror
                             </div>
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <div class="img-fluid text-center">
+                            <a href="{{asset('ads/'.$ads->img)}}">
+                                <img class="w-25" src="{{asset('ads/'.$ads->img)}}" alt="">
+                            </a>
                         </div>
                     </div>
                 </div>

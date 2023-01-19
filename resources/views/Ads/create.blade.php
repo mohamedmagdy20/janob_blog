@@ -13,33 +13,49 @@
             </div>
 
 
-            <form>
+            <form action="{{route('ad.store')}}" method="POST" enctype="multipart/form-data">
                 <div class="card-body">
+                    @csrf
                     <div class="form-group">
                         <label for="exampleInputEmail1">عنوان الإعلان</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="عنوان الاعلان">
+                        <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="عنوان الاعلان">
+                        @error('title')
+                        <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">المحتوى</label>
-                        <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="المحتوى"></textarea>
+                        <textarea type="text" name="body" class="form-control" id="exampleInputPassword1" placeholder="المحتوى"></textarea>
+                        @error('body')
+                        <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
 
                     <div class="form-group row">
                         <div class="col-md-6">
                             <label for="exampleInputEmail1">من</label>
-                            <input type="date" class="form-control" id="exampleInputEmail1" placeholder="عنوان الاعلان">
+                            <input type="date" name="date_from" class="form-control" id="exampleInputEmail1" placeholder="عنوان الاعلان">
+                            @error('date_from')
+                            <span class="text-danger"> {{ $message }} </span>
+                            @enderror
                         </div>
                         <div class="col-md-6">
                             <label for="exampleInputEmail1">الى</label>
-                            <input type="date" class="form-control" id="exampleInputEmail1" placeholder="عنوان الاعلان">
+                            <input type="date" name="date_to" class="form-control" id="exampleInputEmail1" placeholder="عنوان الاعلان">
+                            @error('date_to')
+                            <span class="text-danger"> {{ $message }} </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputFile">الصوره</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="exampleInputFile">
+                                <input type="file" name="img" class="custom-file-input" id="exampleInputFile">
                                 <label class="custom-file-label" for="exampleInputFile">اختار الصوره</label>
+                                @error('img')
+                                <span class="text-danger"> {{ $message }} </span>
+                                @enderror
                             </div>
 
                         </div>

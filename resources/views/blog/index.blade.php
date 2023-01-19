@@ -4,7 +4,11 @@
         <div class="card-header">
             <h3 class="card-title">المقالات</h3>
             <div class="text-center">
+<<<<<<< HEAD
                 <a href="{{ route('bolg.create') }}" class="btn btn-primary">إضافة مقال <i class="fa fa-plus"></i></a>
+=======
+                <a href="{{route('blog.create')}}" class="btn btn-primary">إضافة مقال <i class="fa fa-plus"></i></a>
+>>>>>>> 948cbe6b426111e6a0ac453caa655ef649e08247
             </div>
         </div>
         <div class="card-body">
@@ -29,7 +33,7 @@
                         <td>
                             <a href="{{ route('blog.show', $blog->id) }}" class="btn btn-warning"><i
                                     class="fa fa-eye text-white"></i></a>
-                            <a href="{{ route('blog.delete', $blog->id) }}" class="btn btn-danger"><i
+                            <a href="{{ route('blog.delete', $blog->id) }}" class="btn btn-danger"  title="Delete" id="delete"><i
                                     class="fa fa-trash"></i></a>
                             <a href="{{ route('blog.edit', $blog->id) }}" class="btn btn-primary"><i
                                     class="fa fa-pen"></i></a>
