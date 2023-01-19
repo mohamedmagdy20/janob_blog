@@ -43,6 +43,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::post('update/{id}',[BlogController::class,'update'])->name('blog.update');
         Route::get('delete/{id}',[BlogController::class,'delete'])->name('blog.delete');
         Route::post('create',[BlogController::class,'store'])->name('blog.store');
+
       });
 
       Route::group(['prefix'=>'questions'],function(){

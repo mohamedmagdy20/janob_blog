@@ -4,11 +4,7 @@
         <div class="card-header">
             <h3 class="card-title">المقالات</h3>
             <div class="text-center">
-<<<<<<< HEAD
-                <a href="{{ route('bolg.create') }}" class="btn btn-primary">إضافة مقال <i class="fa fa-plus"></i></a>
-=======
-                <a href="{{route('blog.create')}}" class="btn btn-primary">إضافة مقال <i class="fa fa-plus"></i></a>
->>>>>>> 948cbe6b426111e6a0ac453caa655ef649e08247
+                <a href="{{ route('blog.create') }}" class="btn btn-primary">إضافة مقال <i class="fa fa-plus"></i></a>
             </div>
         </div>
         <div class="card-body">
