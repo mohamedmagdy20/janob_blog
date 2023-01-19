@@ -45,7 +45,6 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::post('create',[BlogController::class,'store'])->name('blog.store');
       });
 
-<<<<<<< HEAD
       Route::group(['prefix'=>'questions'],function(){
         Route::get('index',[pollController::class,'index'])->name('poll.index');
         Route::get('create',[pollController::class,'create'])->name('poll.create');
@@ -55,12 +54,6 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::post('delete/{id}',[pollController::class,'delete'])->name('poll.delete');
       });
 
-    Route::group(['prefix'=>'Ads'],function(){
-        Route::get('index',[AdController::class,'index'])->name('Ad.index');
-        Route::get('create',[AdController::class,'create'])->name('Ad.create');
-        Route::get('edit',[AdController::class,'edit'])->name('Ad.edit');
-        Route::get('show',[AdController::class,'show'])->name('Ad.show');
-=======
     Route::group(['prefix'=>'ads'],function(){
         Route::get('index',[AdController::class,'index'])->name('ad.index');
         Route::get('create',[AdController::class,'create'])->name('ad.create');
@@ -69,7 +62,6 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::post('store',[AdController::class,'store'])->name('ad.store');
         Route::post('update/{id}',[AdController::class,'update'])->name('ad.update');
         Route::get('delete/{id}',[AdController::class,'delete'])->name('ad.delete');
->>>>>>> 948cbe6b426111e6a0ac453caa655ef649e08247
       });
 
 });
