@@ -51,6 +51,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::get('create',[pollController::class,'create'])->name('poll.create');
         Route::get('show/{id}',[pollController::class,'show'])->name('poll.show');
         Route::get('edit/{id}',[pollController::class,'edit'])->name('poll.edit');
+        Route::post('store',[pollController::class,'store'])->name('poll.store');
         Route::post('update/{id}',[pollController::class,'update'])->name('poll.update');
         Route::post('delete/{id}',[pollController::class,'delete'])->name('poll.delete');
       });
@@ -64,6 +65,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::post('update/{id}',[AdController::class,'update'])->name('ad.update');
         Route::get('delete/{id}',[AdController::class,'delete'])->name('ad.delete');
       });
+
 
 });
 Auth::routes();
