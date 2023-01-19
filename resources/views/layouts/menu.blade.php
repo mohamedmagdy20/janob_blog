@@ -6,15 +6,21 @@
     </a>
 </li>
 
-<li class="nav-item mx-2">
+<li class="nav-item">
     <a href="{{ route('blogs.index') }}" class="nav-link {{ Request::is('dashboard/blog/index') ? 'active' : '' }}">
         <i class="fa-solid fa-blog"></i>
         <p>المقالات</p>
     </a>
 </li>
-<li class="nav-item mx-2">
+<li class="nav-item">
     <a href="{{ route('Ad.index') }}" class="nav-link {{ Request::is('dashboard/blog/index') ? 'active' : '' }}">
         <i class="fa-solid fa-newspaper"></i>
         <p>الاعلانات</p>
+    </a>
+</li>
+<li class="nav-item ">
+    <a href="{{ route('poll.index') }}" class="nav-link {{ Request::is('dashboard/blog/index') ? 'active' : '' }}">
+        <i class="fa-solid fa-clipboard-question"></i>
+        <p>الأسئله</p>
     </a>
 </li>

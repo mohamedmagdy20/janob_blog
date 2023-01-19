@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\BlogController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Dashboard\AdController;
+use App\Http\Controllers\Dashboard\pollController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +41,15 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::get('edit/{id}',[BlogController::class,'edit'])->name('blog.edit');
         Route::post('update/{id}',[BlogController::class,'update'])->name('blog.update');
         Route::post('delete/{id}',[BlogController::class,'delete'])->name('blog.delete');
+      });
+
+      Route::group(['prefix'=>'questions'],function(){
+        Route::get('index',[pollController::class,'index'])->name('poll.index');
+        Route::get('create',[pollController::class,'create'])->name('poll.create');
+        Route::get('show/{id}',[pollController::class,'show'])->name('poll.show');
+        Route::get('edit/{id}',[pollController::class,'edit'])->name('poll.edit');
+        Route::post('update/{id}',[pollController::class,'update'])->name('poll.update');
+        Route::post('delete/{id}',[pollController::class,'delete'])->name('poll.delete');
       });
 
     Route::group(['prefix'=>'Ads'],function(){
