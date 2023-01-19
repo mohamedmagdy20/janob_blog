@@ -29,8 +29,8 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::post('check',[UserController::class,'checkVerfication'])->name('user.check');
         Route::get('change_password_view',[UserController::class,'changePasswordView'])->name('change.password.view');
         Route::post('update',[UserController::class,'update'])->name('users.update');
-        Route::post('resend',[UserController::class,'resend'])->name('users.resend');
-        Route::get('change_password',[UserController::class,'changePassword'])->name('users.change.password');
+        Route::get('resend',[UserController::class,'resend'])->name('users.resend');
+        Route::post('change_password',[UserController::class,'changePassword'])->name('users.change.password');
     });
 
     Route::group(['prefix'=>'blogs'],function(){

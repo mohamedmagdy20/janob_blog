@@ -37,7 +37,7 @@ class UserController extends Controller
         $code = rand(10000,99999);
         // return $code;
         Mail::to($email)->send(new ChangePassword(Auth::user()->email, $code));
-        // DB::transaction();
+        // DB::transaction();\
         try{
             $user->update([
                 'v_code'=>$code
@@ -56,16 +56,19 @@ class UserController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required|email',
-            'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'img'=>'required|image'
         ]);
+       
         $user = User::find(Auth::user()->id);
-        $imgPath = public_path().'/profile/'.$user->img;
-        unlink($user->img);
-        if($request->hasFile('img'))
+        if($request->file('img'))
         {
+            $imgPath = public_path().'/profile/'.$user->img;
+            unlink($imgPath);
             $imageName = time().'.'.$request->img->extension();  
             $request->img->move(public_path('profile'), $imageName);
             $user->update(array_merge($request->all(),['img'=>$imageName]));
+            return redirect()->back()->with('success','Admin Updated');
+
         }
         elseif($user->update($request->all()))
         {
@@ -98,17 +101,19 @@ class UserController extends Controller
 
     public function resend()
     {
+        $user =  User::find(Auth::user()->id);
+        $email = Auth::user()->email;
         $code = rand(10000,99999);
         Mail::to($email)->send(new ChangePassword(Auth::user()->email, $code));
-        DB::transaction();
+        // DB::transaction();
         try{
             $user->update([
                 'v_code'=>$code
             ]);
-            DB::commit();
+            // DB::commit();
         }catch(Exception $e)
         {
-            DB::rollback();
+            // DB::rollback();
             return redirect()->back()->with('error','Error Occure');
         }
         return redirect()->back()->with('success','Code Resend .. Check Your Email');
@@ -117,7 +122,9 @@ class UserController extends Controller
     public function changePassword(Request $request)
     {
         $request->validate([
-           'password'=>'required|confirmed|min:6'
+           'password'=>['required',
+           'min:6'],
+           'confirm_password'=>'required|same:password'
         ]);
         $user = User::find(Auth::user()->id);
         if(Hash::check($request->password, $request->confirm_password))
@@ -126,6 +133,9 @@ class UserController extends Controller
                 'password'=>Hash::make($request->password),
             ]);
             redirect()->back()->with('success','Password Changed');
+        }else{
+            return redirect()->back()->with('error','Passowords are Not Same');
+
         }
     }
 
