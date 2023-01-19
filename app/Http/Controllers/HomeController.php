@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Advertisment;
+use App\Models\Blog;
+use App\Models\Message;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $ads  = Advertisment::all();
+        $blogs = Blog::all();
+        $messages =Message::all();
+        // $polls  =
+        return view('home',compact('ads','blogs','messages'));
     }
 }
