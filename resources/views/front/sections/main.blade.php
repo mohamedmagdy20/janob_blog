@@ -97,38 +97,54 @@
                             <a class="hashTag" href="hashtag-news/56.html">
                                 #study
                             </a>
-
+                            <style>
+                                .numberofcomment {
+                                    position: absolute;
+                                    bottom: 16%;
+                                    left: 22px;
+                                }
+                            </style>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-9"></div>
+                                <div class="col-md-3">
+                                    <div class="numberofcomment">
+                                        <i class="fa-solid fa-comment-dots"></i>
+                                        0
+                                    </div>
+                                </div>
+                            </div>
+                            <style>
+                                .addcomment {
+                                    position: relative;
 
+                                }
 
+                                .addcomment button {
+                                    position: absolute;
+                                    left: 0px;
+                                    top: 58%;
+                                    border: none;
+                                    border-bottom-left-radius: 5px;
+
+                                }
+                            </style>
+                            <center>
+                                <div class="addcomment">
+                                    <textarea type="text" name="" id="" class="form-control my-3 commentInput"
+                                        style="min-height: 100%;max-height:500%" placeholder="اكتب تعليقا"></textarea>
+                                    <button>
+                                        <i class="fa-solid fa-paper-plane"></i>
+                                    </button>
                                 </div>
 
-                                <center class="col-md-6">
-                                    <button class="comment" onclick="window.location='shownews/314.html'">
-                                        0 تعليق
-                                        <img src="front/images/comment.svg" alt="" />
-                                    </button>
-                                </center>
-                            </div>
+                            </center>
                         </div>
+
+
                         <div class="greyBorder"></div>
 
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="linksnumber">
-                            <div class="fb-page" data-href="https://www.facebook.com/janoob.co.il.1" data-tabs=""
-                                data-width="" data-height="" data-small-header="false" data-adapt-container-width="true"
-                                data-hide-cover="false" data-show-facepile="true">
-                                <blockquote cite="https://www.facebook.com/janoob.co.il.1" class="fb-xfbml-parse-ignore"><a
-                                        href="https://www.facebook.com/janoob.co.il.1">‎موقع جنوب - كافة الأخبار من
-                                        النقب -
-                                        JANOOB.co.il‎</a></blockquote>
-                            </div>
-                        </div>
-                        <br><br>
-                    </div>
                 </div>
             </div>
 

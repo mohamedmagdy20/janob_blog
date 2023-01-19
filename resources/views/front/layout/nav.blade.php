@@ -1,23 +1,16 @@
 <header>
-    <nav class="navbar navbar-expand navbar-light bg-light">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
             <div class="container-width w-30  d-flex justify-content-between ">
                 <a class="navbar-brand" href="index.html"><img src="{{ asset('frontCSS/images/front/logo.svg') }}"
                         alt="" class="logo" /></a>
-
 
                 <a class="nav-moblie"
                     href="https://www.facebook.com/v3.3/dialog/oauth?client_id=440426970910431&amp;redirect_uri=https%3A%2F%2Fjanoob.net%2Fauth%2Ffacebook%2Fcallback&amp;scope=email&amp;response_type=code&amp;state=A3RccBMshdttTACcSHaIJMq9ByZmqC0xF1jk9PBK"
                     style="margin-right:20px;">
                     <button class="btn btn-dark">أضف خبر</button>
                 </a>
-
-
-
-
                 <div class="mx-3 my-2" style="color: white;" id="">
-
-
                 </div>
             </div>
 
@@ -27,11 +20,6 @@
             </button>
             <div class="icons-navbar collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav me-auto">
-
-
-
-
-
 
                     <a class="nav-link nav-moblie active" href="/"><i class="fa-solid fa-house"></i></a>
                     <a class="nav-link nav-moblie  " href="directory.html"><i class="fa-solid fa-phone-flip"></i></a>
@@ -50,8 +38,6 @@
                                     class="joinLink"><img src="front/images/facebook-1.svg" alt="" />أنضم الينا
                                 </a>
                             </div>
-
-
                             <li class="nav">
                                 <a class="dropdown-item" href="index.html">الرئيسية</a>
                             </li>
@@ -86,13 +72,43 @@
                         </ul>
                     </div>
 
-
-
-
-
-
                 </div>
             </div>
         </div>
     </nav>
 </header>
+
+
+{{-- <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Dropdown link
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav> --}}
