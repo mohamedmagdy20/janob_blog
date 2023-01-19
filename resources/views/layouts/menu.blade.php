@@ -13,7 +13,7 @@
     </a>
 </li>
 <li class="nav-item mx-2">
-    <a href="{{ route('Ad.index') }}" class="nav-link {{ Request::is('dashboard/blog/index') ? 'active' : '' }}">
+    <a href="{{ route('ad.index') }}" class="nav-link {{ Request::is('dashboard/blog/index') ? 'active' : '' }}">
         <i class="fa-solid fa-newspaper"></i>
         <p>الاعلانات</p>
     </a>

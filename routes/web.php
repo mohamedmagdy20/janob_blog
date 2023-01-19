@@ -44,11 +44,14 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::post('create',[BlogController::class,'store'])->name('blog.store');
       });
 
-    Route::group(['prefix'=>'Ads'],function(){
-        Route::get('index',[AdController::class,'index'])->name('Ad.index');
-        Route::get('create',[AdController::class,'create'])->name('Ad.create');
-        Route::get('edit',[AdController::class,'edit'])->name('Ad.edit');
-        Route::get('show',[AdController::class,'show'])->name('Ad.show');
+    Route::group(['prefix'=>'ads'],function(){
+        Route::get('index',[AdController::class,'index'])->name('ad.index');
+        Route::get('create',[AdController::class,'create'])->name('ad.create');
+        Route::get('edit/{id}',[AdController::class,'edit'])->name('ad.edit');
+        Route::get('show/{id}',[AdController::class,'show'])->name('ad.show');
+        Route::post('store',[AdController::class,'store'])->name('ad.store');
+        Route::post('update/{id}',[AdController::class,'update'])->name('ad.update');
+        Route::get('delete/{id}',[AdController::class,'delete'])->name('ad.delete');
       });
 
 });

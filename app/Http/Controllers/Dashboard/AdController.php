@@ -4,72 +4,106 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Advertisment;
+use Carbon\Carbon;
 class AdController extends Controller
 {
     //
     public function index(){
-        return view('Ads.index');
+        $time_now = Carbon::now();
+        $ads  = Advertisment::whereDate('date_to','>',$time_now)->whereDate('date_from','<=',$time_now)->paginate(10);
+        return view('Ads.index',compact('ads'));
     }
     public function create(){
         return view('Ads.create');
     }
-    public function edit(){
-        return view('Ads.edit');
+    public function edit($id){
+        $ads =  Advertisment::find($id);
+        return view('Ads.edit',compact('ads'));
     }
-    public function show(){
-        return view('Ads.show');
+    public function show($id){
+        $ads =  Advertisment::find($id);
+        return view('Ads.show',compact('ads'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title'=>'required',
+            'body'=>'required',
+            'date_from'=>'required',
+            'date_to'=>'required',
+            'img'=>'image'
+        ]);
+        if($request->file('img'))
+        {
+            $imageName = time().'.'.$request->img->extension();  
+            $request->img->move(public_path('ads'), $imageName);
+            if(Advertisment::create(array_merge($request->all(),[
+                'img'=>$imageName
+            ]))){
+                return redirect()->back()->with('success','Advertisment Added');
+            }else{
+                return redirect()->back()->with('error','Error Occure');
+            }
+        }else{
+            if(Advertisment::create($request->all()))
+            {
+                return redirect()->back()->with('success','Advertisment Added');
+            }else{
+                return redirect()->back()->with('error','Error Occure');
+            }
+        }
+    }
+
+    public function update(Request $request,$id)
+    {
+        // return $request->all();
+        try{
+            $request->validate([
+                'title'=>'required',
+                'body'=>'required',
+                'date_from'=>'required',
+                'date_to'=>'required',
+                'img'=>''
+            ]);
+    
+            $ads = Advertisment::find($id);
+            
+            if($request->file('img'))
+            {
+                $imgPath = public_path().'/ads/'.$ads->img;
+                unlink($imgPath);
+
+                $imageName = time().'.'.$request->img->extension();  
+                $request->img->move(public_path('ads'), $imageName);
+                if($ads->update(array_merge($request->all(),[
+                    'img'=>$imageName
+                ]))){
+                    return redirect()->back()->with('success','Advertisment Added');
+                }else{
+                    return redirect()->back()->with('error','Error Occure');
+                }
+            }else{
+                if($ads->update($request->all()))
+                {
+                    return redirect()->back()->with('success','Advertisment Added');
+                }else{
+                    return redirect()->back()->with('error','Error Occure');
+                }
+            }
+        }catch(Exception $r){
+            return $r;
+        }
     }
 
 
-    // public function delete($id)
-    // {
-    //     $blog = Blog::find($id);
-    //     if($blog->img != null && $blog->file != null)
-    //     {
-    //         //delete img from public path
-    //         $imgPath = public_path().'/blog-img/'.$blog->img;
-    //         unlink($blog->img);
+    public function delete($id){
+        $ads =Advertisment::find($id);
+        $imgPath = public_path().'/ads/'.$ads->img;
+        unlink($imgPath);
+        $ads->delete();
+        return redirect()->back()->with('success','Advertisment Deleted');
+    }
 
-    //         //delete file from public path
-    //         $imgPath = public_path().'/blog-file/'.$blog->img;
-    //         unlink($blog->file);
-
-    //         if($blog->delete)
-    //         {
-    //             return redirect()->back()->with('success','Blog Deleted Succfully');
-    //         }else{
-    //             return redirect()->back()->with('error','error Occure');
-    //         }
-    //     }elseif($blog->img != null)
-    //     {
-    //           //delete img from public path
-    //           $imgPath = public_path().'/blog-img/'.$blog->img;
-    //           unlink($blog->img);
-    //           if($blog->delete)
-    //           {
-    //               return redirect()->back()->with('success','Blog Deleted Succfully');
-    //           }else{
-    //               return redirect()->back()->with('error','error Occure');
-    //           }
-    //     }elseif($blog->file != null){
-    //         //delete file from public path
-    //         $imgPath = public_path().'/blog-file/'.$blog->img;
-    //         unlink($blog->file);
-
-    //         if($blog->delete)
-    //         {
-    //             return redirect()->back()->with('success','Blog Deleted Succfully');
-    //         }else{
-    //             return redirect()->back()->with('error','error Occure');
-    //         }
-    //     }else{
-    //         if($blog->delete)
-    //         {
-    //             return redirect()->back()->with('success','Blog Deleted Succfully');
-    //         }else{
-    //             return redirect()->back()->with('error','error Occure');
-    //         }
-    //     }
-    // }
 }
