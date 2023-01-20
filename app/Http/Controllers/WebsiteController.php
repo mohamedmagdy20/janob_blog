@@ -11,4 +11,8 @@ class WebsiteController extends Controller
     {
         return view('front.sections.main');
     }
+
+    public function contact(){
+        return view('front.sections.contact');
+    }
 }

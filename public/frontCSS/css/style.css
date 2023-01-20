@@ -449,20 +449,6 @@ body main .homepage .newsHomePage .media .mediaLink img {
     height: 150%;
 }
 
-body main .homepage .newsHomePage .comment {
-    background-color: #ff1e1e;
-    border-radius: 20px;
-    color: #fff;
-    font-weight: bold;
-    border: none;
-    padding: 5px 50px;
-    margin-right: auto;
-    margin-top: 10px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    position: relative;
-}
 
 @media (max-width: 768px) {
     body main .homepage .newsHomePage .comment {
