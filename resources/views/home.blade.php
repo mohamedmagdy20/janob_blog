@@ -45,7 +45,7 @@
                     <div class="icon">
                         <i class="fas fa-comments"></i>
                     </div>
-                    <a href="#" class="small-box-footer">
+                    <a href="{{route('message.index')}}" class="small-box-footer">
                     More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                     </div>
@@ -55,13 +55,13 @@
 
                         <div class="small-box bg-danger">
                         <div class="inner">
-                        <h3>65</h3>
-                        <p>Unique Visitors</p>
+                        <h3>{{count($questions)}}</h3>
+                        <p>الاسئله</p>
                         </div>
                         <div class="icon">
                         <i class="fas fa-chart-pie"></i>
                         </div>
-                        <a href="#" class="small-box-footer">
+                        <a href="{{route('poll.index')}}" class="small-box-footer">
                         More info <i class="fas fa-arrow-circle-right"></i>
                         </a>
                         </div>

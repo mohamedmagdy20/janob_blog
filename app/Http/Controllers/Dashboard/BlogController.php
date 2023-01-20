@@ -32,7 +32,7 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required|max:15',
+            'title'=>'required',
             'body'=>'required',
             'type'=>'required',
             'img'=>'image|mimes:jpeg,png,jpg,gif,svg',

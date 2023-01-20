@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\BlogController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Dashboard\AdController;
 use App\Http\Controllers\Dashboard\pollController;
+use App\Http\Controllers\MessageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,6 +66,11 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::post('store',[AdController::class,'store'])->name('ad.store');
         Route::post('update/{id}',[AdController::class,'update'])->name('ad.update');
         Route::get('delete/{id}',[AdController::class,'delete'])->name('ad.delete');
+      });
+
+      Route::group(['prefix'=>'messages'],function(){
+        Route::get('index',[MessageController::class,'index'])->name('message.index');
+      
       });
 
 

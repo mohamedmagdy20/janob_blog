@@ -24,3 +24,10 @@
         <p>الأسئله</p>
     </a>
 </li>
+
+<li class="nav-item mx-2">
+    <a href="{{ route('message.index') }}" class="nav-link {{ Request::is('dashboard/message/index') ? 'active' : '' }}">
+        <i class="fa-solid fa-message"></i>
+        <p>الأسئله</p>
+    </a>
+</li>

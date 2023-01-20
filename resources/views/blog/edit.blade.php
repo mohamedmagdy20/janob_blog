@@ -9,7 +9,7 @@
     <div class="container" style="margin-top:0;padding-top:30px;direction:rtl">
         <div class="card card-primary" style="padding-top:0">
             <div class="card-header">
-                <h3 class="card-title" style="float:right;clear:both">اضافة مقال</h3>
+                <h3 class="card-title" style="float:right;clear:both">تعديل مقال</h3>
             </div>
             <form action="{{route('blog.update',$blog->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf

@@ -56,7 +56,7 @@ class UserController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required|email',
-            'img'=>'required|image'
+            'img'=>'image'
         ]);
        
         $user = User::find(Auth::user()->id);

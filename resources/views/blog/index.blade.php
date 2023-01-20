@@ -14,6 +14,7 @@
                         <th style="width: 10px">#</th>
                         <th>العنوان</th>
                         <th>النوع</th>
+                        <th>تاريخ النشر</th>
                         <th>عدد الاعجابات</th>
                         <th>العمليات</th>
                     </tr>
@@ -24,6 +25,7 @@
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $blog->title }}</td>
+                        <td>{{$blog->created_at->format('Y-m-d  H:i:s')}}</td>
                         <td>{{ $blog->type }}</td>
                         <td>{{ $blog->likes }}</td>
                         <td>

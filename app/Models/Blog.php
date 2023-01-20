@@ -15,7 +15,8 @@ class Blog extends Model
         'type',
         'img',
         'file',
-        'likes'
+        'likes',
+        'created_at'
     ];
     
 }
