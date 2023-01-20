@@ -3,7 +3,7 @@
         <img src="{{asset('profile/'.Auth::user()->img)}}"
              alt="AdminLTE Logo"
              class="brand-image img-circle elevation-3">
-        <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
+        <span class="brand-text font-weight-light">{{Auth::user()->name}}</span>
     </a>
 
     <div class="sidebar">

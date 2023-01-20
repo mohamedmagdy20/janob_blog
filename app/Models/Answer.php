@@ -4,8 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Question;
 class Answer extends Model
 {
     use HasFactory;
+    protected $table ='answer';
+    protected $fillable =[
+        'body',
+        'question_id',
+        'file'
+    ];
+    public function question()
+    {
+        return $this->belongsTo(Question::class,'question_id');   
+    }
 }
