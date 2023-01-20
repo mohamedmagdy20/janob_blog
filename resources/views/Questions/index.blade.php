@@ -8,39 +8,38 @@
             </div>
         </div>
         <div class="card-body">
-            <table class="table table-striped table-responsive w-100">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th style="width: 10px">#</th>
                         <th>العنوان</th>
-                        <th>النوع</th>
-                        <th>عدد الاعجابات</th>
+                        <th>عدد الاجابات</th>
                         <th>العمليات</th>
                     </tr>
                 </thead>
                 <tbody>
-                </tbody>
-                {{-- @foreach ($Question as $index => $Question)
+                    @foreach ($questions as $index => $question )
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $Question->title }}</td>
-                        <td>{{ $Question->type }}</td>
-                        <td>{{ $Question->likes }}</td>
+                        <td>{{$index +1}}</td>
+                        <td>{{$question->body}}</td>
+                        <td>{{count($question->answer)}}</td>
                         <td>
-                            <a href="{{ route('blog.show', $Question->id) }}" class="btn btn-warning"><i
-                                    class="fa fa-eye text-white"></i></a>
-                            <a href="{{ route('blog.delete', $Question->id) }}" class="btn btn-danger"><i
-                                    class="fa fa-trash"></i></a>
-                            <a href="{{ route('blog.edit', $Question->id) }}" class="btn btn-primary"><i
+                            <a href="{{ route('poll.show', $question->id) }}" class="btn btn-warning"><i
+                                class="fa fa-eye text-white"></i></a>
+                            <a href="{{ route('poll.delete', $question->id) }}" class="btn btn-danger"  title="Delete" id="delete"><i
+                                class="fa fa-trash"></i></a>
+                            <a href="{{ route('poll.edit', $question->id) }}" class="btn btn-primary"><i
                                     class="fa fa-pen"></i></a>
                         </td>
                     </tr>
-                @endforeach --}}
+                    @endforeach
+                </tbody>
+
             </table>
         </div>
 
         <div class="card-footer clearfix">
-            {{-- {{ $Question->links() }} --}}
+            {{ $questions->links() }}
         </div>
     </div>
 @endsection

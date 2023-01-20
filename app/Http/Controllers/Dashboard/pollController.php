@@ -32,18 +32,20 @@ class pollController extends Controller
 
     public function store(Request $request)
     {
+        // return $request->all();
         $request->validate([
             'title'=>'required',
             'body'=>'required',
-            'file'=>'image'
+            'file'=>'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
+
+        $answers = $request->answers;
 
         if($request->file('file'))
         {
-            $imageName = time().'.'.$request->img->extension();
-            $request->img->move(public_path('questions'), $imageName);
-            $question = Question::create(array_merge($request->all(),['img'=>$imageName]));
-            $answers = $request->answer;
+            $imageName = time().'.'.$request->file->extension();
+            $request->file->move(public_path('questions'), $imageName);
+            $question = Question::create(array_merge($request->all(),['file'=>$imageName]));
             if($question){  
                 foreach($answers as $answer)
                 {
@@ -59,7 +61,6 @@ class pollController extends Controller
         
         }else{
             $question = Question::create($request->all());
-            $answers = $request->answer;
             if($question){  
                 foreach($answers as $answer)
                 {
@@ -88,8 +89,52 @@ class pollController extends Controller
             $answer->delete();
         }
         $question->delete();
-
         return redirect()->back()->with('success','Question Deleted');
+    }
+
+    public function update(Request $request, $id){
+        $question = Question::find($id);
+        $answers = Answers::where('question_id',$question->id)->get();
+
+        $request->validate([
+            'title'=>'required',
+            'body'=>'required',
+            'file'=>'image'
+        ]);
+
+        if($request->file('file'))
+        {
+            $imgPath = public_path().'/questions/'.$question->file;
+            unlink($imgPath);
+            $imageName = time().'.'.$request->file->extension();
+            $request->file->move(public_path('questions'), $imageName);
+       
+            foreach($answers as $index => $answer)
+            {
+                $answer->update([
+                    'body'=>$request->answers[$index]
+                ]);
+            }
+            if($question->update(array_merge($request->all(),[
+                'file'=>$imageName
+            ]))){
+                return redirect()->back()->with('success','Question Updated');
+            }else{
+                return redirect()->back()->with('error','Error Occure');
+            }
+        }else{
+            foreach($answers as $index => $answer)
+            {
+                $answer->update([
+                    'body'=>$request->answers[$index]
+                ]);
+            }
+            if($question->update($request->all())){
+                return redirect()->back()->with('success','Question Updated');
+            }else{
+                return redirect()->back()->with('error','Error Occure');
+            }
+        }
     }
 
 

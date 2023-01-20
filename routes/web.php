@@ -53,7 +53,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::get('edit/{id}',[pollController::class,'edit'])->name('poll.edit');
         Route::post('store',[pollController::class,'store'])->name('poll.store');
         Route::post('update/{id}',[pollController::class,'update'])->name('poll.update');
-        Route::post('delete/{id}',[pollController::class,'delete'])->name('poll.delete');
+        Route::get('delete/{id}',[pollController::class,'delete'])->name('poll.delete');
       });
 
     Route::group(['prefix'=>'ads'],function(){
