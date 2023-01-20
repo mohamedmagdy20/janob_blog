@@ -22,7 +22,7 @@
                 <div class="navbar-nav me-auto">
 
                     <a class="nav-link nav-moblie active" href="/"><i class="fa-solid fa-house"></i></a>
-                    <a class="nav-link nav-moblie  " href="directory.html"><i class="fa-solid fa-phone-flip"></i></a>
+                    <a class="nav-link nav-moblie  " href=""><i class="fa-solid fa-phone-flip"></i></a>
                     <a class="nav-link nav-moblie " href="calendar-news.html"><i
                             class="fa-solid fa-calendar-days"></i></a>
                     <a class="nav-link nav-moblie " href="weather.html"><i class="fa-solid fa-cloud-sun-rain"></i></a>
