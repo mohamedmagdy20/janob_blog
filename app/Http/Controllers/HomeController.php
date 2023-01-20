@@ -32,7 +32,10 @@ class HomeController extends Controller
         $blogs = Blog::all();
         $messages =Message::all();
         $questions = Question::all();
-        // $polls  =
+
+        // $all =  array_merge([$ads],[$blogs],[$questions]);
+        // return $all;
+        // // $polls  =
         return view('home',compact('ads','blogs','messages','questions'));
     }
 }

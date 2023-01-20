@@ -16,6 +16,7 @@ class Blog extends Model
         'img',
         'file',
         'likes',
+        'date',
         'created_at'
     ];
     

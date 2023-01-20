@@ -4,13 +4,18 @@ namespace App\Http\Controllers\dashboard;
 use App\Models\Blog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class BlogController extends Controller
 {
 
     //
-    public function index(){
-        $blogs = Blog::paginate(10);
+    public function index(Request $request){
+        $query = Blog::query();
+        if($request->from && $request->to)
+        {
+            $query = $query->whereDate('date','>=',$request->from)->whereDate('date','<=',$request->to);
+        }
+        $blogs = $query->paginate(10);
         return view('blog.index',compact('blogs'));
     }
 
@@ -52,13 +57,13 @@ class BlogController extends Controller
             //create
             if(Blog::create(array_merge($request->all(),[
                 'img'=>$imageName,
-                'file'=>$fileName
+                'file'=>$fileName,
+                'date'=>Carbon::now()
             ])))
             {
                 return redirect()->back()->with('success','Blog Added');
             }else{
                 return redirect()->back()->with('error','error Occure');
-
             }
         }
         elseif($request->file('img'))
@@ -68,7 +73,8 @@ class BlogController extends Controller
               $request->img->move(public_path('blog-img'), $imageName);
               //create
               if(Blog::create(array_merge($request->all(),[
-                'img'=>$imageName
+                'img'=>$imageName,
+                'date'=>Carbon::now()
               ])))
               {
                   return redirect()->back()->with('success','Blog Added');
@@ -84,7 +90,8 @@ class BlogController extends Controller
 
               //create
               if(Blog::create(array_merge($request->all(),[
-                'file'=>$fileName
+                'file'=>$fileName,
+                'date'=>Carbon::now()
               ]) ))
               {
                   return redirect()->back()->with('success','Blog Added');
@@ -94,7 +101,9 @@ class BlogController extends Controller
               }
         }
         else{
-            if(Blog::create($request->all()))
+            if(Blog::create(array_merge($request->all(),[
+                'date'=>Carbon::now()
+            ])))
             {
                 return redirect()->back()->with('success','Blog Added');
             }else{
