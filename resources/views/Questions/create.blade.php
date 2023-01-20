@@ -33,7 +33,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">عدد الاجابات</label>
                         <input onchange="numOfAnswer()" type="number" class="form-control questionNum"
-                            id="exampleInputEmail1" placeholder="عدد الأسئله">
+                            id="exampleInputEmail1" placeholder="عدد الاجابات">
                     
                         </div>
 

@@ -80,9 +80,9 @@ class pollController extends Controller
     {
         $question =  Question::find($id);
         //delete img from public path
-        $imgPath = public_path().'/questions/'.$question->img;
+        $imgPath = public_path().'/questions/'.$question->file;
         unlink($imgPath);
-        $answers = Answers::where('question_id',$question->id)->get();
+        $answers = Answer::where('question_id',$question->id)->get();
         
         foreach($answers as $answer)
         {
@@ -94,7 +94,7 @@ class pollController extends Controller
 
     public function update(Request $request, $id){
         $question = Question::find($id);
-        $answers = Answers::where('question_id',$question->id)->get();
+        $answers = Answer::where('question_id',$question->id)->get();
 
         $request->validate([
             'title'=>'required',
