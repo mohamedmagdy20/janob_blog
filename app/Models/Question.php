@@ -10,6 +10,8 @@ class Question extends Model
     use HasFactory;
     protected $table ='question';
     protected $fillable = [
+        'title',
+        'file',
         'body',
     ];
 

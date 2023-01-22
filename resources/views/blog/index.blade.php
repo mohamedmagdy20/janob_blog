@@ -8,12 +8,33 @@
             </div>
         </div>
         <div class="card-body">
+            <div class="container">
+                <form action="{{route('blogs.index')}}" method="GET">
+                    <div class="row">
+
+                        <label for="date_from">من</label>
+                        <div class="from-group col-md-3">
+                            <input type="date" class="form-control" name="from" placeholder="date from" >
+                        </div>
+                        <label for="date_from">الي</label>
+
+                        <div class="from-group col-md-3">
+                            <input type="date" class="form-control" name="to" placeholder="date to" >
+                        </div>
+                        <div class="from-group col-md-3">
+                            <input type="submit" class="btn btn-primary" value="Search" >
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
             <table class="table table-striped ">
                 <thead>
                     <tr>
                         <th style="width: 10px">#</th>
                         <th>العنوان</th>
                         <th>النوع</th>
+                        <th>تاريخ النشر</th>
                         <th>عدد الاعجابات</th>
                         <th>العمليات</th>
                     </tr>
@@ -25,6 +46,8 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $blog->title }}</td>
                         <td>{{ $blog->type }}</td>
+
+                        <td>{{$blog->created_at->format('Y-m-d  H:i:s')}}</td>
                         <td>{{ $blog->likes }}</td>
                         <td>
                             <a href="{{ route('blog.show', $blog->id) }}" class="btn btn-warning"><i

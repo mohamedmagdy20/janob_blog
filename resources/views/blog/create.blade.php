@@ -36,7 +36,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputFile">الصوره</label>
+                        <label for="exampleInputFile">الملفات</label>
                         <div class="input-group">
                             <div class="">
                                 <input type="file" name="img" class="custom-file-input" id="exampleInputFile">
@@ -47,8 +47,9 @@
                             </div>
                         </div>
                     </div>
+                    <label for="file">ملف او فيديو</label>
+
                     <div class="form-group">
-                        <label for="exampleInputFile">ملف او فيديو</label>
                         <div class="input-group">
                             <div class="">
                                 <input type="file" name="file" class="custom-file-input" id="file">

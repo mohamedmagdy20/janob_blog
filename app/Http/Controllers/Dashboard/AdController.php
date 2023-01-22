@@ -10,8 +10,7 @@ class AdController extends Controller
 {
     //
     public function index(){
-        $time_now = Carbon::now();
-        $ads  = Advertisment::whereDate('date_to','>',$time_now)->whereDate('date_from','<=',$time_now)->paginate(10);
+        $ads  = Advertisment::paginate(10);
         return view('Ads.index',compact('ads'));
     }
     public function create(){

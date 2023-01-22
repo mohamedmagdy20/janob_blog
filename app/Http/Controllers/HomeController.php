@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Advertisment;
 use App\Models\Blog;
 use App\Models\Message;
+use App\Models\Question;
+
 
 class HomeController extends Controller
 {
@@ -29,7 +31,11 @@ class HomeController extends Controller
         $ads  = Advertisment::all();
         $blogs = Blog::all();
         $messages =Message::all();
-        // $polls  =
-        return view('home',compact('ads','blogs','messages'));
+        $questions = Question::all();
+
+        // $all =  array_merge([$ads],[$blogs],[$questions]);
+        // return $all;
+        // // $polls  =
+        return view('home',compact('ads','blogs','messages','questions'));
     }
 }
