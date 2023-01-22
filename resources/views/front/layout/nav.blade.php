@@ -20,6 +20,12 @@
             </button>
             <div class="icons-navbar collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav me-auto">
+                    <div class="search-bar" style="position: relative">
+                        <i class="fa-solid fa-magnifying-glass"
+                            style="transform: rotate(90deg);position: absolute;left:5px;top:25%;color:#888;cursor: pointer;"></i>
+                        <input type="text" name="search" id="" class="form-control w-100"
+                            placeholder="ابحث" style="padding-left:27px">
+                    </div>
 
                     <a class="nav-link nav-moblie active" href="/"><i class="fa-solid fa-house"></i></a>
                     <a class="nav-link nav-moblie  " href="{{ route('contact') }}"><i
@@ -72,6 +78,7 @@
                             </li>
                         </ul>
                     </div>
+
 
                 </div>
             </div>

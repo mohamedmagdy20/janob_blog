@@ -176,10 +176,35 @@
         }
     </script>
     @include('front.layout.nav')
-    <div class="row" style="padding-top:50px">
-        @yield('news')
-    </div>
+    <main>
+        <div class="homepage">
+            <div class="container" style="max-width:1000px; !important;">
+                <div class="row" style="padding-top:50px">
+                    <!-- هشتاج -->
+                    <div class="col-md-3">
+                        <div class="hashtagCon overflow-auto" style="height: 500px;">
+                            <div class="title">هاشتاغ</div>
+                            <div class="hashtagName">
+                                <a style="color: #ff1e1e !important;font-size:14px;" href="hashtag-news/55.html">
+                                    quran
+                                </a>
+                            </div>
+                            <div class="reporNum">1 تقرير</div>
+                            <div class="hashtagName">
+                                <a style="color: #ff1e1e !important;font-size:14px;" href="hashtag-news/56.html">
+                                    study
+                                </a>
+                            </div>
+                            <div class="reporNum">1 تقرير</div>
 
+                        </div>
+                    </div>
+
+                    @yield('news')
+                </div>
+            </div>
+        </div>
+    </main>
     <a href="#" class="back-to-top" style="background: #29aae3;">
         <i class="fa-solid fa-chevron-up"></i>
     </a>

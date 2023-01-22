@@ -19,6 +19,7 @@ use App\Http\Controllers\Dashboard\pollController;
 
 Route::get('/',[WebsiteController::class,'index'])->name('home');
 Route::get('/contact',[WebsiteController::class,'contact'])->name('contact');
+Route::get('/new/{id}',[WebsiteController::class,'specialNew'])->name('specialNew');
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 

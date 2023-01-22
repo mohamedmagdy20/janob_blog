@@ -15,4 +15,8 @@ class WebsiteController extends Controller
     public function contact(){
         return view('front.sections.contact');
     }
+
+    public function specialNew(){
+        return view('front.sections.spectialNew');
+    }
 }
