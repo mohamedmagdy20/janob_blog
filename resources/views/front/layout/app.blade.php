@@ -24,9 +24,9 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
-   
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
     </script>
@@ -97,8 +97,8 @@
 
     <script src="{{ asset('frontCSS/js/wow.js') }}"></script>
 
-    <script async src="../pagead2.googlesyndication.com/pagead/js/fdf1e.txt?client=ca-pub-9047311544579993"
-        crossorigin="anonymous"></script>
+    <script asyncsrc="{{ asset('frontCSS/js/fdf1e.txt?client=ca-pub-9047311544579993') }}" crossorigin="anonymous">
+    </script>
 
 
     <script src="{{ asset('frontCSS/js/jquery.min.js') }}"></script>
@@ -158,6 +158,28 @@
         })(window, document, 'script', 'dataLayer', 'GTM-PLLVZZR');
     </script>
     <!-- End Google Tag Manager -->
+
+    <script asyncsrc="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9047311544579993"
+        crossorigin="anonymous"></script>
+
+    {{-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9047311544579993"
+        crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-e3-2b+81-nk+tw"
+        data-ad-client="ca-pub-9047311544579993" data-ad-slot="4402961041"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script> --}}
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9047311544579993"
+        crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-e3-2b+81-nk+tw"
+        data-ad-client="ca-pub-9047311544579993" data-ad-slot="4402961041"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+
 </head>
 
 <body onload="startTime()">
@@ -189,6 +211,7 @@
     @include('front.layout.nav')
     <main>
         <div class="homepage">
+
             <div class="container" style="max-width:1000px; !important;">
                 <div class="row" style="padding-top:50px">
                     <!-- هشتاج -->
@@ -214,6 +237,11 @@
                     </div>
 
                     @yield('news')
+
+                    <div class="col-md-3">
+                        <amp-auto-ads type="adsense" data-ad-client="ca-pub-9047311544579993">
+                        </amp-auto-ads>
+                    </div>
                 </div>
             </div>
         </div>
@@ -226,7 +254,7 @@
 
     @yield('script')
 
-    
+
     <script>
         if ("" == "" && "") {
             $(window).on("load", function() {
