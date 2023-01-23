@@ -125,12 +125,14 @@
         <div class="homeTitle">أخر الأخبار
         </div>
         {{-- This is posts --}}
+     @foreach ($lists as  $index => $list )
+        @if($list->rec == '1')
         <div class="newsHomePage wow fadeInDown" data-wow-duration="1.4s">
             <div class="row">
                 <a href="{{ route('specialNew', 1) }}">
                     <div class="col-6">
                         <div class="clean">
-                            Donate Quran
+                           {{$list->type}}
                         </div>
                     </div>
                 </a>
@@ -138,47 +140,40 @@
             <div class="profieInfo">
                 <a href="#">
                     <div class="imgCon">
-                        <img src="{{ asset('frontCSS/front/images/image.jpg') }}" alt="" />
+                        <img src="{{ asset('profile/'.Auth::user()->img) }}" alt="" />
                     </div>
                 </a>
                 <div class="infos">
-                    <div class="date">منذ 4 أيام
+                    <div class="date">{{$list->updated_at->format('Y-m-d  H:i:s')}}
                     </div>
 
                     <div class="name">
-                        <a style="color: #ff1e1e !important;font-size:24px;" href="{{ route('specialNew', 1) }}">افضل
-                            تبرع وصدقة جارية لحفظ كتاب الله تبرع الآن -
-                            Donate Quran</a>
+                        <a style="color: #ff1e1e !important;font-size:24px;" href="{{ route('specialNew',$list->id) }}">افضل
+                            {{$list->title}}</a>
                         <div class="offecial">
-                            <img src="{{ asset('frontCSS/front/images/check.svg') }}" alt="" />
+                            <img src="{{ asset('blog-img/'.$list->img) }}" alt="" />
                             رسمي
                         </div>
                     </div>
 
                     <div class="name" style="color:#0d6efd;font-size:12px;">
-                        كتب: <a href="author-news/1.html">موقع جنوب</a>
+                        كتب: <a href="author-news/1.html">{{Auth::user()->name}}</a>
                     </div>
                 </div>
             </div>
             <div class="newsdes">
-                <a href="{{ route('specialNew', 1) }}" style="text-decoration: none">صدقة جارية لدعم تعليم وتحفيظ
-                    القران
-                    Ongoing charity to support teaching and memorizing the Qur’an
-                    You can help lots of people by donating little​ -
-                    Link below</a>
+                <a href="{{ route('specialNew', 1) }}" style="text-decoration: none">{{$list->body}}</a>
             </div>
 
             <a style="text-decoration: none;" href="{{ route('specialNew', 1) }}">
-                <img src="{{ asset('frontCSS/images/news/1673847005.jpg') }}" alt="" class="bigNewsImg" />
+                <img src="{{ asset('blog-img/'.$list->img) }}" alt="" class="bigNewsImg" />
 
             </a>
 
             <a class="hashTag" href="hashtag-news/55.html">
-                #quran
+                #{{$list->type}}
             </a>
-            <a class="hashTag" href="hashtag-news/56.html">
-                #study
-            </a>
+            
 
 
 
@@ -186,13 +181,13 @@
                 <div class="col-md-3">
                     <div class="numberofcomment">
                         <i class="fa-solid fa-comment-dots"></i>
-                        0
+                        {{count($list->comment)}}
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="numberoflike">
-                        <i class="fa-regular fa-heart" onclick="changeLikeIcon()"></i>
-                        0
+                        <a onclick="Bloglike({{$list->id}});"><i class="fa-regular fa-heart"></i></a> 
+                        <span id="like-count">{{$list->likes}}</span> 
                     </div>
                 </div>
             </div>
@@ -200,90 +195,138 @@
 
 
             <div class="addcomment">
-                <textarea type="text" name="" id="" class="form-control my-3 commentInput"
+                <form action="{{route('comment.store',$list->id)}}" method="POST">
+                    @csrf
+                    <textarea type="text" name="comment" id="" class="form-control my-3 commentInput"
                     style="min-height: 100%;max-height:500%" placeholder="اكتب تعليقا"></textarea>
-                <button>
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
+                    <button>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+                
             </div>
 
             <div class="comments">
-                <div class="comment my-3">
-                    <div class="commentBody">
-                        <p>
-                            السلام عليكم اخى الكريم احب ان اخبرك بانك مطلوب الى التحقيق من قبل عداله السماء
-                            ههههههههه</p>
-                    </div>
-                </div>
-                <div class="comment my-3">
-                    <div class="commentBody">
-                        <p>
-                            السلام عليكم اخى الكريم احب ان اخبرك بانك مطلوب الى التحقيق من قبل عداله السماء
-                            ههههههههه</p>
-                    </div>
-                </div>
-                <div class="comment my-3">
-                    <div class="commentBody">
-                        <p>
-                            السلام عليكم اخى الكريم احب ان اخبرك بانك مطلوب الى التحقيق من قبل عداله السماء
-                            ههههههههه</p>
-                    </div>
-                </div>
-                <div class="comment my-3">
-                    <div class="commentBody">
-                        <p>
-                            السلام عليكم اخى الكريم احب ان اخبرك بانك مطلوب الى التحقيق من قبل عداله السماء
-                            ههههههههه</p>
-                    </div>
-                </div>
-                <div class="comment my-3">
-                    <div class="commentBody">
-                        <p>
-                            السلام عليكم اخى الكريم احب ان اخبرك بانك مطلوب الى التحقيق من قبل عداله السماء
-                            ههههههههه</p>
-                    </div>
-                </div>
-                <div class="comment my-3">
-                    <div class="commentBody">
-                        <p>
-                            السلام عليكم اخى الكريم احب ان اخبرك بانك مطلوب الى التحقيق من قبل عداله السماء
-                            ههههههههه</p>
-                    </div>
-                </div>
+                @foreach ($list->comment as $comment )
+                    <div class="comment my-3">
+                        <div class="commentBody">
+                            <p>
+                                {{$comment->body}}
+                            </p>
+                        </div>
+                    </div>     
+                @endforeach
+               
             </div>
 
 
             <div class="greyBorder"></div>
         </div>
-        {{-- This is posts --}}
 
-        {{-- Poll (Questions) --}}
-        <div class="poll newsHomePage wow fadeInDown">
+        @elseif ($list->rec == '2')
+        <div class="newsHomePage wow fadeInDown" data-wow-duration="1.4s">
             <div class="row">
                 <a href="{{ route('specialNew', 1) }}">
                     <div class="col-6">
                         <div class="clean">
-                            Questions
+                            اعلان
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="question" style="border-bottom:1px solid rgb(194, 194, 194);padding-bottom:10px"></div>
-            <div class="answers"></div>
+            <div class="profieInfo">
+                <a href="#">
+                    <div class="imgCon">
+                        <img src="{{ asset('profile/'.Auth::user()->img) }}" alt="" />
+                    </div>
+                </a>
+                <div class="infos">
+                    <div class="date">{{$list->updated_at->format('Y-m-d  H:i:s')}}
+                    </div>
+
+                    <div class="name">
+                        <a style="color: #ff1e1e !important;font-size:24px;">
+                            {{$list->title}}</a>
+                        <div class="offecial">
+                            @if($list->img != null)
+                            <img src="{{ asset('blog-img/'.$list->img) }}" alt="" />
+                            رسمي
+                            @else
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="name" style="color:#0d6efd;font-size:12px;">
+                        كتب: <a href="author-news/1.html">{{Auth::user()->name}}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="newsdes">
+                <a href="{{ route('specialNew', 1) }}" style="text-decoration: none">{{$list->body}}</a>
+            </div>
+
+            <a style="text-decoration: none;" href="{{ route('specialNew', 1) }}">
+                @if($list->img != null)
+                <img src="{{ asset('blog-img/'.$list->img) }}" alt="" />
+                رسمي
+                @else
+                @endif
+            </a>   
+            </div>
+            <div class="greyBorder"></div>
         </div>
+
+        @elseif ($list->rec == '3')
+            <div class="poll newsHomePage wow fadeInDown">
+                <div class="row">
+                    <a href="{{ route('specialNew', 1) }}">
+                        <div class="col-6">
+                            <div class="clean">
+                                Questions
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="question" style="border-bottom:1px solid rgb(194, 194, 194);padding-bottom:10px"></div>
+                <div class="answers"></div>
+            </div>
+        @endif
+     @endforeach
+
+        
+        {{-- This is posts --}}
+
+        {{-- Poll (Questions) --}}
+        
     </div>
+@endsection
+@section('script')
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-
-
-
-
-    <script>
-        let like = document.querySelector('.fa-heart'),
-            likes = document.querySelector('.likes');
-
-        function changeLikeIcon() {
-            like.classList.toggle('fa-solid');
-        }
+<script>
+            function Bloglike(id){
+                let like = document.querySelector('.fa-heart')
+                let star = document.getElementById('like-count').innerHTML
+                likes = document.querySelector('.likes');
+                $.ajax({
+                    url: "like/"+id,
+                    method: 'GET',
+                    data: {
+                    },
+                    success: function(result) {
+                        // notyf.success('تم التحديث بنجاح')
+                        like.classList.toggle('fa-solid');
+                        star++ 
+                        document.getElementById('like-count').innerHTML = star
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+            }
+    
+       
+    
     </script>
 
     {{-- Poll Function --}}
@@ -343,4 +386,5 @@
             }
         }
     </script>
+
 @endsection

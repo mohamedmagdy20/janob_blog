@@ -39,7 +39,8 @@ class AdController extends Controller
             $imageName = time().'.'.$request->img->extension();  
             $request->img->move(public_path('ads'), $imageName);
             if(Advertisment::create(array_merge($request->all(),[
-                'img'=>$imageName
+                'img'=>$imageName,
+                'rec'=>2
             ]))){
                 return redirect()->back()->with('success','Advertisment Added');
             }else{
