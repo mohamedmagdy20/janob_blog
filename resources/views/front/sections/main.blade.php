@@ -18,6 +18,11 @@
             margin-inline: 15px;
         }
 
+        .newsHomePage {
+            box-shadow: 1px 1px 10px #CCC;
+            border-radius: 10px;
+        }
+
         .numberofcomment {
             position: absolute;
             bottom: 30%;

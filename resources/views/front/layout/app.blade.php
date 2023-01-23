@@ -9,9 +9,12 @@
     <meta name="csrf-token" content="kLrGI3BuvqLARrJzaIIpHeZfFfDM3GtrdqmqS7gO">
 
     <title>الجنوب للاخبار</title>
+    <link href="{{ asset('frontCSS/css/aos.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('frontCSS/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontCSS/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontCSS/front/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontCSS/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontCSS/css/font-awesome.min.css') }}">
+
     <link rel="shortcut icon" type="image" href="{{ asset('frontCSS/images/front/smallLogo.png') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
@@ -27,6 +30,10 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
     <style>
+        body {
+            background-color: #EEE;
+        }
+
         /* Style The Dropdown Button */
         .dropbtn {
             background-color: #fff;
@@ -84,7 +91,7 @@
     <script src="{{ asset('frontCSS/js/easing.min.js') }}"></script>
 
 
-    <script src="../cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+    <script src="{{ asset('frontCSS/js/wow.js') }}"></script>
 
     <script async src="../pagead2.googlesyndication.com/pagead/js/fdf1e.txt?client=ca-pub-9047311544579993"
         crossorigin="anonymous"></script>
@@ -182,7 +189,9 @@
                 <div class="row" style="padding-top:50px">
                     <!-- هشتاج -->
                     <div class="col-md-3">
-                        <div class="hashtagCon overflow-auto" style="height: 500px;">
+                        <div class="hashtagCon overflow-auto"
+                            style="height: 500px;box-shadow: 1px 1px 10px #CCC;
+                        border-radius: 10px;">
                             <div class="title">هاشتاغ</div>
                             <div class="hashtagName">
                                 <a style="color: #ff1e1e !important;font-size:14px;" href="hashtag-news/55.html">
