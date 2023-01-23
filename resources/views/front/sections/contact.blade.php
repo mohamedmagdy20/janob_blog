@@ -14,16 +14,17 @@
                 </div>
 
 
-                <form>
+                <form action="{{route('message.store')}}"  method="POST">
+                    @csrf
                     <div class="card-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">اسمك</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" name="username"
+                            <input type="text" class="form-control" id="exampleInputEmail1" name="name"
                                 placeholder="اسمك اختيارى">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">المحتوى</label>
-                            <textarea type="password" class="form-control" name="contactMsg" id="exampleInputPassword1" placeholder="المحتوى"></textarea>
+                            <textarea type="text" class="form-control" name="message" id="exampleInputPassword1" placeholder="المحتوى"></textarea>
                         </div>
 
                     </div>

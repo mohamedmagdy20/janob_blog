@@ -24,7 +24,9 @@ Route::get('/new/{id}',[WebsiteController::class,'specialNew'])->name('specialNe
 Route::get('like/{id}',[WebsiteController::class,'like'])->name('like');
 Route::post('message/store/{id}',[WebsiteController::class,'storeComment'])->name('comment.store');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Route::post('message/store',[WebsiteController::class,'sendMessage'])->name('message.store');
 
+Route::get('rate/{id}',[WebsiteController::class,'rate'])->name('rate');
 
 Route::middleware(['auth'])->prefix('dashboard')->group(function(){
 

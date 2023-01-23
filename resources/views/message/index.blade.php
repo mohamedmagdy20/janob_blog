@@ -9,6 +9,7 @@
                 <thead>
                     <tr>
                         <th style="width: 10px">#</th>
+                        <th>الاسم</th>
                         <th>الرساله</th>
                         <th>تاريخ الارسال</th>
 
@@ -19,6 +20,7 @@
                 @foreach ($messages as $index => $message)
                     <tr>
                         <td>{{ $index + 1 }}</td>
+                        <td>{{$message->name}}</td>
                         <td>{{ $message->body }}</td>
                         <td>{{ $message->created_at->format('Y-m-d  H:i:s') }}</td>
                     </tr>

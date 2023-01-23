@@ -9,6 +9,8 @@ use App\Models\Question;
 use Carbon\Carbon;
 use App\Models\Comment;
 use App\Models\User;
+use App\Models\Message;
+use App\Models\Answer;
 class WebsiteController extends Controller
 {
     //
@@ -73,5 +75,27 @@ class WebsiteController extends Controller
             'article_id'=>$blog->id
         ]);
         return redirect()->back()->with('success','Comment Added');
+    }
+
+    public function sendMessage(Request $request)
+    {
+        $request->validate([
+            'message'=>'required'
+        ]);
+
+        Message::create([
+            'body'=>$request->message
+        ]);
+
+        return redirect()->back()->with('success','تم اضافه الرساله سوف نتطلع عليها في اقرب وقت ممكن');
+
+    }
+
+    public function rate($id)
+    {
+        $answer = Answer::findOrFail($id);
+        $answer->rate +=1;
+        $answer->save();
+        return redirect()->back();
     }
 }

@@ -11,6 +11,7 @@ class Message extends Model
     protected $table ='message';
     protected $fillable= [
         'body',
+        'name',
         'created_at'
     ];
 }

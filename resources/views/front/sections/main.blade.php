@@ -298,7 +298,7 @@
                     <div class="answer" onclick="markAnswer({{$answer->id}})">
                                  {{$answer->body}}
                                  <span class="percentage-bar"></span>
-                                 <span class="percentage-value"></span>
+                                 <span class="percentage-value" id="p-value-{{$answer->id}}">{{$answer->rate}}</span>
                     </div>
                     @endforeach
 
@@ -379,13 +379,30 @@
         //     );
         // }).join("");
 
-        function markAnswer(i) {
+        function markAnswer(id) {
+            let rate = document.getElementById('p-value-'+id).innerHTML
             // poll.selectedAnswer = +i;
-            try {
-                document.querySelector('.poll .answers .answer.selected').classList.remove('selected');
-            } catch (msg) {}
-            document.querySelectorAll('.poll .answers .answer')[+i].classList.add('selected');
+            // try {
+            //     document.querySelector('.poll .answers .answer.selected').classList.remove('selected');
+            // } catch (msg) {}
+            // document.querySelectorAll('.poll .answers .answer')[+i].classList.add('selected');
+            $.ajax({
+                    url: "rate/"+id,
+                    method: 'GET',
+                    data: {
+                    },
+                    success: function(result) {
+                        rate++ 
+                        document.getElementById('p-value-'+id).innerHTML = rate
+                        console.log('success')
+                       },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+
             showResults();
+
         }
 
         function showResults() {
