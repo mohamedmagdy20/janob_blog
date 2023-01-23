@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <div class="container-width w-30  d-flex justify-content-between ">
-                <a class="navbar-brand" href="index.html"><img src="{{ asset('frontCSS/images/front/logo.svg') }}"
+                <a class="navbar-brand" href="{{route('home')}}"><img src="{{ asset('frontCSS/images/front/logo.svg') }}"
                         alt="" class="logo" /></a>
 
                 {{-- <a class="nav-moblie"
