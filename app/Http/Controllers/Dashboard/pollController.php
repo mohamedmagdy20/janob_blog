@@ -45,7 +45,7 @@ class pollController extends Controller
         {
             $imageName = time().'.'.$request->file->extension();
             $request->file->move(public_path('questions'), $imageName);
-            $question = Question::create(array_merge($request->all(),['file'=>$imageName]));
+            $question = Question::create(array_merge($request->all(),['file'=>$imageName,'rec'=>3]));
             if($question){  
                 foreach($answers as $answer)
                 {
@@ -60,7 +60,7 @@ class pollController extends Controller
             }
         
         }else{
-            $question = Question::create($request->all());
+            $question = Question::create(array_merge($request->all(),['rec'=>3]));
             if($question){  
                 foreach($answers as $answer)
                 {

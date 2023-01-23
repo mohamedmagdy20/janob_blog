@@ -7,22 +7,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="kLrGI3BuvqLARrJzaIIpHeZfFfDM3GtrdqmqS7gO">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>الجنوب للاخبار</title>
+<<<<<<< HEAD
     <link href="{{ asset('frontCSS/css/aos.css') }}" rel="stylesheet">
+=======
+
+>>>>>>> 7b8941dd50c0121b8e603a1270e581ae7efe6e8d
     <link rel="stylesheet" href="{{ asset('frontCSS/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontCSS/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontCSS/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontCSS/css/font-awesome.min.css') }}">
 
     <link rel="shortcut icon" type="image" href="{{ asset('frontCSS/images/front/smallLogo.png') }}">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous">
     </script>
@@ -217,9 +224,12 @@
     <a href="#" class="back-to-top" style="background: #29aae3;">
         <i class="fa-solid fa-chevron-up"></i>
     </a>
-
     <script src="../unpkg.com/aos%402.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
+    @yield('script')
+
+    
     <script>
         if ("" == "" && "") {
             $(window).on("load", function() {
@@ -271,7 +281,16 @@
             return false;
         });
     </script>
-
+    <script>
+        $(document).ready(function() {
+            toastr.options.timeOut = 10000;
+            @if (Session::has('error'))
+                toastr.error('{{ Session::get('error') }}');
+            @elseif (Session::has('success'))
+                toastr.success('{{ Session::get('success') }}');
+            @endif
+        });
+    </script>
 </body>
 
 </html>

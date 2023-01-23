@@ -79,7 +79,7 @@
                 <a href="categoryNews/0.html">
                     <div class="col-6">
                         <div class="clean">
-                            Donate Quran
+                            {{$blog->type}}
                         </div>
                     </div>
                 </a>
@@ -87,61 +87,58 @@
             <div class="profieInfo">
                 <a href="shownews/314.html">
                     <div class="imgCon">
-                        <img src="{{ asset('frontCSS/front/images/image.jpg') }}" alt="" />
+                        <img src="{{ asset('profile/'.Auth::user()->img) }}" alt="" />
                     </div>
                 </a>
                 <div class="infos">
-                    <div class="date">منذ 4 أيام
+                    <div class="date">{{$blog->updated_at->format('Y-m-d  H:i:s')}}
                     </div>
 
                     <div class="name">
-                        <a style="color: #ff1e1e !important;font-size:24px;" href="shownews/314.html">افضل
-                            تبرع وصدقة جارية لحفظ كتاب الله تبرع الآن -
-                            Donate Quran</a>
+                        <a style="color: #ff1e1e !important;font-size:24px;" href="shownews/314.html">
+                            {{$blog->title}}</a>
                         <div class="offecial">
-                            <img src="{{ asset('frontCSS/front/images/check.svg') }}" alt="" />
+                            <img src="{{ asset('blog-img/'.$blog->img) }}" alt="" />
                             رسمي
                         </div>
+
+
                     </div>
 
                     <div class="name" style="color:#0d6efd;font-size:12px;">
-                        كتب: <a href="author-news/1.html">موقع جنوب</a>
+                        كتب: <a href="author-news/1.html">{{Auth::user()->name}}</a>
                     </div>
                 </div>
             </div>
             <div class="newsdes">
-                <a href="shownews/314.html" style="text-decoration: none">صدقة جارية لدعم تعليم وتحفيظ
-                    القران
-                    Ongoing charity to support teaching and memorizing the Qur’an
-                    You can help lots of people by donating little​ -
-                    Link below</a>
+                <a href="shownews/314.html" style="text-decoration: none">{{$blog->body}}</a>
             </div>
 
-            <a style="text-decoration: none;" href="shownews/314.html">
-                <img src="{{ asset('frontCSS/images/news/1673847005.jpg') }}" alt="" class="bigNewsImg" />
+            <a style="text-decoration: none;" href="{{ asset('blog-img/'.$blog->img) }}">
+                <img src="{{ asset('blog-img/'.$blog->img) }}" alt="" class="bigNewsImg" />
+            </a>
 
+            <a style="text-decoration: none;" href="{{ asset('blog-file/'.$blog->file) }}">
+              <iframe src="{{asset('blog-file/'.$blog->file)}}" class="bigNewsImg"></iframe>
             </a>
 
             <a class="hashTag" href="hashtag-news/55.html">
-                #quran
+                #{{$blog->type}}
             </a>
-            <a class="hashTag" href="hashtag-news/56.html">
-                #study
-            </a>
-
+            
 
 
             <div class="row">
                 <div class="col-md-3">
                     <div class="numberofcomment">
                         <i class="fa-solid fa-comment-dots"></i>
-                        0
+                        {{count($blog->comment)}}
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="numberoflike">
                         <i class="fa-regular fa-heart" onclick="changeLikeIcon()"></i>
-                        0
+                        {{$blog->likes}}
                     </div>
                 </div>
             </div>
@@ -157,48 +154,15 @@
             </div>
 
             <div class="comments">
+                @foreach ($blog->comment as $comment )
                 <div class="comment my-3">
                     <div class="commentBody">
                         <p>
-                            السلام عليكم اخى الكريم احب ان اخبرك بانك مطلوب الى التحقيق من قبل عداله السماء
-                            ههههههههه</p>
+                            {{$comment->body}}
+                        </p>
                     </div>
-                </div>
-                <div class="comment my-3">
-                    <div class="commentBody">
-                        <p>
-                            السلام عليكم اخى الكريم احب ان اخبرك بانك مطلوب الى التحقيق من قبل عداله السماء
-                            ههههههههه</p>
-                    </div>
-                </div>
-                <div class="comment my-3">
-                    <div class="commentBody">
-                        <p>
-                            السلام عليكم اخى الكريم احب ان اخبرك بانك مطلوب الى التحقيق من قبل عداله السماء
-                            ههههههههه</p>
-                    </div>
-                </div>
-                <div class="comment my-3">
-                    <div class="commentBody">
-                        <p>
-                            السلام عليكم اخى الكريم احب ان اخبرك بانك مطلوب الى التحقيق من قبل عداله السماء
-                            ههههههههه</p>
-                    </div>
-                </div>
-                <div class="comment my-3">
-                    <div class="commentBody">
-                        <p>
-                            السلام عليكم اخى الكريم احب ان اخبرك بانك مطلوب الى التحقيق من قبل عداله السماء
-                            ههههههههه</p>
-                    </div>
-                </div>
-                <div class="comment my-3">
-                    <div class="commentBody">
-                        <p>
-                            السلام عليكم اخى الكريم احب ان اخبرك بانك مطلوب الى التحقيق من قبل عداله السماء
-                            ههههههههه</p>
-                    </div>
-                </div>
+                </div>     
+            @endforeach
             </div>
 
 

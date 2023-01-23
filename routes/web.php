@@ -21,7 +21,8 @@ use App\Http\Controllers\MessageController;
 Route::get('/',[WebsiteController::class,'index'])->name('home');
 Route::get('/contact',[WebsiteController::class,'contact'])->name('contact');
 Route::get('/new/{id}',[WebsiteController::class,'specialNew'])->name('specialNew');
-
+Route::get('like/{id}',[WebsiteController::class,'like'])->name('like');
+Route::post('message/store/{id}',[WebsiteController::class,'storeComment'])->name('comment.store');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
 

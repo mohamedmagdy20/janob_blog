@@ -58,7 +58,8 @@ class BlogController extends Controller
             if(Blog::create(array_merge($request->all(),[
                 'img'=>$imageName,
                 'file'=>$fileName,
-                'date'=>Carbon::now()
+                'date'=>Carbon::now(),
+                'rec'=>1
             ])))
             {
                 return redirect()->back()->with('success','Blog Added');
@@ -74,7 +75,8 @@ class BlogController extends Controller
               //create
               if(Blog::create(array_merge($request->all(),[
                 'img'=>$imageName,
-                'date'=>Carbon::now()
+                'date'=>Carbon::now(),
+                'rec'=>1
               ])))
               {
                   return redirect()->back()->with('success','Blog Added');
@@ -91,7 +93,8 @@ class BlogController extends Controller
               //create
               if(Blog::create(array_merge($request->all(),[
                 'file'=>$fileName,
-                'date'=>Carbon::now()
+                'date'=>Carbon::now(),
+                'rec'=>1
               ]) ))
               {
                   return redirect()->back()->with('success','Blog Added');
@@ -102,7 +105,8 @@ class BlogController extends Controller
         }
         else{
             if(Blog::create(array_merge($request->all(),[
-                'date'=>Carbon::now()
+                'date'=>Carbon::now(),
+                'rec'=>1
             ])))
             {
                 return redirect()->back()->with('success','Blog Added');

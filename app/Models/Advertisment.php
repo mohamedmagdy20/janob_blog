@@ -14,6 +14,7 @@ class Advertisment extends Model
         'body',
         'date_from',
         'date_to',
+        'rec',
         'img'
     ];
 }
