@@ -9,11 +9,8 @@
     <meta name="csrf-token" content="kLrGI3BuvqLARrJzaIIpHeZfFfDM3GtrdqmqS7gO">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>الجنوب للاخبار</title>
-<<<<<<< HEAD
     <link href="{{ asset('frontCSS/css/aos.css') }}" rel="stylesheet">
-=======
 
->>>>>>> 7b8941dd50c0121b8e603a1270e581ae7efe6e8d
     <link rel="stylesheet" href="{{ asset('frontCSS/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontCSS/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontCSS/css/animate.min.css') }}">

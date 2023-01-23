@@ -145,7 +145,7 @@
             <div class="profieInfo">
                 <a href="#">
                     <div class="imgCon">
-                        <img src="{{ asset('profile/'.Auth::user()->img) }}" alt="" />
+                        <img src="{{ asset('profile/'.$user->img) }}" alt="" />
                     </div>
                 </a>
                 <div class="infos">
@@ -162,7 +162,7 @@
                     </div>
 
                     <div class="name" style="color:#0d6efd;font-size:12px;">
-                        كتب: <a href="author-news/1.html">{{Auth::user()->name}}</a>
+                        كتب: <a href="author-news/1.html">{{$user->name}}</a>
                     </div>
                 </div>
             </div>
@@ -191,8 +191,8 @@
                 </div>
                 <div class="col-md-3">
                     <div class="numberoflike">
-                        <a onclick="Bloglike({{$list->id}});"><i class="fa-regular fa-heart"></i></a> 
-                        <span id="like-count">{{$list->likes}}</span> 
+                        <i class="fa-regular fa-heart" id="like-icon-{{$list->id}}" onclick="Bloglike({{$list->id}});"></i>
+                        <span id="like-count-{{$list->id}}">{{$list->likes}}</span> 
                     </div>
                 </div>
             </div>
@@ -242,7 +242,7 @@
             <div class="profieInfo">
                 <a href="#">
                     <div class="imgCon">
-                        <img src="{{ asset('profile/'.Auth::user()->img) }}" alt="" />
+                        <img src="{{ asset('profile/'.$user->img) }}" alt="" />
                     </div>
                 </a>
                 <div class="infos">
@@ -262,7 +262,7 @@
                     </div>
 
                     <div class="name" style="color:#0d6efd;font-size:12px;">
-                        كتب: <a href="author-news/1.html">{{Auth::user()->name}}</a>
+                        كتب: <a href="author-news/1.html">{{$user->name}}</a>
                     </div>
                 </div>
             </div>
@@ -279,9 +279,9 @@
             </a>   
             </div>
             <div class="greyBorder"></div>
-        </div>
 
         @elseif ($list->rec == '3')
+
             <div class="poll newsHomePage wow fadeInDown">
                 <div class="row">
                     <a href="{{ route('specialNew', 1) }}">
@@ -292,11 +292,22 @@
                         </div>
                     </a>
                 </div>
-                <div class="question" style="border-bottom:1px solid rgb(194, 194, 194);padding-bottom:10px"></div>
-                <div class="answers"></div>
+                <div class="question" style="border-bottom:1px solid rgb(194, 194, 194);padding-bottom:10px">{{$list->title}}</div>
+                <div class="answers">
+                    @foreach ( $list->answer as $index => $answer )
+                    <div class="answer" onclick="markAnswer({{$answer->id}})">
+                                 {{$answer->body}}
+                                 <span class="percentage-bar"></span>
+                                 <span class="percentage-value"></span>
+                    </div>
+                    @endforeach
+
+                </div>
+
             </div>
         @endif
      @endforeach
+    </div>
 
         
         {{-- This is posts --}}
@@ -308,21 +319,24 @@
 @section('script')
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<script>
+    <script>
+                 
             function Bloglike(id){
-                let like = document.querySelector('.fa-heart')
-                let star = document.getElementById('like-count').innerHTML
-                likes = document.querySelector('.likes');
+                let like = document.querySelector('#like-icon-'+id)
+                console.log(like)
+                let star = document.getElementById('like-count-'+id).innerHTML
+                console.log(star)
+                // likes = document.querySelector('.likes');
                 $.ajax({
                     url: "like/"+id,
                     method: 'GET',
                     data: {
                     },
                     success: function(result) {
-                        // notyf.success('تم التحديث بنجاح')
+                        console.log('success')
                         like.classList.toggle('fa-solid');
                         star++ 
-                        document.getElementById('like-count').innerHTML = star
+                        document.getElementById('like-count-'+id).innerHTML = star
                     },
                     error: function(err) {
                         console.log(err);
@@ -336,36 +350,37 @@
 
     {{-- Poll Function --}}
     <script>
-        let poll = {
-            question: "ما هى لغه البرمجه الشائعه ؟",
-            answers: [
-                'C++', 'Java', 'JS', "C#", "PHP", "HTML", "CSS"
-            ],
-            pollCount: 100,
-            answerWeight: [0, 0, 0, 0, 0, 0, 0], //Sum = 20 --> pollWeight
-            selectedAnswer: -1
-        };
+        // let poll = 
+        // {
+        //     question: "ما هى لغه البرمجه الشائعه ؟",
+        //     answers: [
+        //         'C++', 'Java', 'JS', "C#", "PHP", "HTML", "CSS"
+        //     ],
+        //     pollCount: 100,
+        //     answerWeight: [0, 0, 0, 0, 0, 0, 0], 
+        //     selectedAnswer: -1
+        // };
 
-        let pollDom = {
-            question: document.querySelector('.poll .question'),
-            answers: document.querySelector('.poll .answers'),
-        }
+        // let pollDom = {
+        //     question: document.querySelector('.poll .question'),
+        //     answers: document.querySelector('.poll .answers'),
+        // }
 
-        pollDom.question.innerText = poll.question;
-        pollDom.answers.innerHTML = poll.answers.map(function(answer, i) {
-            return (
-                `
-                <div class="answer" onclick="markAnswer('${i}')">
-                    ${answer}
-                    <span class="percentage-bar"></span>
-                    <span class="percentage-value"></span>
-                </div>
-                `
-            );
-        }).join("");
+        // pollDom.question.innerText = poll.question;
+        // pollDom.answers.innerHTML = poll.answers.map(function(answer, i) {
+        //     return (
+        //         `
+        //         <div class="answer" onclick="markAnswer('${i}')">
+        //             ${answer}
+        //             <span class="percentage-bar"></span>
+        //             <span class="percentage-value"></span>
+        //         </div>
+        //         `
+        //     );
+        // }).join("");
 
         function markAnswer(i) {
-            poll.selectedAnswer = +i;
+            // poll.selectedAnswer = +i;
             try {
                 document.querySelector('.poll .answers .answer.selected').classList.remove('selected');
             } catch (msg) {}
@@ -391,5 +406,6 @@
             }
         }
     </script>
+
 
 @endsection

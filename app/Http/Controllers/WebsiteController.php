@@ -8,16 +8,19 @@ use App\Models\Advertisment;
 use App\Models\Question;
 use Carbon\Carbon;
 use App\Models\Comment;
+use App\Models\User;
 class WebsiteController extends Controller
 {
     //
     public function index(Request $request)
     {
+        $user =  User::first();
         $lists = [];
         $timenow = Carbon::now();
         $query = Blog::query()->with('comment');
         $advertisment = Advertisment::whereDate('date_from','<=',$timenow)->whereDate('date_to','>=',$timenow)->get();
         $question = Question::with('answer')->get();
+      
         if($request->search)
         {
             $query = $query->orwhere('title','like','%',$request->search,'%')->Orwhere('body','like','%',$request->search,'%');
@@ -37,7 +40,7 @@ class WebsiteController extends Controller
            }
         }
         // return $lists;
-        return view('front.sections.main',compact('lists'));
+        return view('front.sections.main',compact('lists','user'));
     }
 
     public function contact(){
