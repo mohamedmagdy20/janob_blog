@@ -134,7 +134,7 @@
             @if ($list->rec == '1')
                 <div class="newsHomePage wow fadeInDown" data-wow-duration="1.4s">
                     <div class="row">
-                        <a href="{{ route('specialNew', 1) }}">
+                        <a href="{{ route('specialNew',$list->id) }}">
                             <div class="col-6">
                                 <div class="clean">
                                     {{ $list->type }}
@@ -143,7 +143,7 @@
                         </a>
                     </div>
                     <div class="profieInfo">
-                        <a href="#">
+                        <a href="{{ asset('profile/' . $user->img) }}">
                             <div class="imgCon">
                                 <img src="{{ asset('profile/' . $user->img) }}" alt="" />
                             </div>
@@ -166,12 +166,13 @@
                                 كتب: <a href="author-news/1.html">{{ $user->name }}</a>
                             </div>
                         </div>
+                    
                     </div>
                     <div class="newsdes">
-                        <a href="{{ route('specialNew', 1) }}" style="text-decoration: none">{{ $list->body }}</a>
+                        <a href="{{ route('specialNew', $list->id) }}" style="text-decoration: none">{{ $list->body }}</a>
                     </div>
 
-                    <a style="text-decoration: none;" href="{{ route('specialNew', 1) }}">
+                    <a style="text-decoration: none;" href="{{ route('specialNew', $list->id) }}">
                         <img src="{{ asset('blog-img/' . $list->img) }}" alt="" class="bigNewsImg" />
 
                     </a>

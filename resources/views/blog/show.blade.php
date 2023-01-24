@@ -17,34 +17,50 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">عنوان المقاله</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="عنوان المقاله">
+                        <input type="test" value="{{$blog->title}}" disabled class="form-control" id="exampleInputEmail1" placeholder="عنوان المقاله">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">المحتوى</label>
-                        <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="المحتوى"></textarea>
+                        <textarea type="text" class="form-control" id="exampleInputPassword1" disabled placeholder="المحتوى">{{$blog->body}}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">النوع</label>
-                        <select name="" id="" class="form-control">
-                            <option value="رياضه">رياضه</option>
-                            <option value="رياضه">حوادث</option>
-                            <option value="رياضه">دينى</option>
-                        </select>
+                        <input type="test" value="{{$blog->type}}" disabled class="form-control" id="exampleInputEmail1" placeholder="عنوان المقاله">
+                       
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputFile">الصوره</label>
-                        <div class="input-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                <label class="custom-file-label" for="exampleInputFile">اختار الصوره</label>
+                        <div class="form-group">
+                            <div class="img-fluid text-center">
+                                <img class="w-25" src="{{asset('blog-img/'.$blog->img)}}" alt="">
                             </div>
-
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="img-fluid text-center">
+                                <iframe src="{{asset('blog-file/'.$blog->file)}}" frameborder="0"></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div id="answer_inputs" class="row mt-2">
+
+                            @foreach ($blog->comment as $comment )
+                            <div class="col-md-6 mb-2 ">
+                                <input type="text" name="answers[]" disabled value="{{$comment->body}}" class="form-control">
+                                <a style="position: absolute; top:10px;left:15px" href="{{route('comment.delete',$comment->id)}}"><i class="fa fa-trash text-danger"></i></a>
+                            </div>
+                                @endforeach
+                        </div>
+    
                     </div>
                 </div>
 
                 <center class="card-footer">
-                    <button type="submit" class="btn btn-primary">حفظ التغيرات</button>
+                    <a href="{{route('blog.edit',$blog->id)}}" class="btn btn-primary">تعديل </a>
                 </center>
             </form>
         </div>

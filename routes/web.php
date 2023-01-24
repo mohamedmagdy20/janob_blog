@@ -50,6 +50,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::get('delete/{id}',[BlogController::class,'delete'])->name('blog.delete');
         Route::post('create',[BlogController::class,'store'])->name('blog.store');
 
+        Route::get('comment/delete/{id}',[BlogController::class,'deleteComment'])->name('comment.delete');
       });
 
       Route::group(['prefix'=>'questions'],function(){

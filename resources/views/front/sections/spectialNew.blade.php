@@ -118,9 +118,12 @@
                 <img src="{{ asset('blog-img/'.$blog->img) }}" alt="" class="bigNewsImg" />
             </a>
 
-            <a style="text-decoration: none;" href="{{ asset('blog-file/'.$blog->file) }}">
-              <iframe src="{{asset('blog-file/'.$blog->file)}}" class="bigNewsImg"></iframe>
-            </a>
+            @if ($blog->file != null)
+                <a style="text-decoration: none;" href="{{ asset('blog-file/'.$blog->file) }}">
+                <iframe src="{{asset('blog-file/'.$blog->file)}}" class="bigNewsImg"></iframe>
+              </a>     
+            @endif
+           
 
             <a class="hashTag" href="hashtag-news/55.html">
                 #{{$blog->type}}
@@ -146,13 +149,16 @@
 
 
             <div class="addcomment">
-                <textarea type="text" name="" id="" class="form-control my-3 commentInput"
-                    style="min-height: 100%;max-height:500%" placeholder="اكتب تعليقا"></textarea>
-                <button>
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
-            </div>
+                <form action="{{ route('comment.store', $blog->id) }}" method="POST">
+                    @csrf
+                    <textarea type="text" name="comment" id="" class="form-control my-3 commentInput"
+                        style="min-height: 100%;max-height:500%" placeholder="اكتب تعليقا"></textarea>
+                    <button>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
 
+            </div>
             <div class="comments">
                 @foreach ($blog->comment as $comment )
                 <div class="comment my-3">

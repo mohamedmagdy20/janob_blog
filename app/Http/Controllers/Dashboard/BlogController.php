@@ -5,6 +5,7 @@ use App\Models\Blog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Models\Comment;
 class BlogController extends Controller
 {
 
@@ -27,6 +28,13 @@ class BlogController extends Controller
 
     public function create(){
         return view('blog.create');
+    }
+
+    public function deleteComment($id)
+    {
+        $comment = Comment::find($id);
+        $comment->delete();
+        return redirect()->back()->with('success','Deleted Successfuly');
     }
     public function edit($id)
     {

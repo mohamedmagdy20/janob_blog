@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="kLrGI3BuvqLARrJzaIIpHeZfFfDM3GtrdqmqS7gO">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name = "keywords" content="news,new,الاخبار, الجنوب, فلسطين,موقع الجنوب">
+    <meta name = "author" content="Jnoob.com">
+    <meta name="description" content="موقع الجنوب للاخبار الحصريه والعالميه">
     <title>الجنوب للاخبار</title>
     <link href="{{ asset('frontCSS/css/aos.css') }}" rel="stylesheet">
 

@@ -23,10 +23,11 @@ class WebsiteController extends Controller
         $advertisment = Advertisment::whereDate('date_from','<=',$timenow)->whereDate('date_to','>=',$timenow)->get();
         $question = Question::with('answer')->get();
       
-        if($request->search)
+        if(isset($request->search))
         {
-            $query = $query->orwhere('title','like','%',$request->search,'%')->Orwhere('body','like','%',$request->search,'%');
+            $query = $query->where('title','LIKE',"%$request->search%")->orwhere('body','LIKE',"%$request->search%");
         }
+
         $blogs = $query->get();
 
         foreach($blogs as $index => $blog)
