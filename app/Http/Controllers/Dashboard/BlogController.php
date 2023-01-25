@@ -72,21 +72,19 @@ class BlogController extends Controller
             'title'=>'required',
             'body'=>'required',
             'type'=>'required',
-            // 'img'=>'|mimes:jpeg,png,jpg,gif,svg',
-            // 'file'=>'file'
+            'img'=>'array',
+            'file'=>'array'
         ]);
-        $images = $request->file('img');
-        return $images[0];
-        $files = $request->file('file');
+        
 
-        if($request->file('img') && $request->file('file'))
+        if($request->hasfile('img') && $request->hasfile('file'))
         {
             $storedBlog = Blog::create(array_merge($request->all(),[
                 'date'=>Carbon::now(),
                 'rec'=>1
             ]));
             //upload image //
-            foreach($images as $image)
+            foreach($request->img as $image)
             {
                 $imageName = time().'.'.$image->extension();
                 $image->move(public_path('blog-img'), $imageName);
@@ -96,7 +94,7 @@ class BlogController extends Controller
                 $storedImage->save();
             }
             
-            foreach($files as $file)
+            foreach($request->file as $file)
             {
                 //upload file
                 $fileName = time().'.'.$file->extension();
@@ -115,7 +113,10 @@ class BlogController extends Controller
             }
         }
         elseif($request->file('img'))
-        { 
+        {
+            $images = $request->file('img');
+            // return $images[0];
+            $files = $request->file('file'); 
             $storedBlog =  Blog::create(array_merge($request->all(),[
                 'date'=>Carbon::now(),
                 'rec'=>1
@@ -140,6 +141,9 @@ class BlogController extends Controller
               }
         }elseif($request->file('file'))
         {
+            $images = $request->file('img');
+            // return $images[0];
+            $files = $request->file('file');
             $storedBlog =  Blog::create(array_merge($request->all(),[
                 'date'=>Carbon::now(),
                 'rec'=>1
