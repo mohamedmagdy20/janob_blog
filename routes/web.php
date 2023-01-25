@@ -49,6 +49,8 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::post('update/{id}',[BlogController::class,'update'])->name('blog.update');
         Route::get('delete/{id}',[BlogController::class,'delete'])->name('blog.delete');
         Route::post('create',[BlogController::class,'store'])->name('blog.store');
+        Route::get('static/{id}',[BlogController::class,'makeStatic'])->name('blog.static');
+        Route::get('cencel/static/{id}',[BlogController::class,'cencelStatic'])->name('cencel.blog.static');
 
         Route::get('comment/delete/{id}',[BlogController::class,'deleteComment'])->name('comment.delete');
       });

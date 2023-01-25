@@ -18,6 +18,7 @@ class Blog extends Model
         'likes',
         'rec',
         'date',
+        'isStatic',
         'created_at'
     ];
 

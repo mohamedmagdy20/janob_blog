@@ -26,6 +26,42 @@ class BlogController extends Controller
         return view('blog.show',compact('blog'));
     }
 
+    public function makeStatic($id)
+    {
+        $blogs = Blog::where('isStatic',1)->get();
+        foreach($blogs as $blog)
+        {
+            $blog->update(['isStatic',0]);
+        }
+
+        $blog =  Blog::find($id);
+        $blog->isStatic = 1;
+        $blog->save();
+        return  redirect()->back()->with('success','Success');
+    }
+
+    public function cencelStatic($id)
+    {
+        // $blogs = Blog::where('isStatic',1)->get();
+        // // return $blogs;
+        // if(count($blogs) < 1)
+        // {
+        //     return redirect()->back()->with('لا يمكن الغاء التثبيت');
+        // }else{
+        //     foreach($blogs as $blog)
+        //     {
+        //         $blog->update(
+        //             [
+        //                 'isStatic'=>0
+        //             ]
+        //         );
+        //     }
+        // }
+        $blog =  Blog::find($id);
+        $blog->isStatic = 0;
+        $blog->save();
+        return  redirect()->back()->with('success','Success');
+    }
     public function create(){
         return view('blog.create');
     }
