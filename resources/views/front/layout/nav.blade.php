@@ -34,50 +34,6 @@
                     <a class="nav-link nav-moblie  " href="{{ route('contact') }}"><i
                             class="fa-solid fa-phone-flip"></i></a>
 
-                    <div class="dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                            data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-gear"></i></a>
-
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <div class="joinCard text-center">
-                                <img class="joinImg" src="images/front/Group%2010943.jpg" alt="" />
-                                <a href="https://www.facebook.com/v3.3/dialog/oauth?client_id=440426970910431&amp;redirect_uri=https%3A%2F%2Fjanoob.net%2Fauth%2Ffacebook%2Fcallback&amp;scope=email&amp;response_type=code&amp;state=umS7ZDNwpsOe5e8rxPkbk2UCHGQRcCCsi9jJPdGe"
-                                    class="joinLink"><img src="front/images/facebook-1.svg" alt="" />أنضم الينا
-                                </a>
-                            </div>
-                            <li class="nav">
-                                <a class="dropdown-item" href="{{ route('home') }}">الرئيسية</a>
-                            </li>
-                            <li class="nav">
-                                <a class="dropdown-item" href="{{ route('contact') }}">الدليل التفاعلي</a>
-                            </li>
-                            <li class="nav">
-                                <a class="dropdown-item" href="calendar-news.html">الروزنامة</a>
-                            </li>
-                            <li class="nav">
-                                <a class="dropdown-item" href="weather.html">الطقس</a>
-                            </li>
-
-                            <li>
-                                <a class="dropdown-item" href="{{ route('contact') }}">اتصل بنا </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="{{ route('contact') }}">الدعم الفني
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="privacy-policy.html">سياسة الخصوصية </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="terms-of-use.html">شروط الاستخدام</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item"
-                                    href="https://www.facebook.com/v3.3/dialog/oauth?client_id=440426970910431&amp;redirect_uri=https%3A%2F%2Fjanoob.net%2Fauth%2Ffacebook%2Fcallback&amp;scope=email&amp;response_type=code&amp;state=thGD4EbVI6ko9XcJwN37ng1iMNoyXRG0CTNsAfJB">تزويدنا
-                                    بالأخبار </a>
-                            </li>
-                        </ul>
-                    </div>
 
 
                 </div>
