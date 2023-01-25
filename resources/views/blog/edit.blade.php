@@ -39,7 +39,7 @@
                         <label for="exampleInputFile">الصوره</label>
                         <div class="input-group">
                             <div class="">
-                                <input type="file" name="img" class="custom-file-input" id="exampleInputFile">
+                                <input type="file" name="img[]" class="custom-file-input" id="exampleInputFile">
                                 <label class="custom-file-label" for="exampleInputFile">اختار الصوره</label>
                                 @error('img')
                                 <span class="text-danger"> {{ $message }} </span>
@@ -56,7 +56,7 @@
                         <label for="exampleInputFile">ملف او فيديو</label>
                         <div class="input-group">
                             <div class="">
-                                <input type="file" name="file" class="custom-file-input" id="file">
+                                <input type="file" name="file[]" class="custom-file-input" id="file">
                                 <label class="custom-file-label" for="file">ملف او فيديو</label>
                                 @error('file')
                                 <span class="text-danger"> {{ $message }} </span>

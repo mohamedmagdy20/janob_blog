@@ -16,6 +16,7 @@ class WebsiteController extends Controller
     //
     public function index(Request $request)
     {
+        $fixed_blog = Blog::where('isStatic',1)->first();
         $user =  User::first();
         $lists = [];
         $timenow = Carbon::now();
@@ -43,7 +44,7 @@ class WebsiteController extends Controller
            }
         }
         // return $lists;
-        return view('front.sections.main',compact('lists','user'));
+        return view('front.sections.main',compact('lists','user','fixed_blog'));
     }
 
     public function contact(){

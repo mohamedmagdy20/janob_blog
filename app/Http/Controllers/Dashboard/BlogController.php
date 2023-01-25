@@ -60,21 +60,24 @@ class BlogController extends Controller
     }
     public function edit($id)
     {
-        $blog = Blog::find($id);
+        $blog = Blog::with('images')->with('files')->find($id);
+        return $blogs;
         return view('blog.edit',compact('blog'));
     }
 
     public function store(Request $request)
     {
+        // return $request->all();
         $request->validate([
             'title'=>'required',
             'body'=>'required',
             'type'=>'required',
-            'img'=>'image|mimes:jpeg,png,jpg,gif,svg',
-            'file'=>'file'
+            // 'img'=>'|mimes:jpeg,png,jpg,gif,svg',
+            // 'file'=>'file'
         ]);
-        $images = $request->img;
-        $files = $request->file;
+        $images = $request->file('img');
+        return $images[0];
+        $files = $request->file('file');
 
         if($request->file('img') && $request->file('file'))
         {
@@ -83,7 +86,7 @@ class BlogController extends Controller
                 'rec'=>1
             ]));
             //upload image //
-            foreach($images as $index => $image)
+            foreach($images as $image)
             {
                 $imageName = time().'.'.$image->extension();
                 $image->move(public_path('blog-img'), $imageName);
@@ -93,7 +96,7 @@ class BlogController extends Controller
                 $storedImage->save();
             }
             
-            foreach($files as $index => $file)
+            foreach($files as $file)
             {
                 //upload file
                 $fileName = time().'.'.$file->extension();
@@ -118,7 +121,7 @@ class BlogController extends Controller
                 'rec'=>1
             ]));
              //upload image //
-            foreach($images as $index => $image)
+            foreach($images as  $image)
             {
                 $imageName = time().'.'.$image->extension();
                 $image->move(public_path('blog-img'), $imageName);
@@ -142,7 +145,7 @@ class BlogController extends Controller
                 'rec'=>1
             ]));
 
-            foreach($files as $index => $file)
+            foreach($files as $file)
             {
                 //upload file
                 $fileName = time().'.'.$file->extension();
@@ -275,7 +278,7 @@ class BlogController extends Controller
             }
             //upload image //
 
-            foreach($request->img as $index => $image)
+            foreach($request->img as  $image)
             {
                 $imageName = time().'.'.$request->img->extension();
                 $request->img->move(public_path('blog-img'), $imageName);
@@ -287,7 +290,7 @@ class BlogController extends Controller
             }
           
             //upload file
-            foreach($request->file as $index => $file)
+            foreach($request->file as  $file)
             {
                 //upload file
                
