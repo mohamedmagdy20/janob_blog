@@ -16,6 +16,7 @@ class WebsiteController extends Controller
     //
     public function index(Request $request)
     {
+        
         $fixed_blog = Blog::where('isStatic',1)->first();
         $user =  User::first();
         $lists = [];
@@ -44,16 +45,20 @@ class WebsiteController extends Controller
            }
         }
         // return $lists;
-        return view('front.sections.main',compact('lists','user','fixed_blog'));
+        return view('front.sections.main',compact('lists','user','timenow','fixed_blog'));
     }
 
     public function contact(){
-        return view('front.sections.contact');
+        $timenow = Carbon::now();
+
+        return view('front.sections.contact',compact('timenow'));
     }
 
     public function specialNew($id){
         $blog = Blog::findOrFail($id);
-        return view('front.sections.spectialNew',compact('blog'));
+        $timenow = Carbon::now();
+
+        return view('front.sections.spectialNew',compact('blog','timenow'));
     }
 
     // public function showBlog($id)

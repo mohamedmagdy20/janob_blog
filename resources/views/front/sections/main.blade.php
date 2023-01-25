@@ -1,4 +1,4 @@
-@extends('front.layout.app')
+@extends('front.layout.app',['timenow',$timenow])
 @section('news')
     <style>
         body {
@@ -35,6 +35,11 @@
             left: 105px;
         }
 
+        .comment-icon:hover{
+            cursor: pointer;
+            color: #0d6efd;
+            transition: ease-in-out 0.2s
+        }
         .numberoflike {
             position: absolute;
             bottom: 30%;
@@ -156,7 +161,7 @@
                 <div class="newsHomePage wow printBtn" data-wow-duration="1.4s">
                     <div class="printed">
                         <div class="row">
-                            <div class="col-md-9">
+                            {{-- <div class="col-md-9">
                                 <a href="{{ route('specialNew', $list->id) }}">
                                     <div class="col-6">
                                         <div class="clean">
@@ -164,7 +169,7 @@
                                         </div>
                                     </div>
                                 </a>
-                            </div>
+                            </div> --}}
                             {{-- <div class="col-md-3 printBtn" onclick="print({{ $list->id }})" style="cursor: pointer">
                                 <span>Print Blog</span>
                                 <i class="fa-solid fa-print"></i>
@@ -173,6 +178,7 @@
 
 
                         </div>
+                        
                         <div class="profieInfo">
                             <a href="{{ asset('profile/' . $user->img) }}">
                                 <div class="imgCon">
@@ -180,7 +186,7 @@
                                 </div>
                             </a>
                             <div class="infos">
-                                <div class="date">{{ $list->updated_at->format('Y-m-d  H:i:s') }}
+                                <div class="date">{{ $list->updated_at->format('Y-m-d | H:i:s') }}
                                 </div>
 
                                 <div class="name">
@@ -194,7 +200,7 @@
                                 </div>
 
                                 <div class="name" style="color:#0d6efd;font-size:12px;">
-                                    كتب: <a href="author-news/1.html">{{ $user->name }}</a>
+                                    كتب: {{ $user->name }}
                                 </div>
                             </div>
 
@@ -219,7 +225,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="numberofcomment">
-                                    <i class="fa-solid fa-comment-dots" onclick="showComments({{ $list->id }})"></i>
+                                    <i class="fa-solid fa-comment comment-icon" onclick="showComments({{ $list->id }})"></i>
                                     {{ count($list->comment) }}
                                 </div>
                             </div>
@@ -276,7 +282,7 @@
                                                     <span>Get Link</span>
                                                     <i class="fa-solid fa-link"></i>
                                                     <input type="text" name="blogLink" id="blogLink-{{ $list->id }}"
-                                                        value="app.jnoob.net/news/{{ $list->id }}">
+                                                        value="https://app.jnoob.net/news/{{ $list->id }}">
                                                 </li>
                                             </button>
                                         </ul>
@@ -334,7 +340,7 @@
                             </div>
                         </a>
                         <div class="infos">
-                            <div class="date">{{ $list->updated_at->format('Y-m-d  H:i:s') }}
+                            <div class="date">{{ $list->updated_at->format('Y-m-d | H:i:s') }}
                             </div>
 
                             <div class="name">
@@ -350,7 +356,7 @@
                             </div>
 
                             <div class="name" style="color:#0d6efd;font-size:12px;">
-                                كتب: <a href="author-news/1.html">{{ $user->name }}</a>
+                                كتب: {{ $user->name }}
                             </div>
                         </div>
                     </div>
@@ -398,7 +404,7 @@
     </div>
 
 
-    </div>
+    
 @endsection
 @section('script')
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -434,7 +440,7 @@
                 success: function(result) {
                     console.log('success')
                     like.classList.toggle('fa-solid');
-                    like.style.display = "none";
+                    // like.style.display = "none";
                     star++
                     document.getElementById('like-count-' + id).innerHTML = star
                 },

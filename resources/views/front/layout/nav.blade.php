@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <div class="container-width w-30  d-flex justify-content-between ">
-                <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('frontCSS/images/front/logo.jpg') }}"
+                <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('frontCSS/images/front/logo.png') }}"
                         alt="" class="logo" /></a>
 
                 {{-- <a class="nav-moblie"
@@ -13,14 +13,18 @@
                 <div class="mx-3 my-2" style="color: white;" id="">
                 </div>
             </div>
-
+            <a class="btn btn-dark text-white" href="{{ route('contact') }}">ارسل خبر</a>
+        
+            <div class="text-white mx-2">{{$timenow}}</div>
+        
+        
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="icons-navbar collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav me-auto">
-                    <form action="{{ route('home') }}" method="GET">
+                    {{-- <form action="{{ route('home') }}" method="GET">
                         <div class="search-bar" style="position: relative">
                             <i class="fa-solid fa-magnifying-glass"
                                 style="transform: rotate(90deg);position: absolute;left:5px;top:25%;color:#888;cursor: pointer;"></i>
@@ -28,7 +32,7 @@
                                 placeholder="ابحث" style="padding-left:27px">
                         </div>
 
-                    </form>
+                    </form> --}}
 
                     <a class="nav-link nav-moblie active" href="/"><i class="fa-solid fa-house"></i></a>
                     <a class="nav-link nav-moblie  " href="{{ route('contact') }}"><i
