@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="kLrGI3BuvqLARrJzaIIpHeZfFfDM3GtrdqmqS7gO">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <meta name = "keywords" content="news,new,الاخبار, الجنوب, فلسطين,موقع الجنوب">
-    <meta name = "author" content="Jnoob.com">
+    <meta name="keywords" content="news,new,الاخبار, الجنوب, فلسطين,موقع الجنوب">
+    <meta name="author" content="Jnoob.com">
     <meta name="description" content="موقع الجنوب للاخبار الحصريه والعالميه">
     <title>الجنوب للاخبار</title>
     <link href="{{ asset('frontCSS/css/aos.css') }}" rel="stylesheet">
@@ -173,10 +173,10 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script> --}}
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9047311544579993"
+    {{-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9047311544579993"
         crossorigin="anonymous"></script>
     <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-e3-2b+81-nk+tw"
-        data-ad-client="ca-pub-9047311544579993" data-ad-slot="4402961041"></ins>
+        data-ad-client="ca-pub-9047311544579993" data-ad-slot="4402961041"></ins> --}}
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
@@ -217,27 +217,7 @@
 
             <div class="container" style="max-width:1000px; !important;">
                 <div class="row" style="padding-top:50px">
-                    <!-- هشتاج -->
-                    <div class="col-md-3">
-                        <div class="hashtagCon overflow-auto"
-                            style="height: 500px;box-shadow: 1px 1px 10px #CCC;
-                        border-radius: 10px;">
-                            <div class="title">هاشتاغ</div>
-                            <div class="hashtagName">
-                                <a style="color: #ff1e1e !important;font-size:14px;" href="hashtag-news/55.html">
-                                    quran
-                                </a>
-                            </div>
-                            <div class="reporNum">1 تقرير</div>
-                            <div class="hashtagName">
-                                <a style="color: #ff1e1e !important;font-size:14px;" href="hashtag-news/56.html">
-                                    study
-                                </a>
-                            </div>
-                            <div class="reporNum">1 تقرير</div>
-
-                        </div>
-                    </div>
+                    <div class="col-md-3"></div>
 
                     @yield('news')
 

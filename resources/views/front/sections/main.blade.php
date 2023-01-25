@@ -29,6 +29,12 @@
             left: 22px;
         }
 
+        .share {
+            position: absolute;
+            bottom: 30%;
+            left: 105px;
+        }
+
         .numberoflike {
             position: absolute;
             bottom: 30%;
@@ -57,9 +63,13 @@
         }
 
         .comments {
-            max-height: 170.6px;
+            /* max-height: 170.6px; */
+            height: 0;
             overflow: scroll;
+            transition: 0.5s ease-in-out;
         }
+
+
 
         .comment {
             position: relative;
@@ -122,6 +132,17 @@
 
             transition: width 300ms ease-in-out;
         }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            .printed * {
+                visibility: visible;
+            }
+
+        }
     </style>
 
 
@@ -132,70 +153,135 @@
         {{-- This is posts --}}
         @foreach ($lists as $index => $list)
             @if ($list->rec == '1')
-                <div class="newsHomePage wow fadeInDown" data-wow-duration="1.4s">
-                    <div class="row">
-                        <a href="{{ route('specialNew',$list->id) }}">
-                            <div class="col-6">
-                                <div class="clean">
-                                    {{ $list->type }}
+                <div class="newsHomePage wow printBtn" data-wow-duration="1.4s">
+                    <div class="printed">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <a href="{{ route('specialNew', $list->id) }}">
+                                    <div class="col-6">
+                                        <div class="clean">
+                                            {{ $list->type }}
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            {{-- <div class="col-md-3 printBtn" onclick="print({{ $list->id }})" style="cursor: pointer">
+                                <span>Print Blog</span>
+                                <i class="fa-solid fa-print"></i>
+
+                            </div> --}}
+
+
+                        </div>
+                        <div class="profieInfo">
+                            <a href="{{ asset('profile/' . $user->img) }}">
+                                <div class="imgCon">
+                                    <img src="{{ asset('profile/' . $user->img) }}" alt="" />
+                                </div>
+                            </a>
+                            <div class="infos">
+                                <div class="date">{{ $list->updated_at->format('Y-m-d  H:i:s') }}
+                                </div>
+
+                                <div class="name">
+                                    <a style="color: #ff1e1e !important;font-size:24px;"
+                                        href="{{ route('specialNew', $list->id) }}">
+                                        {{ $list->title }}</a>
+                                    <div class="offecial">
+                                        <img src="{{ asset('blog-img/' . $list->img) }}" alt="" />
+                                        رسمي
+                                    </div>
+                                </div>
+
+                                <div class="name" style="color:#0d6efd;font-size:12px;">
+                                    كتب: <a href="author-news/1.html">{{ $user->name }}</a>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                    <div class="profieInfo">
-                        <a href="{{ asset('profile/' . $user->img) }}">
-                            <div class="imgCon">
-                                <img src="{{ asset('profile/' . $user->img) }}" alt="" />
-                            </div>
-                        </a>
-                        <div class="infos">
-                            <div class="date">{{ $list->updated_at->format('Y-m-d  H:i:s') }}
-                            </div>
 
-                            <div class="name">
-                                <a style="color: #ff1e1e !important;font-size:24px;"
-                                    href="{{ route('specialNew', $list->id) }}">
-                                    {{ $list->title }}</a>
-                                <div class="offecial">
-                                    <img src="{{ asset('blog-img/' . $list->img) }}" alt="" />
-                                    رسمي
+                        </div>
+                        <div class="newsdes">
+                            <a href="{{ route('specialNew', $list->id) }}"
+                                style="text-decoration: none">{{ $list->body }}</a>
+                        </div>
+
+                        <a style="text-decoration: none;" href="{{ route('specialNew', $list->id) }}">
+                            <img src="{{ asset('blog-img/' . $list->img) }}" alt="" class="bigNewsImg" />
+
+                        </a>
+
+                        <a class="hashTag" href="hashtag-news/55.html">
+                            #{{ $list->type }}
+                        </a>
+
+
+
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="numberofcomment">
+                                    <i class="fa-solid fa-comment-dots" onclick="showComments({{ $list->id }})"></i>
+                                    {{ count($list->comment) }}
                                 </div>
                             </div>
-
-                            <div class="name" style="color:#0d6efd;font-size:12px;">
-                                كتب: <a href="author-news/1.html">{{ $user->name }}</a>
+                            <div class="col-md-3">
+                                <div class="numberoflike">
+                                    <i class="fa-regular fa-heart" id="like-icon-{{ $list->id }}"
+                                        onclick="Bloglike({{ $list->id }});"></i>
+                                    <span id="like-count-{{ $list->id }}">{{ $list->likes }}</span>
+                                </div>
                             </div>
-                        </div>
-                    
-                    </div>
-                    <div class="newsdes">
-                        <a href="{{ route('specialNew', $list->id) }}" style="text-decoration: none">{{ $list->body }}</a>
-                    </div>
+                            {{-- Share Button --}}
+                            <div class="col-md-3">
+                                <div class="share">
+                                    {{-- <i class="fa-solid fa-share" id="share-icon-{{ $list->id }}""></i> --}}
+                                    <div class="dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                                            id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                class="fa-solid fa-share" id="share-icon-{{ $list->id }}""></i></a>
 
-                    <a style="text-decoration: none;" href="{{ route('specialNew', $list->id) }}">
-                        <img src="{{ asset('blog-img/' . $list->img) }}" alt="" class="bigNewsImg" />
-
-                    </a>
-
-                    <a class="hashTag" href="hashtag-news/55.html">
-                        #{{ $list->type }}
-                    </a>
-
-
-
-
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="numberofcomment">
-                                <i class="fa-solid fa-comment-dots"></i>
-                                {{ count($list->comment) }}
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="numberoflike">
-                                <i class="fa-regular fa-heart" id="like-icon-{{ $list->id }}"
-                                    onclick="Bloglike({{ $list->id }});"></i>
-                                <span id="like-count-{{ $list->id }}">{{ $list->likes }}</span>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding:10px;">
+                                            <a href="" style="text-decoration: none;color:black">
+                                                <li style="curor:pointer ;color:rgb(56, 64, 187);">
+                                                    <span>FaceBook</span>
+                                                    <i class="fa-brands fa-facebook"></i>
+                                                </li>
+                                            </a>
+                                            <a href="" style="text-decoration: none;color:black">
+                                                <li style="curor:pointer ;color:rgb(56 ,64 ,187);">
+                                                    <span>Twitter</span>
+                                                    {{-- <i class="fa-brands fa-twitter"></i> --}}
+                                                    <i class="fa-brands fa-square-twitter"></i>
+                                                </li>
+                                            </a>
+                                            <a href="" style="text-decoration: none;color:black">
+                                                <li style="curor:pointer ;">
+                                                    <span>Tiktok</span>
+                                                    <i class="fa-brands fa-tiktok"></i>
+                                                </li>
+                                            </a>
+                                            <a href="" style="text-decoration: none;color:black">
+                                                <li style="curor:pointer ;color:red">
+                                                    <span>Youtube</span>
+                                                    <i class="fa-brands fa-youtube"></i>
+                                                </li>
+                                            </a>
+                                            <a href="" style="text-decoration: none;color:black">
+                                                <li style="curor:pointer ;color:rgb(20, 166, 20)">
+                                                    <span>Whatsapp</span>
+                                                    <i class="fa-brands fa-square-whatsapp"></i>
+                                                </li>
+                                            </a>
+                                            <button style="border:none;margin-top:5px" onclick="copy({{ $list->id }})">
+                                                <li style="curor:pointer ;color:#777">
+                                                    <span>Get Link</span>
+                                                    <i class="fa-solid fa-link"></i>
+                                                    <input type="text" name="blogLink" id="blogLink-{{ $list->id }}"
+                                                        value="app.jnoob.net/news/{{ $list->id }}">
+                                                </li>
+                                            </button>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -206,15 +292,15 @@
                         <form action="{{ route('comment.store', $list->id) }}" method="POST">
                             @csrf
                             <textarea type="text" name="comment" id="" class="form-control my-3 commentInput"
-                                style="min-height: 100%;max-height:500%" placeholder="اكتب تعليقا"></textarea>
-                            <button>
-                                <i class="fa-solid fa-paper-plane"></i>
+                                style="min-height: 100%;max-height:500%" placeholder="اكتب تعليقا" onfocus="showComments({{ $list->id }})"></textarea>
+                            <button id="commentBtn-{{ $list->id }}" onclick="showComments({{ $list->id }})">
+                                <i class="fa-solid fa-paper-plane" style="font-size: 20px;"></i>
                             </button>
                         </form>
 
                     </div>
 
-                    <div class="comments">
+                    <div class="comments" id="comment-{{ $list->id }}">
                         @foreach ($list->comment as $comment)
                             <div class="comment my-3">
                                 <div class="commentBody">
@@ -231,7 +317,7 @@
                     <div class="greyBorder"></div>
                 </div>
             @elseif ($list->rec == '2')
-                <div class="newsHomePage wow fadeInDown" data-wow-duration="1.4s">
+                <div class="newsHomePage wow" data-wow-duration="1.4s">
                     <div class="row">
                         <a href="{{ route('specialNew', 1) }}">
                             <div class="col-6">
@@ -282,7 +368,7 @@
                 </div>
                 <div class="greyBorder"></div>
             @elseif ($list->rec == '3')
-                <div class="poll newsHomePage wow fadeInDown">
+                <div class="poll newsHomePage wow ">
                     <div class="row">
                         <a href="{{ route('specialNew', 1) }}">
                             <div class="col-6">
@@ -312,14 +398,27 @@
     </div>
 
 
-    {{-- This is posts --}}
-
-    {{-- Poll (Questions) --}}
-
     </div>
 @endsection
 @section('script')
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script>
+        function showComments(id) {
+            let commentBody = document.querySelector('#comment-' + id);
+            commentBody.style.height = "170.6px";
+        }
+
+
+        function copy(id) {
+            // let copyBtn = document.querySelector('#copyLinkBtn-' + id);
+            let blogLink = document.querySelector('#blogLink-' + id);
+            blogLink.select();
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+            // console.log(blogLink.value);
+        }
+    </script>
 
     <script>
         function Bloglike(id) {
