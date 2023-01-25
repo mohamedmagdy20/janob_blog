@@ -56,6 +56,11 @@
                                     class="fa fa-trash"></i></a>
                             <a href="{{ route('blog.edit', $blog->id) }}" class="btn btn-primary"><i
                                     class="fa fa-pen"></i></a>
+                            @if ($blog->isStatic == 0)
+                                <a href="{{route('blog.static',$blog->id)}}" class="btn btn-info">تثبيت</a>
+                            @else
+                                <a href="{{route('cencel.blog.static',$blog->id)}}" class="btn btn-info">الغاء التثبت</a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

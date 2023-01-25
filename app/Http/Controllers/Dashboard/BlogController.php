@@ -26,6 +26,28 @@ class BlogController extends Controller
         return view('blog.show',compact('blog'));
     }
 
+    public function makeStatic($id)
+    {
+        $blogs = Blog::where('isStatic',1)->get();
+        foreach($blogs as $blog)
+        {
+            $blog->update(['isStatic',0]);
+        }
+
+        $blog =  Blog::find($id);
+        $blog->isStatic = 1;
+        $blog->save();
+        return  redirect()->back()->with('success','Success');
+    }
+
+    public function cencelStatic($id)
+    {
+    
+        $blog =  Blog::find($id);
+        $blog->isStatic = 0;
+        $blog->save();
+        return  redirect()->back()->with('success','Success');
+    }
     public function create(){
         return view('blog.create');
     }
@@ -51,24 +73,38 @@ class BlogController extends Controller
             'img'=>'image|mimes:jpeg,png,jpg,gif,svg',
             'file'=>'file'
         ]);
+        $images = $request->img;
+        $files = $request->file;
 
         if($request->file('img') && $request->file('file'))
         {
-            //upload image //
-            $imageName = time().'.'.$request->img->extension();
-            $request->img->move(public_path('blog-img'), $imageName);
-
-            //upload file
-            $fileName = time().'.'.$request->file->extension();
-            $request->file->move(public_path('blog-file'), $fileName);
-
-            //create
-            if(Blog::create(array_merge($request->all(),[
-                'img'=>$imageName,
-                'file'=>$fileName,
+            $storedBlog = Blog::create(array_merge($request->all(),[
                 'date'=>Carbon::now(),
                 'rec'=>1
-            ])))
+            ]));
+            //upload image //
+            foreach($images as $index => $image)
+            {
+                $imageName = time().'.'.$image->extension();
+                $image->move(public_path('blog-img'), $imageName);
+                $storedImage = new Images();
+                $storedImage->img = $imageName;
+                $storedImage->blog_id = $storedBlog->id;
+                $storedImage->save();
+            }
+            
+            foreach($files as $index => $file)
+            {
+                //upload file
+                $fileName = time().'.'.$file->extension();
+                $file->move(public_path('blog-file'), $fileName);
+                $storedFile = new Files();
+                $storedFile->file = $fileName;
+                $storedFile->blog_id = $storedBlog->id;
+                $storedFile->save();
+            }
+             //create
+            if($storedBlog)
             {
                 return redirect()->back()->with('success','Blog Added');
             }else{
@@ -76,16 +112,23 @@ class BlogController extends Controller
             }
         }
         elseif($request->file('img'))
-        {
-              //upload image //
-              $imageName = time().'.'.$request->img->extension();
-              $request->img->move(public_path('blog-img'), $imageName);
-              //create
-              if(Blog::create(array_merge($request->all(),[
-                'img'=>$imageName,
+        { 
+            $storedBlog =  Blog::create(array_merge($request->all(),[
                 'date'=>Carbon::now(),
                 'rec'=>1
-              ])))
+            ]));
+             //upload image //
+            foreach($images as $index => $image)
+            {
+                $imageName = time().'.'.$image->extension();
+                $image->move(public_path('blog-img'), $imageName);
+                $storedImage = new Images();
+                $storedImage->img = $imageName;
+                $storedImage->blog_id = $storedBlog->id;
+                $storedImage->save();
+            }
+              //create
+              if($storedBlog)
               {
                   return redirect()->back()->with('success','Blog Added');
               }else{
@@ -94,16 +137,24 @@ class BlogController extends Controller
               }
         }elseif($request->file('file'))
         {
-              //upload file
-              $fileName = time().'.'.$request->file->extension();
-              $request->file->move(public_path('blog-file'), $fileName);
-
-              //create
-              if(Blog::create(array_merge($request->all(),[
-                'file'=>$fileName,
+            $storedBlog =  Blog::create(array_merge($request->all(),[
                 'date'=>Carbon::now(),
                 'rec'=>1
-              ]) ))
+            ]));
+
+            foreach($files as $index => $file)
+            {
+                //upload file
+                $fileName = time().'.'.$file->extension();
+                $file->move(public_path('blog-file'), $fileName);
+                $storedFile = new Files();
+                $storedFile->file = $fileName;
+                $storedFile->blog_id = $storedBlog->id;
+                $storedFile->save();
+            }
+
+              //create
+              if($storedBlog)
               {
                   return redirect()->back()->with('success','Blog Added');
               }else{
@@ -128,16 +179,26 @@ class BlogController extends Controller
     public function delete($id)
     {
         $blog = Blog::find($id);
+        $images = Images::where('blog_id',$id)->get();
+        $files = Files::where('blog_id',$id)->get();
+
         if($blog->img != null && $blog->file != null)
         {
-            //delete img from public path
-            $imgPath = public_path().'/blog-img/'.$blog->img;
-            unlink($imgPath);
+            foreach($images as $img)
+            {
+                //delete img from public path
+                $imgPath = public_path().'/blog-img/'.$img->img;
+                unlink($imgPath);
+            }
 
-            //delete file from public path
-            $filePath = public_path().'/blog-file/'.$blog->file;
-            unlink($filePath);
+            foreach($files as $file)
+            {
+                //delete file from public path
+                $filePath = public_path().'/blog-file/'.$file->file;
+                unlink($filePath);
 
+            }
+            
             if($blog->delete())
             {
                 return redirect()->back()->with('success','Blog Deleted Succfully');
@@ -146,9 +207,13 @@ class BlogController extends Controller
             }
         }elseif($blog->img != null)
         {
-              //delete img from public path
-              $imgPath = public_path().'/blog-img/'.$blog->img;
-              unlink($imgPath);
+            foreach($images as $img)
+            {
+                //delete img from public path
+                $imgPath = public_path().'/blog-img/'.$img->img;
+                unlink($imgPath);
+            }
+
               if($blog->delete())
               {
                   return redirect()->back()->with('success','Blog Deleted Succfully');
@@ -156,9 +221,12 @@ class BlogController extends Controller
                   return redirect()->back()->with('error','error Occure');
               }
         }elseif($blog->file != null){
-            //delete file from public path
-            $filePath = public_path().'/blog-file/'.$blog->file;
-            unlink($filePath);
+            foreach($files as $file)
+            {
+                //delete file from public path
+                $filePath = public_path().'/blog-file/'.$file->file;
+                unlink($filePath);
+            }
 
             if($blog->delete())
             {
@@ -179,6 +247,9 @@ class BlogController extends Controller
     public function update(Request $request, $id)
     {
         $blog = Blog::find($id);
+        $images = Images::where('blog_id',$id)->get();
+        $files = Files::where('blog_id',$id)->get();
+
         $request->validate([
             'title'=>'required|max:15',
             'body'=>'required',
@@ -188,26 +259,49 @@ class BlogController extends Controller
         ]);
         if($request->file('img') && $request->file('file'))
         {
-            //delete img from public path
-            $imgPath = public_path().'/blog-img/'.$blog->img;
-            unlink( $imgPath);
+            foreach($images as $img)
+            {
+                //delete img from public path
+                $imgPath = public_path().'/blog-img/'.$img->img;
+                unlink($imgPath);
+            }
 
-            //delete file from public path
-            $filePath = public_path().'/blog-file/'.$blog->img;
-            unlink($filePath);
+            foreach($files as $file)
+            {
+                //delete file from public path
+                $filePath = public_path().'/blog-file/'.$file->file;
+                unlink($filePath);
 
+            }
             //upload image //
-            $imageName = time().'.'.$request->img->extension();
-            $request->img->move(public_path('blog-img'), $imageName);
 
+            foreach($request->img as $index => $image)
+            {
+                $imageName = time().'.'.$request->img->extension();
+                $request->img->move(public_path('blog-img'), $imageName);
+    
+                $storedImage = new Images();
+                $storedImage->img = $imageName;
+                $storedImage->blog_id = $blog->id;
+                $storedImage->save();
+            }
+          
             //upload file
-            $fileName = time().'.'.$request->file->extension();
-            $request->file->move(public_path('blog-file'), $fileName);
-            //create
-            if($blog->update(array_merge($request->all(),[
-                'img'=>$imageName,
-                'file'=>$fileName
-            ])))
+            foreach($request->file as $index => $file)
+            {
+                //upload file
+               
+                $fileName = time().'.'.$request->file->extension();
+                $request->file->move(public_path('blog-file'), $fileName);
+
+                $storedFile = new Files();
+                $storedFile->file = $fileName;
+                $storedFile->blog_id = $blog->id;
+                $storedFile->save();
+            }
+            
+            //update
+            if($blog->update($request->all()))
             {
                 return redirect()->back()->with('success','Blog Updated');
             }else{
@@ -218,16 +312,25 @@ class BlogController extends Controller
         elseif($request->file('img'))
         {
             //delete img from public path
-            $imgPath = public_path().'/blog-img/'.$blog->img;
-            unlink($imgPath);
 
-            //upload image //
-            $imageName = time().'.'.$request->img->extension();
-            $request->img->move(public_path('blog-img'), $imageName);
+            foreach($images as $img)
+            {
+                //delete img from public path
+                $imgPath = public_path().'/blog-img/'.$img->img;
+                unlink($imgPath);
+            }
 
-            if($blog->update(array_merge($request->all(),[
-                'img'=>$imageName,
-            ])))
+            foreach($request->img as $index => $image)
+            {
+                $imageName = time().'.'.$request->img->extension();
+                $request->img->move(public_path('blog-img'), $imageName);
+    
+                $storedImage = new Images();
+                $storedImage->img = $imageName;
+                $storedImage->blog_id = $blog->id;
+                $storedImage->save();
+            }
+            if($blog->update($request->all()))
             {
                 return redirect()->back()->with('success','Blog Updated');
             }else{
@@ -237,13 +340,22 @@ class BlogController extends Controller
         }
         elseif($request->file('file'))
         {
-            //delete file from public path
-            $filePath = public_path().'/blog-file/'.$blog->img;
-            unlink($$filePath);
-
-             //upload file
-             $fileName = time().'.'.$request->file->extension();
-             $request->file->move(public_path('blog-file'), $fileName);
+            //delete file
+            $fileName = time().'.'.$request->file->extension();
+            $request->file->move(public_path('blog-file'), $fileName);
+            //upload file
+            foreach($request->file as $index => $file)
+            {
+                //upload file
+            
+                $fileName = time().'.'.$request->file->extension();
+                $request->file->move(public_path('blog-file'), $fileName);
+            
+                $storedFile = new Files();
+                $storedFile->file = $fileName;
+                $storedFile->blog_id = $blog->id;
+                $storedFile->save();
+            }
 
 
             if($blog->update(array_merge($request->all(),[

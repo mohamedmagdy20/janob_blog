@@ -39,8 +39,8 @@
                         <label for="exampleInputFile">الملفات</label>
                         <div class="input-group">
                             <div class="">
-                                <input type="file" name="img" class="custom-file-input" id="exampleInputFile">
-                                <label class="custom-file-label" for="exampleInputFile">اختار الصوره</label>
+                                <input type="file" name="img[]" class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">اختار الصور</label>
                                 @error('img')
                                 <span class="text-danger"> {{ $message }} </span>
                                 @enderror
