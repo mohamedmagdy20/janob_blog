@@ -23,11 +23,11 @@
                         <label for="exampleInputPassword1">المحتوى</label>
                         <textarea type="text" class="form-control" id="exampleInputPassword1" disabled placeholder="المحتوى">{{$blog->body}}</textarea>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="exampleInputPassword1">النوع</label>
                         <input type="test" value="{{$blog->type}}" disabled class="form-control" id="exampleInputEmail1" placeholder="عنوان المقاله">
                        
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <div class="form-group">
                             <div class="img-fluid text-center">

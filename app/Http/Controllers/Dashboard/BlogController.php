@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Comment;
+use App\Models\Images;
+use App\Models\Files;
 class BlogController extends Controller
 {
 
@@ -68,10 +70,11 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         // return $request->all();
+        // return $request->file('img')[0];
         $request->validate([
             'title'=>'required',
             'body'=>'required',
-            'type'=>'required',
+            // 'type'=>'required',
             'img'=>'array',
             'file'=>'array'
         ]);
@@ -79,10 +82,13 @@ class BlogController extends Controller
 
         if($request->hasfile('img') && $request->hasfile('file'))
         {
-            $storedBlog = Blog::create(array_merge($request->all(),[
+            // return $request->file;
+
+            $storedBlog = Blog::create(array_merge($request->except(['img','file']),[
                 'date'=>Carbon::now(),
                 'rec'=>1
             ]));
+            // return $storedBlog;
             //upload image //
             foreach($request->img as $image)
             {
@@ -117,7 +123,7 @@ class BlogController extends Controller
             $images = $request->file('img');
             // return $images[0];
             $files = $request->file('file'); 
-            $storedBlog =  Blog::create(array_merge($request->all(),[
+            $storedBlog =  Blog::create(array_merge($request->except(['img','file']),[
                 'date'=>Carbon::now(),
                 'rec'=>1
             ]));
@@ -144,7 +150,7 @@ class BlogController extends Controller
             $images = $request->file('img');
             // return $images[0];
             $files = $request->file('file');
-            $storedBlog =  Blog::create(array_merge($request->all(),[
+            $storedBlog =  Blog::create(array_merge($request->except(['img','file']),[
                 'date'=>Carbon::now(),
                 'rec'=>1
             ]));
@@ -170,7 +176,7 @@ class BlogController extends Controller
               }
         }
         else{
-            if(Blog::create(array_merge($request->all(),[
+            if(Blog::create(array_merge($request->except(['img','file']),[
                 'date'=>Carbon::now(),
                 'rec'=>1
             ])))
@@ -260,7 +266,7 @@ class BlogController extends Controller
         $request->validate([
             'title'=>'required|max:15',
             'body'=>'required',
-            'type'=>'required',
+            // 'type'=>'required',
             'img'=>'image|mimes:jpeg,png,jpg,gif,svg',
             'file'=>'file'
         ]);
@@ -308,7 +314,7 @@ class BlogController extends Controller
             }
             
             //update
-            if($blog->update($request->all()))
+            if($blog->update($request->except(['img','file'])))
             {
                 return redirect()->back()->with('success','Blog Updated');
             }else{
@@ -337,7 +343,7 @@ class BlogController extends Controller
                 $storedImage->blog_id = $blog->id;
                 $storedImage->save();
             }
-            if($blog->update($request->all()))
+            if($blog->update($request->except(['img','file'])))
             {
                 return redirect()->back()->with('success','Blog Updated');
             }else{
@@ -365,7 +371,7 @@ class BlogController extends Controller
             }
 
 
-            if($blog->update(array_merge($request->all(),[
+            if($blog->update(array_merge($request->except(['img','file']),[
                 'file'=>$fileName,
             ])))
             {

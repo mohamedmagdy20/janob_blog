@@ -22,13 +22,13 @@
                         <span class="text-danger"> {{ $message }} </span>
                         @enderror
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="exampleInputPassword1">المحتوى</label>
                         <textarea type="text" name="body" class="form-control"  disabled id="exampleInputPassword1" placeholder="المحتوى">{{$question->body}}</textarea>
                         @error('body')
                         <span class="text-danger"> {{ $message }} </span>
                         @enderror
-                    </div>
+                    </div> --}}
                     <label for="exampleInputEmail1" class="p-1"> الاجابات</label>
 
                     <div class="form-group">

@@ -18,11 +18,11 @@ class WebsiteController extends Controller
     public function index(Request $request)
     {
 
-        $fixed_blog = Blog::where('isStatic',1)->first();
+        $fixed_blog = Blog::where('isStatic',1)->with('images')->with('files')->first();
         $user =  User::first();
         $lists = [];
         $timenow = Carbon::now()->format('Y-m-d | H:i:s');
-        $query = Blog::query()->with('comment');
+        $query = Blog::query()->with('comment')->with('images')->with('files');
         $advertisment = Advertisment::whereDate('date_from','<=',$timenow)->whereDate('date_to','>=',$timenow)->get();
         $question = Question::with('answer')->get();
         $socials = DB::table('socialmedia')->get();

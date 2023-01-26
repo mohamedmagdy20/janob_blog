@@ -227,7 +227,7 @@
                         </amp-auto-ads>
                     </div>
                     @yield('news')
-                    <div class="col-md-3">
+                    <div class="col-md-3 pt-4">
                         {{-- <div class="fb-post" data-href="https://fb.watch/iheykI-NRs/" data-width="350" data-show-text="true"><blockquote cite="https://www.facebook.com/janoob.negev/videos/1919479461732922/" class="fb-xfbml-parse-ignore"><p>اللهم اجعل القران العظيم ربيع قلوبنا ونور صدورنا وجلاء أحزاننا وهمومنا ومغفره لذنوبنا</p>Posted by ‎<a href="https://www.facebook.com/janoob.negev/">Janoob موقع جنوب - النقب</a>‎ on&nbsp;<a href="https://www.facebook.com/janoob.negev/videos/1919479461732922/">Wednesday, 25 January 2023</a></blockquote></div>
                         <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjanoob.negev%2Fposts%2Fpfbid02E1WgS9WkDmmakxkiYWqFkbKVtqEc3mPDtKzpkgPoCsF2kbjVGbHT2nZRCoFVt6FUl&show_text=true&width=500" width="350" height="430" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                         <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fjanoob.negev%2Fposts%2Fpfbid02bfD9vRTQcigKWHVCLie1pDtP4xTxeyEK3XrtvauABQrzvbxa3JhGQuWv5k38ekrDl&show_text=true&width=500" width="350" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe> --}}

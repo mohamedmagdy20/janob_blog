@@ -28,13 +28,13 @@
                         <span class="text-danger"> {{ $message }} </span>
                         @enderror
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="exampleInputPassword1">النوع</label>
                         <input type="text" name="type" class="form-control">
                         @error('type')
                         <span class="text-danger"> {{ $message }} </span>
                         @enderror
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <label for="exampleInputFile">الملفات</label>
                         <div class="input-group">

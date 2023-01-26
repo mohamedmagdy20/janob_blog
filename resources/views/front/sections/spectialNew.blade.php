@@ -138,25 +138,29 @@
                 <div class="newsdes">
                     <a href="shownews/314.html" style="text-decoration: none">{{ $blog->body }}</a>
                 </div>
-
-                <a style="text-decoration: none;" href="{{ asset('blog-img/' . $blog->img) }}">
-                    <img src="{{ asset('blog-img/' . $blog->img) }}" alt="" class="bigNewsImg" />
-                </a>
-
-                @if ($blog->file != null)
-                    <a style="text-decoration: none;" href="{{ asset('blog-file/' . $blog->file) }}">
-                        <iframe src="{{ asset('blog-file/' . $blog->file) }}" class="bigNewsImg"></iframe>
-                    </a>
+                @foreach ($blog->images as $b )
+                    <a style="text-decoration: none;" href="{{ asset('blog-img/' . $b->img) }}">
+                        <img src="{{ asset('blog-img/' . $b->img) }}" alt="" class="bigNewsImg" />
+                    </a>    
+                @endforeach
+                
+                @if ($blog->files != null)
+                    @foreach ( $blog->files as $f )s
+                        <a style="text-decoration: none;" href="{{ asset('blog-file/' . $f->file) }}">
+                            <iframe src="{{ asset('blog-file/' . $f->file) }}" class="bigNewsImg"></iframe>
+                        </a>
+                    @endforeach
+                
                 @endif
 
 
-                <a class="hashTag" href="hashtag-news/55.html">
+                {{-- <a class="hashTag" href="hashtag-news/55.html">
                     #{{ $blog->type }}
-                </a>
+                </a> --}}
 
 
 
-                <div class="row" id="comment-div">
+                <div class="row pt-5" id="comment-div">
                     <div class="col-md-3">
                         <div class="numberofcomment">
                             <i class="fa-solid fa-comment-dots"></i>

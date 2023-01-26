@@ -160,6 +160,7 @@
         <div class="greyBorder"></div>
         <div class="homeTitle">خبر مثبت
         </div>
+        @if($fixed_blog)
         <div class="newsHomePage wow printBtn" data-wow-duration="1.4s" id="page-{{ $fixed_blog->id }}">
             <div class="printed">
                 <div class="row">
@@ -196,7 +197,7 @@
                 </div>
 
                 <a style="text-decoration: none;" href="{{ route('specialNew', $fixed_blog->id) }}">
-                    <img src="{{ asset('blog-img/' . $fixed_blog->img) }}" alt="" class="bigNewsImg" />
+                    <img src="{{ asset('blog-img/' . $fixed_blog->images[0]->img) }}" alt="" class="bigNewsImg" />
 
                 </a>
 
@@ -307,6 +308,7 @@
 
             <div class="greyBorder"></div>
         </div>
+        @endif
         <div class="greyBorder"></div>
         <div class="homeTitle">أخر الأخبار
         </div>
@@ -352,7 +354,8 @@
                         </div>
 
                         <a style="text-decoration: none;" href="{{ route('specialNew', $list->id) }}">
-                            <img src="{{ asset('blog-img/' . $list->img) }}" alt="" class="bigNewsImg" />
+                            {{-- <img src="{{ asset('blog-img/' . $list->img) }}" alt="" class="bigNewsImg" /> --}}
+                            <img src="{{ asset('blog-img/' . $list->images[0]->img) }}" alt="" class="bigNewsImg" />
 
                         </a>
 
@@ -467,13 +470,13 @@
             @elseif ($list->rec == '2')
                 <div class="newsHomePage wow" data-wow-duration="1.4s">
                     <div class="row">
-                        <a href="{{ route('specialNew', 1) }}">
+                        {{-- <a href="{{ route('specialNew', 1) }}">
                             <div class="col-6">
                                 <div class="clean">
                                     اعلان
                                 </div>
                             </div>
-                        </a>
+                        </a> --}}
                     </div>
                     <div class="profieInfo">
                         <a href="#">
@@ -489,11 +492,11 @@
                                 <a style="color: #ff1e1e !important;font-size:24px;">
                                     {{ $list->title }}</a>
                                 <div class="offecial">
-                                    @if ($list->img != null)
+                                    {{-- @if ($list->img != null)
                                         <img src="{{ asset('blog-img/' . $list->img) }}" alt="" />
                                         رسمي
                                     @else
-                                    @endif
+                                    @endif --}}
                                 </div>
                             </div>
 
@@ -507,9 +510,9 @@
                     </div>
 
                     <a style="text-decoration: none;" href="{{ route('specialNew', 1) }}">
-                        @if ($list->img != null)
-                            <img src="{{ asset('blog-img/' . $list->img) }}" alt="" />
-                            رسمي
+                        @if ( $list->img != null)
+                        <img src="{{ asset('ads/' . $list->img) }}" alt="" class="bigNewsImg" />
+
                         @else
                         @endif
                     </a>
@@ -517,15 +520,7 @@
                 <div class="greyBorder"></div>
             @elseif ($list->rec == '3')
                 <div class="poll newsHomePage wow ">
-                    <div class="row">
-                        <a href="{{ route('specialNew', 1) }}">
-                            <div class="col-6">
-                                <div class="clean">
-                                    Questions
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                   
                     <div class="question" style="border-bottom:1px solid rgb(194, 194, 194);padding-bottom:10px"
                         id="question-{{ $list->id }}">
                         {{ $list->title }}</div>

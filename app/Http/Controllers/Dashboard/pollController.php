@@ -35,7 +35,7 @@ class pollController extends Controller
         // return $request->all();
         $request->validate([
             'title'=>'required',
-            'body'=>'required',
+            // 'body'=>'required',
             'file'=>'image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
@@ -80,8 +80,12 @@ class pollController extends Controller
     {
         $question =  Question::find($id);
         //delete img from public path
-        $imgPath = public_path().'/questions/'.$question->file;
-        unlink($imgPath);
+        if($question->file !=null)
+        {
+            $imgPath = public_path().'/questions/'.$question->file;
+            unlink($imgPath);
+        }
+        
         $answers = Answer::where('question_id',$question->id)->get();
         
         foreach($answers as $answer)
