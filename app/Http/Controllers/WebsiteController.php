@@ -21,7 +21,7 @@ class WebsiteController extends Controller
         $fixed_blog = Blog::where('isStatic',1)->first();
         $user =  User::first();
         $lists = [];
-        $timenow = Carbon::now();
+        $timenow = Carbon::now()->format('Y-m-d | H:i:s');
         $query = Blog::query()->with('comment');
         $advertisment = Advertisment::whereDate('date_from','<=',$timenow)->whereDate('date_to','>=',$timenow)->get();
         $question = Question::with('answer')->get();
@@ -51,16 +51,18 @@ class WebsiteController extends Controller
     }
 
     public function contact(){
-        $timenow = Carbon::now();
+        $timenow = Carbon::now()->format('Y-m-d | H:i:s');
+        $socials = DB::table('socialmedia')->get();
 
-        return view('front.sections.contact',compact('timenow'));
+        return view('front.sections.contact',compact('timenow','socials'));
     }
 
     public function specialNew($id){
         $blog = Blog::findOrFail($id);
-        $timenow = Carbon::now();
+        $timenow = Carbon::now()->format('Y-m-d | H:i:s');
+        $socials = DB::table('socialmedia')->get();
 
-        return view('front.sections.spectialNew',compact('blog','timenow'));
+        return view('front.sections.spectialNew',compact('blog','timenow','socials'));
     }
 
     // public function showBlog($id)
@@ -83,7 +85,7 @@ class WebsiteController extends Controller
             'body'=>$request->comment,
             'article_id'=>$blog->id
         ]);
-        return redirect()->route()->with('success','Comment Added');
+        return redirect('new/'.$blog->id.'#comment-div')->with('success','Comment Added');
     }
 
     public function sendMessage(Request $request)

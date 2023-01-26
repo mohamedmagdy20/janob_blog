@@ -178,10 +178,10 @@
                             <a style="color: #ff1e1e !important;font-size:24px; text-decoration:none"
                                 href="{{ route('specialNew', $fixed_blog->id) }}">
                                 {{ $fixed_blog->title }}</a>
-                            <div class="offecial">
+                            {{-- <div class="offecial">
                                 <img src="{{ asset('blog-img/' . $fixed_blog->img) }}" alt="" />
                                 رسمي
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="name" style="color:#0d6efd;font-size:12px;">
@@ -228,35 +228,35 @@
                             <div class="dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                     data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-share"
-                                        id="share-icon-{{ $fixed_blog->id }}""></i></a>
+                                        id="share-icon-{{ $fixed_blog->id }}"></i></a>
 
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding:10px;">
-                                    <a href="" style="text-decoration: none;color:black">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u=http://app.janoob.net/show/{{$fixed_blog->id}}" style="text-decoration: none" target="_blank">
                                         <li style="curor:pointer ;color:rgb(56, 64, 187);">
                                             <span>FaceBook</span>
                                             <i class="fa-brands fa-facebook"></i>
                                         </li>
                                     </a>
-                                    <a href="" style="text-decoration: none;color:black">
-                                        <li style="curor:pointer ;color:rgb(56 ,64 ,187);">
+                                    <a href="https://twitter.com/share?url=http://app.janoob.net/show/{{$fixed_blog->id}}" target="_blank" style="text-decoration: none;color:black">
+                                        <li style="curor:pointer ;color:#4285f4;">
                                             <span>Twitter</span>
                                             {{-- <i class="fa-brands fa-twitter"></i> --}}
                                             <i class="fa-brands fa-square-twitter"></i>
                                         </li>
                                     </a>
-                                    <a href="" style="text-decoration: none;color:black">
+                                    <a href="https://tiktok.com/share?url=http://app.janoob.net/show/{{$fixed_blog->id}}"  target="_blank"  style="text-decoration: none;color:black">
                                         <li style="curor:pointer ;">
                                             <span>Tiktok</span>
                                             <i class="fa-brands fa-tiktok"></i>
                                         </li>
                                     </a>
-                                    <a href="" style="text-decoration: none;color:black">
+                                    <a href="https://youtube.com/share?url=http://app.janoob.net/show/{{$fixed_blog->id}}" target="_blank" style="text-decoration: none;color:black">
                                         <li style="curor:pointer ;color:red">
                                             <span>Youtube</span>
                                             <i class="fa-brands fa-youtube"></i>
                                         </li>
                                     </a>
-                                    <a href="" style="text-decoration: none;color:black">
+                                    <a href="whatsapp://send?text=http://app.janoob.net/show/{{$fixed_blog->id}}" data-action="share/whatsapp/share" target="_blank" style="text-decoration: none;color:black">
                                         <li style="curor:pointer ;color:rgb(20, 166, 20)">
                                             <span>Whatsapp</span>
                                             <i class="fa-brands fa-square-whatsapp"></i>
@@ -334,10 +334,10 @@
                                     <a style="color: #ff1e1e !important;font-size:24px;text-decoration:none"
                                         href="{{ route('specialNew', $list->id) }}">
                                         {{ $list->title }}</a>
-                                    <div class="offecial">
+                                    {{-- <div class="offecial">
                                         <img src="{{ asset('blog-img/' . $list->img) }}" alt="" />
                                         رسمي
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <div class="name" style="color:#0d6efd;font-size:12px;">
@@ -383,50 +383,47 @@
                                 <div class="share">
                                     {{-- <i class="fa-solid fa-share" id="share-icon-{{ $list->id }}""></i> --}}
                                     <div class="dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                                            id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                class="fa-solid fa-share" id="share-icon-{{ $list->id }}""></i></a>
-
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink"
-                                            style="padding:10px;">
-                                            <a href="" style="text-decoration: none;color:black">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-share"
+                                                id="share-icon-{{ $list->id }}"></i></a>
+        
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding:10px;">
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://app.janoob.net/show/{{$list->id}}" style="text-decoration: none" target="_blank">
                                                 <li style="curor:pointer ;color:rgb(56, 64, 187);">
                                                     <span>FaceBook</span>
                                                     <i class="fa-brands fa-facebook"></i>
                                                 </li>
                                             </a>
-                                            <a href="" style="text-decoration: none;color:black">
-                                                <li style="curor:pointer ;color:rgb(56 ,64 ,187);">
+                                            <a href="https://twitter.com/share?url=http://app.janoob.net/show/{{$list->id}}" target="_blank" style="text-decoration: none;color:black">
+                                                <li style="curor:pointer ;color:#4285f4;">
                                                     <span>Twitter</span>
                                                     {{-- <i class="fa-brands fa-twitter"></i> --}}
                                                     <i class="fa-brands fa-square-twitter"></i>
                                                 </li>
                                             </a>
-                                            <a href="" style="text-decoration: none;color:black">
+                                            <a href="https://tiktok.com/share?url=http://app.janoob.net/show/{{$list->id}}"  target="_blank"  style="text-decoration: none;color:black">
                                                 <li style="curor:pointer ;">
                                                     <span>Tiktok</span>
                                                     <i class="fa-brands fa-tiktok"></i>
                                                 </li>
                                             </a>
-                                            <a href="" style="text-decoration: none;color:black">
+                                            <a href="https://youtube.com/share?url=http://app.janoob.net/show/{{$list->id}}" target="_blank" style="text-decoration: none;color:black">
                                                 <li style="curor:pointer ;color:red">
                                                     <span>Youtube</span>
                                                     <i class="fa-brands fa-youtube"></i>
                                                 </li>
                                             </a>
-                                            <a href="" style="text-decoration: none;color:black">
+                                            <a href="whatsapp://send?text=http://app.janoob.net/show/{{$list->id}}" data-action="share/whatsapp/share" target="_blank" style="text-decoration: none;color:black">
                                                 <li style="curor:pointer ;color:rgb(20, 166, 20)">
                                                     <span>Whatsapp</span>
                                                     <i class="fa-brands fa-square-whatsapp"></i>
                                                 </li>
                                             </a>
-                                            <button style="border:none;margin-top:5px"
-                                                onclick="copy({{ $list->id }})">
+                                            <button style="border:none;margin-top:5px" onclick="copy({{ $list->id }})">
                                                 <li style="curor:pointer ;color:#777">
                                                     <span>Get Link</span>
                                                     <i class="fa-solid fa-link"></i>
-                                                    <input type="text" name="blogLink"
-                                                        id="blogLink-{{ $list->id }}"
+                                                    <input type="text" name="blogLink" id="blogLink-{{ $list->id }}"
                                                         value="https://app.jnoob.net/news/{{ $list->id }}">
                                                 </li>
                                             </button>

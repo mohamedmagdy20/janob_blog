@@ -34,8 +34,8 @@
 
                     </form> --}}
 
-                    <a class="nav-link nav-moblie active" href="/"><i class="fa-solid fa-house"></i></a>
-                    <a class="nav-link nav-moblie  " href="{{ route('contact') }}"><i
+                    <a class="nav-link nav-moblie active" href="/"><i class="fa-solid fa-house text-white"></i></a>
+                    <a class="nav-link nav-moblie text-white " href="{{ route('contact') }}"><i
                             class="fa-solid fa-phone-flip"></i></a>
 
 
