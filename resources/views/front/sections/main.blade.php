@@ -202,8 +202,10 @@
 
                     </a>
 
+                    </a>
+
                     <a class="hashTag" href="hashtag-news/55.html">
-                        #{{ $fixed_blog->type }}
+                        {{ $fixed_blog->type }}
                     </a>
 
 
@@ -217,12 +219,12 @@
                                 {{ count($fixed_blog->comment) }}
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="numberoflike">
-                                <i class="fa-regular fa-heart" id="like-icon-{{ $fixed_blog->id }}"
-                                    onclick="Bloglike({{ $fixed_blog->id }});"></i>
-                                <span id="like-count-{{ $fixed_blog->id }}">{{ $fixed_blog->likes }}</span>
-                            </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="numberoflike">
+                            <i class="fa-regular fa-heart" id="fixed-like"
+                                onclick="BloglikeFixed({{ $fixed_blog->id }});"></i>
+                            <span id="fixed-like-count">{{ $fixed_blog->likes }}</span>
                         </div>
                         {{-- Share Button --}}
                         <div class="col-md-3">
@@ -612,6 +614,31 @@
             document.execCommand("copy");
             window.getSelection().removeAllRanges();
             // console.log(blogLink.value);
+        }
+    </script>
+    <script>
+        function BloglikeFixed(id) {
+            // alert(id)
+            let like = document.querySelector("#fixed-like")
+            console.log(like)
+            let star = document.getElementById("fixed-like-count").innerHTML
+            console.log(star)
+            // likes = document.querySelector('.likes');
+            $.ajax({
+                url: "like/" + id,
+                method: 'GET',
+                data: {},
+                success: function(result) {
+                    console.log('success')
+                    like.classList.toggle('fa-solid');
+                    // like.style.display = "none";
+                    star++
+                    document.getElementById('like-count-' + id++'-fixed').innerHTML = star
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
         }
     </script>
 
