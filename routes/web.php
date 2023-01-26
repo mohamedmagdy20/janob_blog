@@ -7,6 +7,7 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Dashboard\AdController;
 use App\Http\Controllers\Dashboard\pollController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\SocialMediaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,6 +54,14 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
         Route::get('cencel/static/{id}',[BlogController::class,'cencelStatic'])->name('cencel.blog.static');
 
         Route::get('comment/delete/{id}',[BlogController::class,'deleteComment'])->name('comment.delete');
+      });
+
+
+      Route::group(['prefix'=>'social'],function(){
+        Route::get('index',[SocialMediaController::class,'index'])->name('social.index'); 
+        Route::get('delete/{id}',[SocialMediaController::class,'delete'])->name('social.delete');
+        Route::get('create',[SocialMediaController::class,'create'])->name('social.create');
+        Route::post('store',[SocialMediaController::class,'store'])->name('social.store');
       });
 
       Route::group(['prefix'=>'questions'],function(){

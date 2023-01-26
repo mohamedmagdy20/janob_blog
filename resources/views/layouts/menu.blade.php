@@ -31,3 +31,10 @@
         <p>الأسئله</p>
     </a>
 </li>
+
+<li class="nav-item mx-2">
+    <a href="{{ route('social.index') }}" class="nav-link {{ Request::is('dashboard/social/index') ? 'active' : '' }}">
+        <i class="fa-solid fa-s"></i>
+        <p>سوشيل ميديا</p>
+    </a>
+</li>

@@ -1,4 +1,4 @@
-@extends('front.layout.app', ['timenow', $timenow])
+@extends('front.layout.app',['timenow',$timenow,'socials'=>$socials])
 @section('news')
     <style>
         body {
