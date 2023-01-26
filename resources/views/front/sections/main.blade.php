@@ -555,7 +555,7 @@
     {{-- Poll Function --}}
     <script>
         function markAnswer(id) {
-            let answer = document.querySelector("#answer-" + id)
+
             let rate = document.getElementById('p-value-' + id).innerHTML
             $.ajax({
                 url: "rate/" + id,
@@ -574,31 +574,11 @@
             });
 
             let bar = document.querySelector("#bar-" + id);
-            // console.log(bar);
-            bar.style.width = "100%";
-            showResults();
+            bar.style.width = `${rate}%`;
 
-        }
-
-        function showResults() {
-            let answers = document.querySelectorAll(".poll .answers .answer");
-            for (let i = 0; i < answers.length; i++) {
-                let percentage = 0;
-                if (i == poll.selectedAnswer) {
-                    percentage = Math.round(
-                        (poll.answerWeight[i] + 1) *
-                        100 / (poll.pollCount + 1)
-                    );
-                } else {
-                    percentage = Math.round(
-                        (poll.answerWeight[i]) * 100 / (poll.pollCount + 1)
-                    );
-                }
-                answers[i].querySelector(".percentage-bar").style.width = percentage + "%";
-                answers[i].querySelector(".percentage-value").innerText = percentage + "%";
-            }
         }
     </script>
+
     <script>
         function showComments(id) {
             let commentBody = document.querySelector('#comment-' + id);
