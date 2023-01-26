@@ -11,6 +11,8 @@ use App\Models\Comment;
 use App\Models\User;
 use App\Models\Message;
 use App\Models\Answer;
+use Illuminate\Support\Facades\DB;
+
 class WebsiteController extends Controller
 {
     //
@@ -24,7 +26,7 @@ class WebsiteController extends Controller
         $query = Blog::query()->with('comment');
         $advertisment = Advertisment::whereDate('date_from','<=',$timenow)->whereDate('date_to','>=',$timenow)->get();
         $question = Question::with('answer')->get();
-      
+        $socials = DB::table('socialmedia')->get();
         if(isset($request->search))
         {
             $query = $query->where('title','LIKE',"%$request->search%")->orwhere('body','LIKE',"%$request->search%");
@@ -45,7 +47,7 @@ class WebsiteController extends Controller
            }
         }
         // return $lists;
-        return view('front.sections.main',compact('lists','user','timenow','fixed_blog'));
+        return view('front.sections.main',compact('lists','user','timenow','fixed_blog','socials'));
     }
 
     public function contact(){
@@ -94,7 +96,7 @@ class WebsiteController extends Controller
             'body'=>$request->message
         ]);
 
-        return redirect()->back()->with('success','تم اضافه الرساله سوف نتطلع عليها في اقرب وقت ممكن');
+        return redirect()->route()->with('success','تم اضافه الرساله سوف نتطلع عليها في اقرب وقت ممكن');
 
     }
 
@@ -105,4 +107,11 @@ class WebsiteController extends Controller
         $answer->save();
         return redirect()->back();
     }
+
+    // public function social()
+    // {
+    //     $socials = DB::table('socialmedia')->get();
+    //     return $socials;
+    //     return view('front.layout.app',compact('socials'));
+    // }
 }
