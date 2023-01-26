@@ -1,4 +1,4 @@
-@extends('front.layout.app',['timenow',$timenow,'socials'=>$socials])
+@extends('front.layout.app', ['timenow', $timenow, 'socials' => $socials])
 @section('news')
     <style>
         body {
@@ -160,155 +160,172 @@
         <div class="greyBorder"></div>
         <div class="homeTitle">خبر مثبت
         </div>
-        @if($fixed_blog)
-        <div class="newsHomePage wow printBtn" data-wow-duration="1.4s" id="page-{{ $fixed_blog->id }}">
-            <div class="printed">
-                <div class="row">
-                </div>
-                <div class="profieInfo">
-                    <a href="{{ asset('profile/' . $user->img) }}">
-                        <div class="imgCon">
-                            <img src="{{ asset('profile/' . $user->img) }}" alt="" />
-                        </div>
-                    </a>
-                    <div class="infos">
-                        <div class="date">{{ $fixed_blog->updated_at->format('Y-m-d | H:i:s') }}
-                        </div>
+        @if ($fixed_blog)
+            <div class="newsHomePage wow printBtn" data-wow-duration="1.4s" id="page-{{ $fixed_blog->id }}">
+                <div class="printed">
+                    <div class="row">
+                    </div>
+                    <div class="profieInfo">
+                        <a href="{{ asset('profile/' . $user->img) }}">
+                            <div class="imgCon">
+                                <img src="{{ asset('profile/' . $user->img) }}" alt="" />
+                            </div>
+                        </a>
+                        <div class="infos">
+                            <div class="date">{{ $fixed_blog->updated_at->format('Y-m-d | H:i:s') }}
+                            </div>
 
-                        <div class="name">
-                            <a style="color: #ff1e1e !important;font-size:24px; text-decoration:none"
-                                href="{{ route('specialNew', $fixed_blog->id) }}">
-                                {{ $fixed_blog->title }}</a>
-                            {{-- <div class="offecial">
+                            <div class="name">
+                                <a style="color: #ff1e1e !important;font-size:24px; text-decoration:none"
+                                    href="{{ route('specialNew', $fixed_blog->id) }}">
+                                    {{ $fixed_blog->title }}</a>
+                                {{-- <div class="offecial">
                                 <img src="{{ asset('blog-img/' . $fixed_blog->img) }}" alt="" />
                                 رسمي
                             </div> --}}
+                            </div>
+
+                            <div class="name" style="color:#0d6efd;font-size:12px;">
+                                كتب: {{ $user->name }}
+                            </div>
                         </div>
 
-                        <div class="name" style="color:#0d6efd;font-size:12px;">
-                            كتب: {{ $user->name }}
-                        </div>
+                    </div>
+                    <div class="newsdes">
+                        <a href="{{ route('specialNew', $fixed_blog->id) }}"
+                            style="text-decoration: none">{{ $fixed_blog->body }}</a>
                     </div>
 
-                </div>
-                <div class="newsdes">
-                    <a href="{{ route('specialNew', $fixed_blog->id) }}"
-                        style="text-decoration: none">{{ $fixed_blog->body }}</a>
-                </div>
+                    <a style="text-decoration: none;" href="{{ route('specialNew', $fixed_blog->id) }}">
+                        <img src="{{ asset('blog-img/' . $fixed_blog->images[0]->img) }}" alt=""
+                            class="bigNewsImg" />
 
-                <a style="text-decoration: none;" href="{{ route('specialNew', $fixed_blog->id) }}">
-                    <img src="{{ asset('blog-img/' . $fixed_blog->images[0]->img) }}" alt="" class="bigNewsImg" />
+                    </a>
 
-                </a>
-
-                <a class="hashTag" href="hashtag-news/55.html">
-                    #{{ $fixed_blog->type }}
-                </a>
+                    <a class="hashTag" href="hashtag-news/55.html">
+                        #{{ $fixed_blog->type }}
+                    </a>
 
 
 
 
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="numberofcomment">
-                            <i class="fa-solid fa-comment comment-icon" onclick="showComments({{ $fixed_blog->id }})"></i>
-                            {{ count($fixed_blog->comment) }}
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="numberofcomment">
+                                <i class="fa-solid fa-comment comment-icon"
+                                    onclick="showComments({{ $fixed_blog->id }})"></i>
+                                {{ count($fixed_blog->comment) }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="numberoflike">
-                            <i class="fa-regular fa-heart" id="like-icon-{{ $fixed_blog->id }}"
-                                onclick="Bloglike({{ $fixed_blog->id }});"></i>
-                            <span id="like-count-{{ $fixed_blog->id }}">{{ $fixed_blog->likes }}</span>
+                        <div class="col-md-3">
+                            <div class="numberoflike">
+                                <i class="fa-regular fa-heart" id="like-icon-{{ $fixed_blog->id }}"
+                                    onclick="Bloglike({{ $fixed_blog->id }});"></i>
+                                <span id="like-count-{{ $fixed_blog->id }}">{{ $fixed_blog->likes }}</span>
+                            </div>
                         </div>
-                    </div>
-                    {{-- Share Button --}}
-                    <div class="col-md-3">
-                        <div class="share">
-                            {{-- <i class="fa-solid fa-share" id="share-icon-{{ $list->id }}""></i> --}}
-                            <div class="dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                    data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-share"
-                                        id="share-icon-{{ $fixed_blog->id }}"></i></a>
+                        {{-- Share Button --}}
+                        <div class="col-md-3">
+                            <div class="share">
+                                {{-- <i class="fa-solid fa-share" id="share-icon-{{ $list->id }}""></i> --}}
+                                <div class="dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                        data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-share"
+                                            id="share-icon-{{ $fixed_blog->id }}"></i></a>
 
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding:10px;">
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u=http://app.janoob.net/show/{{$fixed_blog->id}}" style="text-decoration: none" target="_blank">
-                                        <li style="curor:pointer ;color:rgb(56, 64, 187);">
-                                            <span>FaceBook</span>
-                                            <i class="fa-brands fa-facebook"></i>
-                                        </li>
-                                    </a>
-                                    <a href="https://twitter.com/share?url=http://app.janoob.net/show/{{$fixed_blog->id}}" target="_blank" style="text-decoration: none;color:black">
-                                        <li style="curor:pointer ;color:#4285f4;">
-                                            <span>Twitter</span>
-                                            {{-- <i class="fa-brands fa-twitter"></i> --}}
-                                            <i class="fa-brands fa-square-twitter"></i>
-                                        </li>
-                                    </a>
-                                    <a href="https://tiktok.com/share?url=http://app.janoob.net/show/{{$fixed_blog->id}}"  target="_blank"  style="text-decoration: none;color:black">
-                                        <li style="curor:pointer ;">
-                                            <span>Tiktok</span>
-                                            <i class="fa-brands fa-tiktok"></i>
-                                        </li>
-                                    </a>
-                                    <a href="https://youtube.com/share?url=http://app.janoob.net/show/{{$fixed_blog->id}}" target="_blank" style="text-decoration: none;color:black">
-                                        <li style="curor:pointer ;color:red">
-                                            <span>Youtube</span>
-                                            <i class="fa-brands fa-youtube"></i>
-                                        </li>
-                                    </a>
-                                    <a href="whatsapp://send?text=http://app.janoob.net/show/{{$fixed_blog->id}}" data-action="share/whatsapp/share" target="_blank" style="text-decoration: none;color:black">
-                                        <li style="curor:pointer ;color:rgb(20, 166, 20)">
-                                            <span>Whatsapp</span>
-                                            <i class="fa-brands fa-square-whatsapp"></i>
-                                        </li>
-                                    </a>
-                                    <button style="border:none;margin-top:5px" onclick="copy({{ $fixed_blog->id }})">
-                                        <li style="curor:pointer ;color:#777">
-                                            <span>Get Link</span>
-                                            <i class="fa-solid fa-link"></i>
-                                            <input type="text" name="blogLink" id="blogLink-{{ $fixed_blog->id }}"
-                                                value="https://app.jnoob.net/news/{{ $fixed_blog->id }}">
-                                        </li>
-                                    </button>
-                                </ul>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding:10px;">
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u=http://app.janoob.net/show/{{ $fixed_blog->id }}"
+                                            style="text-decoration: none" target="_blank">
+                                            <li style="curor:pointer ;color:rgb(56, 64, 187);">
+                                                <span>FaceBook</span>
+                                                <i class="fa-brands fa-facebook"></i>
+                                            </li>
+                                        </a>
+                                        <a href="https://twitter.com/share?url=http://app.janoob.net/show/{{ $fixed_blog->id }}"
+                                            target="_blank" style="text-decoration: none;color:black">
+                                            <li style="curor:pointer ;color:#4285f4;">
+                                                <span>Twitter</span>
+                                                {{-- <i class="fa-brands fa-twitter"></i> --}}
+                                                <i class="fa-brands fa-square-twitter"></i>
+                                            </li>
+                                        </a>
+                                        <a href="https://tiktok.com/share?url=http://app.janoob.net/show/{{ $fixed_blog->id }}"
+                                            target="_blank" style="text-decoration: none;color:black">
+                                            <li style="curor:pointer ;">
+                                                <span>Tiktok</span>
+                                                <i class="fa-brands fa-tiktok"></i>
+                                            </li>
+                                        </a>
+                                        <a href="https://youtube.com/share?url=http://app.janoob.net/show/{{ $fixed_blog->id }}"
+                                            target="_blank" style="text-decoration: none;color:black">
+                                            <li style="curor:pointer ;color:red">
+                                                <span>Youtube</span>
+                                                <i class="fa-brands fa-youtube"></i>
+                                            </li>
+                                        </a>
+                                        <a href="whatsapp://send?text=http://app.janoob.net/show/{{ $fixed_blog->id }}"
+                                            data-action="share/whatsapp/share" target="_blank"
+                                            style="text-decoration: none;color:black">
+                                            <li style="curor:pointer ;color:rgb(20, 166, 20)">
+                                                <span>Whatsapp</span>
+                                                <i class="fa-brands fa-square-whatsapp"></i>
+                                            </li>
+                                        </a>
+                                        <button style="border:none;margin-top:5px" onclick="copy({{ $fixed_blog->id }})">
+                                            <li style="curor:pointer ;color:#777">
+                                                <span>Get Link</span>
+                                                <i class="fa-solid fa-link"></i>
+                                                <input type="text" name="blogLink" id="blogLink-{{ $fixed_blog->id }}"
+                                                    value="https://app.jnoob.net/news/{{ $fixed_blog->id }}">
+                                            </li>
+                                        </button>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
 
-            <div class="addcomment">
-                <form action="{{ route('comment.store', $fixed_blog->id) }}" method="POST">
-                    @csrf
-                    <textarea type="text" name="comment" id="" class="form-control my-3 commentInput"
-                        style="min-height: 100%;max-height:500%" placeholder="اكتب تعليقا" onfocus="showComments({{ $fixed_blog->id }})"></textarea>
-                    <button id="commentBtn-{{ $fixed_blog->id }}" onclick="showComments({{ $fixed_blog->id }})">
-                        <i class="fa-solid fa-paper-plane" style="font-size: 20px;"></i>
-                    </button>
-                </form>
+                <div class="addcomment">
+                    <form action="{{ route('comment.store', $fixed_blog->id) }}" method="POST">
+                        @csrf
+                        <textarea type="text" name="comment" id="" class="form-control my-3 commentInput"
+                            style="min-height: 100%;max-height:500%" placeholder="اكتب تعليقا" onfocus="showComments({{ $fixed_blog->id }})"></textarea>
+                        <button id="commentBtn-{{ $fixed_blog->id }}" onclick="showComments({{ $fixed_blog->id }})">
+                            <i class="fa-solid fa-paper-plane" style="font-size: 20px;"></i>
+                        </button>
+                    </form>
 
-            </div>
+                </div>
 
-            <div class="comments" id="comment-{{ $fixed_blog->id }}">
-                @foreach ($fixed_blog->comment as $comment)
-                    <div class="comment my-3">
-                        <div class="commentBody">
-                            <p>
-                                {{ $comment->body }}
-                            </p>
+                <div class="comments" id="comment-{{ $fixed_blog->id }}">
+                    @foreach ($fixed_blog->comment as $comment)
+                        <div class="comment my-3">
+                            <div class="commentBody">
+                                <p>
+                                    {{ $comment->body }}
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
 
+                </div>
+
+
+                <div class="greyBorder"></div>
             </div>
-
-
-            <div class="greyBorder"></div>
-        </div>
         @endif
+        <div class="greyBorder"></div>
+        <nav class="navbar bg-light my-3">
+            <div class="container-fluid">
+                <form class="d-flex w-100" role="search">
+                    <input class="form-control me-2" type="search" placeholder="ابحث عن الخبر" aria-label="Search">
+                    <button class="btn btn-outline-info" type="submit">بحث</button>
+                </form>
+            </div>
+        </nav>
         <div class="greyBorder"></div>
         <div class="homeTitle">أخر الأخبار
         </div>
@@ -355,7 +372,8 @@
 
                         <a style="text-decoration: none;" href="{{ route('specialNew', $list->id) }}">
                             {{-- <img src="{{ asset('blog-img/' . $list->img) }}" alt="" class="bigNewsImg" /> --}}
-                            <img src="{{ asset('blog-img/' . $list->images[0]->img) }}" alt="" class="bigNewsImg" />
+                            <img src="{{ asset('blog-img/' . $list->images[0]->img) }}" alt=""
+                                class="bigNewsImg" />
 
                         </a>
 
@@ -386,47 +404,56 @@
                                 <div class="share">
                                     {{-- <i class="fa-solid fa-share" id="share-icon-{{ $list->id }}""></i> --}}
                                     <div class="dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-share"
-                                                id="share-icon-{{ $list->id }}"></i></a>
-        
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding:10px;">
-                                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://app.janoob.net/show/{{$list->id}}" style="text-decoration: none" target="_blank">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                                            id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                class="fa-solid fa-share" id="share-icon-{{ $list->id }}"></i></a>
+
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink"
+                                            style="padding:10px;">
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://app.janoob.net/show/{{ $list->id }}"
+                                                style="text-decoration: none" target="_blank">
                                                 <li style="curor:pointer ;color:rgb(56, 64, 187);">
                                                     <span>FaceBook</span>
                                                     <i class="fa-brands fa-facebook"></i>
                                                 </li>
                                             </a>
-                                            <a href="https://twitter.com/share?url=http://app.janoob.net/show/{{$list->id}}" target="_blank" style="text-decoration: none;color:black">
+                                            <a href="https://twitter.com/share?url=http://app.janoob.net/show/{{ $list->id }}"
+                                                target="_blank" style="text-decoration: none;color:black">
                                                 <li style="curor:pointer ;color:#4285f4;">
                                                     <span>Twitter</span>
                                                     {{-- <i class="fa-brands fa-twitter"></i> --}}
                                                     <i class="fa-brands fa-square-twitter"></i>
                                                 </li>
                                             </a>
-                                            <a href="https://tiktok.com/share?url=http://app.janoob.net/show/{{$list->id}}"  target="_blank"  style="text-decoration: none;color:black">
+                                            <a href="https://tiktok.com/share?url=http://app.janoob.net/show/{{ $list->id }}"
+                                                target="_blank" style="text-decoration: none;color:black">
                                                 <li style="curor:pointer ;">
                                                     <span>Tiktok</span>
                                                     <i class="fa-brands fa-tiktok"></i>
                                                 </li>
                                             </a>
-                                            <a href="https://youtube.com/share?url=http://app.janoob.net/show/{{$list->id}}" target="_blank" style="text-decoration: none;color:black">
+                                            <a href="https://youtube.com/share?url=http://app.janoob.net/show/{{ $list->id }}"
+                                                target="_blank" style="text-decoration: none;color:black">
                                                 <li style="curor:pointer ;color:red">
                                                     <span>Youtube</span>
                                                     <i class="fa-brands fa-youtube"></i>
                                                 </li>
                                             </a>
-                                            <a href="whatsapp://send?text=http://app.janoob.net/show/{{$list->id}}" data-action="share/whatsapp/share" target="_blank" style="text-decoration: none;color:black">
+                                            <a href="whatsapp://send?text=http://app.janoob.net/show/{{ $list->id }}"
+                                                data-action="share/whatsapp/share" target="_blank"
+                                                style="text-decoration: none;color:black">
                                                 <li style="curor:pointer ;color:rgb(20, 166, 20)">
                                                     <span>Whatsapp</span>
                                                     <i class="fa-brands fa-square-whatsapp"></i>
                                                 </li>
                                             </a>
-                                            <button style="border:none;margin-top:5px" onclick="copy({{ $list->id }})">
+                                            <button style="border:none;margin-top:5px"
+                                                onclick="copy({{ $list->id }})">
                                                 <li style="curor:pointer ;color:#777">
                                                     <span>Get Link</span>
                                                     <i class="fa-solid fa-link"></i>
-                                                    <input type="text" name="blogLink" id="blogLink-{{ $list->id }}"
+                                                    <input type="text" name="blogLink"
+                                                        id="blogLink-{{ $list->id }}"
                                                         value="https://app.jnoob.net/news/{{ $list->id }}">
                                                 </li>
                                             </button>
@@ -448,7 +475,6 @@
                                 <i class="fa-solid fa-paper-plane" style="font-size: 20px;"></i>
                             </button>
                         </form>
-
                     </div>
 
                     <div class="comments" id="comment-{{ $list->id }}">
@@ -461,7 +487,6 @@
                                 </div>
                             </div>
                         @endforeach
-
                     </div>
 
 
@@ -510,9 +535,8 @@
                     </div>
 
                     <a style="text-decoration: none;" href="{{ route('specialNew', 1) }}">
-                        @if ( $list->img != null)
-                        <img src="{{ asset('ads/' . $list->img) }}" alt="" class="bigNewsImg" />
-
+                        @if ($list->img != null)
+                            <img src="{{ asset('ads/' . $list->img) }}" alt="" class="bigNewsImg" />
                         @else
                         @endif
                     </a>
@@ -520,7 +544,7 @@
                 <div class="greyBorder"></div>
             @elseif ($list->rec == '3')
                 <div class="poll newsHomePage wow ">
-                   
+
                     <div class="question" style="border-bottom:1px solid rgb(194, 194, 194);padding-bottom:10px"
                         id="question-{{ $list->id }}">
                         {{ $list->title }}</div>
@@ -578,8 +602,8 @@
         function showComments(id) {
             let commentBody = document.querySelector('#comment-' + id);
             commentBody.style.height = "170.6px";
+            console.log("Welcome");
         }
-
 
         function copy(id) {
             // let copyBtn = document.querySelector('#copyLinkBtn-' + id);
