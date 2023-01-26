@@ -143,6 +143,7 @@
             color: #fff;
         }
     </style>
+
     <!-- Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {
@@ -182,7 +183,9 @@
     </script>
 
     <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v15.0&appId=924998495156283&autoLogAppEvents=1" nonce="ezMg9Lwk"></script>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v15.0&appId=924998495156283&autoLogAppEvents=1"
+        nonce="ezMg9Lwk"></script>
 </head>
 
 <body onload="startTime()">
@@ -216,8 +219,9 @@
         <div class="homepage">
 
             <div class="container" style="max-width:1000px; !important;">
+
                 <div class="row" style="padding-top:50px">
-                    
+
                     <div class="col-md-3">
                         <amp-auto-ads type="adsense" data-ad-client="ca-pub-9047311544579993">
                         </amp-auto-ads>
@@ -232,7 +236,7 @@
                         @endforeach
                     
                     </div>
-                    
+
                 </div>
             </div>
         </div>

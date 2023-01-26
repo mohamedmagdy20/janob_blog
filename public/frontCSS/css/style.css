@@ -306,7 +306,7 @@ body main .homepage .newsHomePage .profieInfo {
 body main .homepage .newsHomePage .profieInfo .imgCon {
     width: 60px;
     height: 60px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     overflow: hidden;
     background-color: #eee;
     margin-left: 20px;
@@ -317,7 +317,7 @@ body main .homepage .newsHomePage .profieInfo .imgCon img {
     height: 100%;
     -o-object-fit: cover;
     object-fit: cover;
-    border-radius: 50%;
+    /* border-radius: 50%; */
 }
 
 body main .homepage .newsHomePage .profieInfo .infos {

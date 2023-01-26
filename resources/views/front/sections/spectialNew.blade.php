@@ -1,92 +1,93 @@
 @extends('front.layout.app')
 @section('news')
- <style>
-    body {
-        margin: 0;
-        padding: 0;
-    }
-
-    p {
-        text-decoration: none;
-        color: black;
-        font-size: 13px;
-        padding: 7px 6px 9px 6px;
-        background: #d5d5d5;
-        margin-top: 4px;
-        border-radius: 5px;
-        border-bottom: 1px solid #bbb;
-        margin-inline: 15px;
-    }
-
-    .numberofcomment {
-        position: absolute;
-        bottom: 30%;
-        left: 22px;
-    }
-
-    .numberoflike {
-        position: absolute;
-        bottom: 30%;
-        left: 60px;
-        cursor: pointer;
-    }
-
-    .addcomment {
-        position: relative;
-    }
-
-    .addcomment button {
-        position: absolute;
-        left: 0px;
-        top: 58%;
-        border: none;
-        border-bottom-left-radius: 5px;
-    }
-
-    .fa-heart {
-        color: red;
-    }
-
-    .row {
-        position: relative;
-    }
-
-    .comment {
-        position: relative;
-    }
-
-    .comment::before {
-        content: "";
-        width: 0px;
-        height: 0px;
-        border: 10px solid #d5d5d5;
-        border-bottom-color: transparent;
-        border-top-color: transparent;
-        border-right-color: transparent;
-        position: absolute;
-        right: -2px;
-        top: 56%;
-        transform: rotate(10deg);
-    }
-
-    .share {
-        position: absolute;
-        bottom: 30%;
-        left: 105px;
-        cursor: pointer;
-    }
-
-    @media print {
-        body * {
-            visibility: hidden;
-        }
-        .printed * {
-            visibility: visible;
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
         }
 
-    }
-</style>
- 
+        p {
+            text-decoration: none;
+            color: black;
+            font-size: 13px;
+            padding: 7px 6px 9px 6px;
+            background: #d5d5d5;
+            margin-top: 4px;
+            border-radius: 5px;
+            border-bottom: 1px solid #bbb;
+            margin-inline: 15px;
+        }
+
+        .numberofcomment {
+            position: absolute;
+            bottom: 30%;
+            left: 22px;
+        }
+
+        .numberoflike {
+            position: absolute;
+            bottom: 30%;
+            left: 60px;
+            cursor: pointer;
+        }
+
+        .addcomment {
+            position: relative;
+        }
+
+        .addcomment button {
+            position: absolute;
+            left: 0px;
+            top: 58%;
+            border: none;
+            border-bottom-left-radius: 5px;
+        }
+
+        .fa-heart {
+            color: red;
+        }
+
+        .row {
+            position: relative;
+        }
+
+        .comment {
+            position: relative;
+        }
+
+        .comment::before {
+            content: "";
+            width: 0px;
+            height: 0px;
+            border: 10px solid #d5d5d5;
+            border-bottom-color: transparent;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            position: absolute;
+            right: -2px;
+            top: 56%;
+            transform: rotate(10deg);
+        }
+
+        .share {
+            position: absolute;
+            bottom: 30%;
+            left: 105px;
+            cursor: pointer;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            .printed * {
+                visibility: visible;
+            }
+
+        }
+    </style>
+
     {{-- Posts Only --}}
     <div class="col-md-6" id="post-data">
         <div class="greyBorder"></div>
@@ -123,7 +124,8 @@
                         </div>
 
                         <div class="name">
-                            <a style="color: #ff1e1e !important;font-size:24px;" href="shownews/314.html">
+                            <a style="color: #ff1e1e !important;font-size:24px;text-decoration:none"
+                                href="shownews/314.html">
                                 {{ $blog->title }}</a>
                             <div class="offecial">
                                 <img src="{{ asset('blog-img/' . $blog->img) }}" alt="" />

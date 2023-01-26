@@ -35,11 +35,12 @@
             left: 105px;
         }
 
-        .comment-icon:hover{
+        .comment-icon:hover {
             cursor: pointer;
             color: #0d6efd;
             transition: ease-in-out 0.2s
         }
+
         .numberoflike {
             position: absolute;
             bottom: 30%;
@@ -113,6 +114,11 @@
             overflow: hidden;
         }
 
+        .poll .answers .answer .answerText {
+            position: relative;
+            z-index: 1;
+        }
+
         .poll .answers .answer.selected {
             border: 2px solid #8f9fe8;
         }
@@ -134,7 +140,6 @@
             width: 0%;
             height: 100%;
             background-color: #ccd8f1;
-
             transition: width 300ms ease-in-out;
         }
 
@@ -153,32 +158,168 @@
 
     <div class="col-md-6" id="post-data">
         <div class="greyBorder"></div>
+        <div class="homeTitle">خبر مثبت
+        </div>
+        <div class="newsHomePage wow printBtn" data-wow-duration="1.4s" id="page-{{ $fixed_blog->id }}">
+            <div class="printed">
+                <div class="row">
+                </div>
+                <div class="profieInfo">
+                    <a href="{{ asset('profile/' . $user->img) }}">
+                        <div class="imgCon">
+                            <img src="{{ asset('profile/' . $user->img) }}" alt="" />
+                        </div>
+                    </a>
+                    <div class="infos">
+                        <div class="date">{{ $fixed_blog->updated_at->format('Y-m-d | H:i:s') }}
+                        </div>
+
+                        <div class="name">
+                            <a style="color: #ff1e1e !important;font-size:24px; text-decoration:none"
+                                href="{{ route('specialNew', $fixed_blog->id) }}">
+                                {{ $fixed_blog->title }}</a>
+                            <div class="offecial">
+                                <img src="{{ asset('blog-img/' . $fixed_blog->img) }}" alt="" />
+                                رسمي
+                            </div>
+                        </div>
+
+                        <div class="name" style="color:#0d6efd;font-size:12px;">
+                            كتب: {{ $user->name }}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="newsdes">
+                    <a href="{{ route('specialNew', $fixed_blog->id) }}"
+                        style="text-decoration: none">{{ $fixed_blog->body }}</a>
+                </div>
+
+                <a style="text-decoration: none;" href="{{ route('specialNew', $fixed_blog->id) }}">
+                    <img src="{{ asset('blog-img/' . $fixed_blog->img) }}" alt="" class="bigNewsImg" />
+
+                </a>
+
+                <a class="hashTag" href="hashtag-news/55.html">
+                    #{{ $fixed_blog->type }}
+                </a>
+
+
+
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="numberofcomment">
+                            <i class="fa-solid fa-comment comment-icon" onclick="showComments({{ $fixed_blog->id }})"></i>
+                            {{ count($fixed_blog->comment) }}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="numberoflike">
+                            <i class="fa-regular fa-heart" id="like-icon-{{ $fixed_blog->id }}"
+                                onclick="Bloglike({{ $fixed_blog->id }});"></i>
+                            <span id="like-count-{{ $fixed_blog->id }}">{{ $fixed_blog->likes }}</span>
+                        </div>
+                    </div>
+                    {{-- Share Button --}}
+                    <div class="col-md-3">
+                        <div class="share">
+                            {{-- <i class="fa-solid fa-share" id="share-icon-{{ $list->id }}""></i> --}}
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                    data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-share"
+                                        id="share-icon-{{ $fixed_blog->id }}""></i></a>
+
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding:10px;">
+                                    <a href="" style="text-decoration: none;color:black">
+                                        <li style="curor:pointer ;color:rgb(56, 64, 187);">
+                                            <span>FaceBook</span>
+                                            <i class="fa-brands fa-facebook"></i>
+                                        </li>
+                                    </a>
+                                    <a href="" style="text-decoration: none;color:black">
+                                        <li style="curor:pointer ;color:rgb(56 ,64 ,187);">
+                                            <span>Twitter</span>
+                                            {{-- <i class="fa-brands fa-twitter"></i> --}}
+                                            <i class="fa-brands fa-square-twitter"></i>
+                                        </li>
+                                    </a>
+                                    <a href="" style="text-decoration: none;color:black">
+                                        <li style="curor:pointer ;">
+                                            <span>Tiktok</span>
+                                            <i class="fa-brands fa-tiktok"></i>
+                                        </li>
+                                    </a>
+                                    <a href="" style="text-decoration: none;color:black">
+                                        <li style="curor:pointer ;color:red">
+                                            <span>Youtube</span>
+                                            <i class="fa-brands fa-youtube"></i>
+                                        </li>
+                                    </a>
+                                    <a href="" style="text-decoration: none;color:black">
+                                        <li style="curor:pointer ;color:rgb(20, 166, 20)">
+                                            <span>Whatsapp</span>
+                                            <i class="fa-brands fa-square-whatsapp"></i>
+                                        </li>
+                                    </a>
+                                    <button style="border:none;margin-top:5px" onclick="copy({{ $fixed_blog->id }})">
+                                        <li style="curor:pointer ;color:#777">
+                                            <span>Get Link</span>
+                                            <i class="fa-solid fa-link"></i>
+                                            <input type="text" name="blogLink" id="blogLink-{{ $fixed_blog->id }}"
+                                                value="https://app.jnoob.net/news/{{ $fixed_blog->id }}">
+                                        </li>
+                                    </button>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="addcomment">
+                <form action="{{ route('comment.store', $fixed_blog->id) }}" method="POST">
+                    @csrf
+                    <textarea type="text" name="comment" id="" class="form-control my-3 commentInput"
+                        style="min-height: 100%;max-height:500%" placeholder="اكتب تعليقا" onfocus="showComments({{ $fixed_blog->id }})"></textarea>
+                    <button id="commentBtn-{{ $fixed_blog->id }}" onclick="showComments({{ $fixed_blog->id }})">
+                        <i class="fa-solid fa-paper-plane" style="font-size: 20px;"></i>
+                    </button>
+                </form>
+
+            </div>
+
+            <div class="comments" id="comment-{{ $fixed_blog->id }}">
+                @foreach ($fixed_blog->comment as $comment)
+                    <div class="comment my-3">
+                        <div class="commentBody">
+                            <p>
+                                {{ $comment->body }}
+                            </p>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
+
+
+            <div class="greyBorder"></div>
+        </div>
+        <div class="greyBorder"></div>
         <div class="homeTitle">أخر الأخبار
         </div>
         {{-- This is posts --}}
         @foreach ($lists as $index => $list)
             @if ($list->rec == '1')
-                <div class="newsHomePage wow printBtn" data-wow-duration="1.4s">
+                <div class="newsHomePage wow printBtn" data-wow-duration="1.4s" id="page-{{ $list->id }}">
                     <div class="printed">
                         <div class="row">
-                            {{-- <div class="col-md-9">
-                                <a href="{{ route('specialNew', $list->id) }}">
-                                    <div class="col-6">
-                                        <div class="clean">
-                                            {{ $list->type }}
-                                        </div>
-                                    </div>
-                                </a>
-                            </div> --}}
-                            {{-- <div class="col-md-3 printBtn" onclick="print({{ $list->id }})" style="cursor: pointer">
-                                <span>Print Blog</span>
-                                <i class="fa-solid fa-print"></i>
-
-                            </div> --}}
 
 
                         </div>
-                        
+
                         <div class="profieInfo">
                             <a href="{{ asset('profile/' . $user->img) }}">
                                 <div class="imgCon">
@@ -190,7 +331,7 @@
                                 </div>
 
                                 <div class="name">
-                                    <a style="color: #ff1e1e !important;font-size:24px;"
+                                    <a style="color: #ff1e1e !important;font-size:24px;text-decoration:none"
                                         href="{{ route('specialNew', $list->id) }}">
                                         {{ $list->title }}</a>
                                     <div class="offecial">
@@ -225,7 +366,8 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="numberofcomment">
-                                    <i class="fa-solid fa-comment comment-icon" onclick="showComments({{ $list->id }})"></i>
+                                    <i class="fa-solid fa-comment comment-icon"
+                                        onclick="showComments({{ $list->id }})"></i>
                                     {{ count($list->comment) }}
                                 </div>
                             </div>
@@ -245,7 +387,8 @@
                                             id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i
                                                 class="fa-solid fa-share" id="share-icon-{{ $list->id }}""></i></a>
 
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="padding:10px;">
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink"
+                                            style="padding:10px;">
                                             <a href="" style="text-decoration: none;color:black">
                                                 <li style="curor:pointer ;color:rgb(56, 64, 187);">
                                                     <span>FaceBook</span>
@@ -277,11 +420,13 @@
                                                     <i class="fa-brands fa-square-whatsapp"></i>
                                                 </li>
                                             </a>
-                                            <button style="border:none;margin-top:5px" onclick="copy({{ $list->id }})">
+                                            <button style="border:none;margin-top:5px"
+                                                onclick="copy({{ $list->id }})">
                                                 <li style="curor:pointer ;color:#777">
                                                     <span>Get Link</span>
                                                     <i class="fa-solid fa-link"></i>
-                                                    <input type="text" name="blogLink" id="blogLink-{{ $list->id }}"
+                                                    <input type="text" name="blogLink"
+                                                        id="blogLink-{{ $list->id }}"
                                                         value="https://app.jnoob.net/news/{{ $list->id }}">
                                                 </li>
                                             </button>
@@ -384,13 +529,17 @@
                             </div>
                         </a>
                     </div>
-                    <div class="question" style="border-bottom:1px solid rgb(194, 194, 194);padding-bottom:10px">
+                    <div class="question" style="border-bottom:1px solid rgb(194, 194, 194);padding-bottom:10px"
+                        id="question-{{ $list->id }}">
                         {{ $list->title }}</div>
                     <div class="answers">
                         @foreach ($list->answer as $index => $answer)
-                            <div class="answer" onclick="markAnswer({{ $answer->id }})">
-                                {{ $answer->body }}
-                                <span class="percentage-bar"></span>
+                            <div class="answer" onclick="markAnswer({{ $answer->id }})"
+                                id="answer-{{ $answer->id }}">
+                                <div class="answerText">
+                                    {{ $answer->body }}
+                                </div>
+                                <span class="percentage-bar" id="bar-{{ $answer->id }}"></span>
                                 <span class="percentage-value"
                                     id="p-value-{{ $answer->id }}">{{ $answer->rate }}</span>
                             </div>
@@ -402,13 +551,57 @@
             @endif
         @endforeach
     </div>
-
-
-    
 @endsection
 @section('script')
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
+    {{-- Poll Function --}}
+    <script>
+        function markAnswer(id) {
+            let answer = document.querySelector("#answer-" + id)
+            let rate = document.getElementById('p-value-' + id).innerHTML
+            $.ajax({
+                url: "rate/" + id,
+                method: 'GET',
+                data: {},
+                success: function(result) {
+                    rate++
+                    document.getElementById('p-value-' + id).innerHTML = rate
+                    console.log('success')
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+
+
+            });
+
+            let bar = document.querySelector("#bar-" + id);
+            // console.log(bar);
+            bar.style.width = "100%";
+            showResults();
+
+        }
+
+        function showResults() {
+            let answers = document.querySelectorAll(".poll .answers .answer");
+            for (let i = 0; i < answers.length; i++) {
+                let percentage = 0;
+                if (i == poll.selectedAnswer) {
+                    percentage = Math.round(
+                        (poll.answerWeight[i] + 1) *
+                        100 / (poll.pollCount + 1)
+                    );
+                } else {
+                    percentage = Math.round(
+                        (poll.answerWeight[i]) * 100 / (poll.pollCount + 1)
+                    );
+                }
+                answers[i].querySelector(".percentage-bar").style.width = percentage + "%";
+                answers[i].querySelector(".percentage-value").innerText = percentage + "%";
+            }
+        }
+    </script>
     <script>
         function showComments(id) {
             let commentBody = document.querySelector('#comment-' + id);
@@ -448,48 +641,6 @@
                     console.log(err);
                 }
             });
-        }
-    </script>
-
-    {{-- Poll Function --}}
-    <script>
-        function markAnswer(id) {
-            let rate = document.getElementById('p-value-' + id).innerHTML
-
-            $.ajax({
-                url: "rate/" + id,
-                method: 'GET',
-                data: {},
-                success: function(result) {
-                    rate++
-                    document.getElementById('p-value-' + id).innerHTML = rate
-                    console.log('success')
-                },
-                error: function(err) {
-                    console.log(err);
-                }
-            });
-
-            showResults();
-
-        }
-
-        function showResults() {
-            let answers = document.querySelectorAll(".poll .answers .answer");
-            for (let i = 0; i < answers.length; i++) {
-                let percentage = 0;
-                if (i == poll.selectedAnswer) {
-                    percentage = Math.round(
-                        (poll.answerWeight[i] + 1) * 100 / (poll.pollCount + 1)
-                    );
-                } else {
-                    percentage = Math.round(
-                        (poll.answerWeight[i]) * 100 / (poll.pollCount + 1)
-                    );
-                }
-                answers[i].querySelector(".percentage-bar").style.width = percentage + "%";
-                answers[i].querySelector(".percentage-value").innerText = percentage + "%";
-            }
         }
     </script>
 @endsection
